@@ -35,7 +35,7 @@ exports.contactPost = function(req, res) {
   var mailOptions = {
     from: req.body.name + ' ' + '<'+ req.body.email + '>',
     to: 'rkurtz@willcalltickets.com',
-    subject: '✔ Contact Form | Mega Boilerplate',
+    subject: '✔ Contact Form | Blazecast',
     text: req.body.message
   };
 
