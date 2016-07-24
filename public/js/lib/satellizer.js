@@ -294,7 +294,8 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
       function($q, $window, $log, config, storage) {
         var Shared = {};
 
-        var tokenName = config.tokenPrefix ? [config.tokenPrefix, config.tokenName].join('_') : config.tokenName;
+        var tokenName = config.tokenPrefix ?
+          [config.tokenPrefix, config.tokenName].join('_') : config.tokenName;
 
         Shared.getToken = function() {
           return storage.get(tokenName);

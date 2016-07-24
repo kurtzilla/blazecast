@@ -9,7 +9,7 @@ var User = require('../models/User');
 
 function generateToken(user) {
   var payload = {
-    iss: 'my.domain.com',
+    iss: process.env.HOST,
     sub: user.id,
     iat: moment().unix(),
     exp: moment().add(7, 'days').unix()
@@ -47,8 +47,11 @@ exports.ensureAuthenticated = function(req, res, next) {
       .fetch()
       .then(function(user) {
         if (!user) {
-          return res.status(401).send({ msg: 'The email address ' + req.body.email + ' is not associated with any account. ' +
-          'Double-check your email address and try again.'
+          return res.status(401).send({
+            msg: 'The email address ' +
+                  req.body.email +
+                  ' is not associated with any account. ' +
+                  'Double-check your email address and try again.'
           });
         }
         user.comparePassword(req.body.password, function(err, isMatch) {
@@ -86,7 +89,9 @@ exports.signupPost = function(req, res, next) {
     })
     .catch(function(err) {
       if (err.code === 'ER_DUP_ENTRY' || err.code === '23505') {
-        return res.status(400).send({ msg: 'The email address you have entered is already associated with another account.' });
+        return res.status(400).send({
+          msg: 'The email address you have entered ' +
+                'is already associated with another account.' });
       }
     });
 };
@@ -133,7 +138,9 @@ exports.accountPut = function(req, res, next) {
     res.redirect('/account');
   }).catch(function(err) {
     if (err.code === 'ER_DUP_ENTRY') {
-      res.status(409).send({ msg: 'The email address you have entered is already associated with another account.' });
+      res.status(409).send({
+        msg: 'The email address you have entered is ' +
+              'already associated with another account.' });
     }
   });
 };
@@ -202,7 +209,9 @@ exports.forgotPost = function(req, res, next) {
         .fetch()
         .then(function(user) {
           if (!user) {
-        return res.status(400).send({ msg: 'The email address ' + req.body.email + ' is not associated with any account.' });
+        return res.status(400).send({
+          msg: 'The email address ' + req.body.email +
+                ' is not associated with any account.' });
           }
           user.set('passwordResetToken', token);
           user.set('passwordResetExpires', new Date(Date.now() + 3600000)); // expire in 1 hour
@@ -222,14 +231,19 @@ exports.forgotPost = function(req, res, next) {
       var mailOptions = {
         to: user.email,
         from: 'support@yourdomain.com',
-        subject: '✔ Reset your password on Mega Boilerplate',
-        text: 'You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n' +
-        'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-        'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-        'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+        subject: '✔ Reset your password on BLazecast',
+        text: 'You are receiving this email because you (or someone else) have ' +
+              'requested the reset of the password for your account.\n\n' +
+              'Please click on the following link, or paste this into your ' +
+              'browser to complete the process:\n\n' +
+              'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+              'If you did not request this, please ignore this email and your ' +
+              'password will remain unchanged.\n'
       };
       transporter.sendMail(mailOptions, function(err) {
-        res.send({ msg: 'An email has been sent to ' + user.email + ' with further instructions.' });
+        res.send({
+          msg: 'An email has been sent to ' + user.email +
+                ' with further instructions.' });
         done(err);
       });
     }
@@ -277,9 +291,10 @@ exports.resetPost = function(req, res, next) {
       var mailOptions = {
         from: 'support@yourdomain.com',
         to: user.email,
-        subject: 'Your Mega Boilerplate password has been changed',
+        subject: 'Your Blazecast password has been changed',
         text: 'Hello,\n\n' +
-        'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+              'This is a confirmation that the password for your account ' +
+              user.email + ' has just been changed.\n'
       };
       transporter.sendMail(mailOptions, function(err) {
         res.send({ msg: 'Your password has been changed successfully.' });
@@ -297,7 +312,6 @@ exports.authFacebook = function(req, res) {
   var accessTokenUrl = 'https://graph.facebook.com/v2.5/oauth/access_token';
   var graphApiUrl = 'https://graph.facebook.com/v2.5/me?fields=' + profileFields.join(',');
 
-
   var params = {
     code: req.body.code,
     client_id: req.body.clientId,
@@ -305,16 +319,18 @@ exports.authFacebook = function(req, res) {
     redirect_uri: req.body.redirectUri
   };
 
-  console.log('PARAMS', params);
-
   // Step 1. Exchange authorization code for access token.
-  request.get({ url: accessTokenUrl, qs: params, json: true }, function(err, response, accessToken) {
+  request.get({ url: accessTokenUrl, qs: params, json: true },
+    function(err, response, accessToken) {
+
     if (accessToken.error) {
       return res.status(500).send({ msg: accessToken.error.message });
     }
 
     // Step 2. Retrieve user's profile information.
-    request.get({ url: graphApiUrl, qs: accessToken, json: true }, function(err, response, profile) {
+    request.get({ url: graphApiUrl, qs: accessToken, json: true },
+      function(err, response, profile) {
+
       if (profile.error) {
         return res.status(500).send({ msg: profile.error.message });
       }
@@ -325,12 +341,16 @@ exports.authFacebook = function(req, res) {
           .fetch()
           .then(function(user) {
             if (user) {
-              return res.status(409).send({ msg: 'There is already an existing account linked with Facebook that belongs to you.' });
+              return res.status(409).send({
+                msg: 'There is already an existing account linked with ' +
+                      'Facebook that belongs to you.' });
             }
             user = req.user;
             user.set('name', user.get('name') || profile.name);
             user.set('gender', user.get('gender') || profile.gender);
-            user.set('picture', user.get('picture') || 'https://graph.facebook.com/' + profile.id + '/picture?type=large');
+            user.set('picture',
+              user.get('picture') || 'https://graph.facebook.com/' + profile.id +
+                '/picture?type=large');
             user.set('facebook', profile.id);
             user.save(user.changed, { patch: true }).then(function() {
               res.send({ token: generateToken(user), user: user });
@@ -348,14 +368,17 @@ exports.authFacebook = function(req, res) {
               .fetch()
               .then(function(user) {
                 if (user) {
-                  return res.status(400).send({ msg: user.get('email') + ' is already associated with another account.' })
+                  return res.status(400).send({
+                    msg: user.get('email') +
+                          ' is already associated with another account.' })
                 }
                 user = new User();
                 user.set('name', profile.name);
                 user.set('email', profile.email);
                 user.set('gender', profile.gender);
                 user.set('location', profile.location && profile.location.name);
-                user.set('picture', 'https://graph.facebook.com/' + profile.id + '/picture?type=large');
+                user.set('picture',
+                  'https://graph.facebook.com/' + profile.id + '/picture?type=large');
                 user.set('facebook', profile.id);
                 user.save().then(function(user) {
                   return res.send({ token: generateToken(user), user: user });
@@ -387,12 +410,16 @@ exports.authGoogle = function(req, res) {
   };
 
   // Step 1. Exchange authorization code for access token.
-  request.post(accessTokenUrl, { json: true, form: params }, function(err, response, token) {
+  request.post(accessTokenUrl, { json: true, form: params },
+    function(err, response, token) {
+
     var accessToken = token.access_token;
     var headers = { Authorization: 'Bearer ' + accessToken };
 
     // Step 2. Retrieve user's profile information.
-    request.get({ url: peopleApiUrl, headers: headers, json: true }, function(err, response, profile) {
+    request.get({ url: peopleApiUrl, headers: headers, json: true },
+      function(err, response, profile) {
+
       if (profile.error) {
         return res.status(500).send({ message: profile.error.message });
       }
@@ -402,12 +429,15 @@ exports.authGoogle = function(req, res) {
           .fetch()
           .then(function(user) {
             if (user) {
-              return res.status(409).send({ msg: 'There is already an existing account linked with Google that belongs to you.' });
+              return res.status(409).send({
+                msg: 'There is already an existing account linked with Google ' +
+                      'that belongs to you.' });
             }
             user = req.user;
             user.set('name', user.get('name') || profile.name);
             user.set('gender', user.get('gender') || profile.gender);
-            user.set('picture', user.get('picture') || profile.picture.replace('sz=50', 'sz=200'));
+            user.set('picture',
+              user.get('picture') || profile.picture.replace('sz=50', 'sz=200'));
             user.set('location', user.get('location') || profile.location);
             user.set('google', profile.sub);
             user.save(user.changed, { patch: true }).then(function() {
@@ -426,7 +456,9 @@ exports.authGoogle = function(req, res) {
               .fetch()
               .then(function(user) {
                 if (user) {
-                  return res.status(400).send({ msg: user.get('email') + ' is already associated with another account.' })
+                  return res.status(400).send({
+                    msg: user.get('email') +
+                          ' is already associated with another account.' })
                 }
                 user = new User();
                 user.set('name', profile.name);
@@ -467,7 +499,9 @@ exports.authTwitter = function(req, res) {
 
     // Step 1. Obtain request token to initiate app authorization.
     // At this point nothing is happening inside a popup yet.
-    request.post({ url: requestTokenUrl, oauth: requestTokenOauthSignature }, function(err, response, body) {
+    request.post({ url: requestTokenUrl, oauth: requestTokenOauthSignature },
+      function(err, response, body) {
+
       var oauthToken = qs.parse(body);
       // Step 2. Send OAuth token back.
       // After request token is sent back, a popup will redirect to the Twitter app authorization screen.
@@ -485,7 +519,9 @@ exports.authTwitter = function(req, res) {
     };
 
     // Step 3. Exchange "oauth token" and "oauth verifier" for access token.
-    request.post({ url: accessTokenUrl, oauth: accessTokenOauth }, function(err, response, accessToken) {
+    request.post({ url: accessTokenUrl, oauth: accessTokenOauth },
+      function(err, response, accessToken) {
+
       accessToken = qs.parse(accessToken);
 
       var profileOauth = {
@@ -495,7 +531,9 @@ exports.authTwitter = function(req, res) {
       };
 
       // Step 4. Retrieve user's profile information.
-      request.get({ url: profileUrl + accessToken.screen_name, oauth: profileOauth, json: true }, function(err, response, profile) {
+      request.get({ url: profileUrl + accessToken.screen_name,
+        oauth: profileOauth, json: true },
+        function(err, response, profile) {
 
         // Step 5a. Link accounts if user is authenticated.
       if (req.isAuthenticated()) {
@@ -503,7 +541,9 @@ exports.authTwitter = function(req, res) {
           .fetch()
           .then(function(user) {
             if (user) {
-              return res.status(409).send({ msg: 'There is already an existing account linked with Twitter that belongs to you.' });
+              return res.status(409).send({
+                msg: 'There is already an existing account linked with Twitter ' +
+                      'that belongs to you.' });
             }
             user = req.user;
             user.set('name', user.get('name') || profile.name);
