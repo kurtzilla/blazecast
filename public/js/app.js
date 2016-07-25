@@ -1,4 +1,6 @@
-var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'ngResource'])
+var app = angular.module( 'MyApp', ['ngRoute', 'satellizer', 'ngResource',
+    'ngSanitize', 'com.2fdevs.videogular', 'com.2fdevs.videogular.plugins.controls',
+    ])
   .config(function($routeProvider, $locationProvider, $authProvider) {
     $locationProvider.html5Mode(true);
 

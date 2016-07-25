@@ -1,0 +1,69 @@
+{
+  "_args": [
+    [
+      "videogular-themes-default",
+      "/Users/robk/work_space/blazecast"
+    ]
+  ],
+  "_from": "videogular-themes-default@latest",
+  "_id": "videogular-themes-default@1.4.4",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/videogular-themes-default",
+  "_nodeVersion": "4.2.2",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/videogular-themes-default-1.4.4.tgz_1466322062052_0.3536277189850807"
+  },
+  "_npmUser": {
+    "email": "elecash@gmail.com",
+    "name": "elecash"
+  },
+  "_npmVersion": "3.5.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "videogular-themes-default",
+    "raw": "videogular-themes-default",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/videogular-themes-default/-/videogular-themes-default-1.4.4.tgz",
+  "_shasum": "88ca010cb6612b049f9f0f197e18d499cd3800ef",
+  "_shrinkwrap": null,
+  "_spec": "videogular-themes-default",
+  "_where": "/Users/robk/work_space/blazecast",
+  "dependencies": {
+    "videogular": "~1.4.4"
+  },
+  "description": "bower-videogular-themes-default ===============================",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-release": "~0.7.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "88ca010cb6612b049f9f0f197e18d499cd3800ef",
+    "tarball": "https://registry.npmjs.org/videogular-themes-default/-/videogular-themes-default-1.4.4.tgz"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "gitHead": "de8fb6fa8a37590ec14c980250b9de7153606c3f",
+  "main": "videogular.css",
+  "maintainers": [
+    {
+      "email": "elecash@gmail.com",
+      "name": "elecash"
+    }
+  ],
+  "name": "videogular-themes-default",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {},
+  "version": "1.4.4"
+}

@@ -20,6 +20,11 @@ https://www.pivotaltracker.com/n/projects/1678005
 
 http://blazecast.herokuapp.com/
 
+http://stackoverflow.com/questions/2971550/how-to-push-different-local-git-branches-to-heroku-master
+
+git push heroku yourbranch:master
+
+
 # Git
 
 https://github.com/kurtzilla/blazecast
