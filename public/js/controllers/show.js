@@ -1,14 +1,13 @@
 
 
-app.controller('ShowCtrl', function($rootScope, $scope, $location, $routeParams,
-  $http, rssFeed, formatProtocolFilter) {
+app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams, $http, rssFeed, formatProtocolFilter) {
 
   $scope.view = {};
 
   $http.jsonp('https://itunes.apple.com/lookup', {
     params: {
       'callback': 'JSON_CALLBACK',
-      'id': $routeParams.provider_id
+      'id': $stateParams.provider_id
     }
   })
   .then(function(data){
