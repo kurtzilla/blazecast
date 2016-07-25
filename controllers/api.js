@@ -1,12 +1,4 @@
 
-var dotenv = require('dotenv');
-
-// Load environment variables from .env file
-dotenv.load();
-
-var jwt = require('jsonwebtoken');
-
-
 
 /* This portion of the api will only return non-sensitive key values */
 

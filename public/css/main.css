@@ -239,8 +239,8 @@ th {
 
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot");
-  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff2") format("woff2"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
+  src: url("../fonts/glyphicons-halflings-regular.eot");
+  src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/glyphicons-halflings-regular.woff2") format("woff2"), url("../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
 
 .glyphicon {
   position: relative;
@@ -5817,6 +5817,53 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+
+bc-itunes-search {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 9px; }
+  bc-itunes-search ul {
+    position: absolute;
+    padding-right: 45px;
+    z-index: 96;
+    background-color: rgba(200, 200, 200, 0.9);
+    padding-top: 10px;
+    padding-bottom: 15px;
+    margin-right: 20px;
+    overflow: scroll;
+    display: block;
+    width: 100%;
+    max-height: 400px; }
+    bc-itunes-search ul li {
+      display: block;
+      padding: 5px;
+      float: left;
+      clear: both;
+      width: 100%;
+      cursor: pointer; }
+      bc-itunes-search ul li .img-wrapper {
+        width: 15%; }
+      bc-itunes-search ul li span {
+        width: 80%; }
+      bc-itunes-search ul li .img-wrapper, bc-itunes-search ul li span {
+        float: left; }
+    bc-itunes-search ul li:nth-child(odd) {
+      background-color: #eee; }
+    bc-itunes-search ul li:hover {
+      background-color: #444;
+      color: white; }
+
+.show-podcast .podcast-title-col {
+  font-size: 2em; }
+
+.episode-item {
+  border: solid #999 1px;
+  padding: 5px;
+  margin-bottom: 5px; }
+  .episode-item .episode-snippet {
+    font-size: 10px;
+    background-color: #ddd;
+    margin-bottom: 5px; }
 
 html {
   position: relative;
