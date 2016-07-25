@@ -42,7 +42,8 @@ DATABASE_URL='postgres://localhost:5432/blazecast'
 # Auth
 
 !!!!NOTE!!!!
-Facebook and Google (everything but twitter?) client ids must be hardcoded into public/js/app.js
+Facebook and Google (everything but twitter?) client ids must be hardcoded into
+public/js/app.js
 
 Facebook  oAuth: blazecast
 
