@@ -1,9 +1,13 @@
 
-app.controller('ShowCtrl', function($rootScope, $scope, $routeParams, $http, rssFeed) {
+
+
+
+
+app.controller('ShowCtrl', function($rootScope, $scope, $location, $routeParams, $http, rssFeed) {
 
   $scope.view = {};
 
-  $http.jsonp('http://itunes.apple.com/lookup', {
+  $http.jsonp('https://itunes.apple.com/lookup', {
     params: {
       'callback': 'JSON_CALLBACK',
       'id': $routeParams.provider_id
@@ -18,18 +22,26 @@ app.controller('ShowCtrl', function($rootScope, $scope, $routeParams, $http, rss
   })
   .then(function(feed){
     // console.log('feed data', feed);
+    // console.log('LOCATION', $location.$$protocol);
+    var proto = $location.$$protocol;
+
     $scope.view.episodes = [];
     if(feed && feed.entries){
       feed.entries.forEach(function(episode){
         if(episode.mediaGroups && episode.mediaGroups.length > 0){
-          episode.url = episode.mediaGroups[0].contents[0].url;
+          episode.url = rssFeed.formatProtocol(episode.mediaGroups[0].contents[0].url, proto);
           episode.filesize = episode.mediaGroups[0].contents[0].fileSize;
         } else {
-          episode.url = episode.link;
+          episode.url = rssFeed.formatProtocol(episode.link, proto);
           episode.filesize = '';
         }
       });
       $scope.view.episodes = feed.entries;
     }
+  })
+  .catch(function(err){
+    // console.log('error', err);
+    $scope.view.errors = [err];
+    // console.log($scope.view.errors);
   });
 });

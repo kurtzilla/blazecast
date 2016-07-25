@@ -5818,6 +5818,14 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.error-list {
+  background-color: rgba(255, 0, 0, 0.5);
+  border: solid red 1px;
+  border-radius: 5px;
+  padding: 5px; }
+  .error-list li {
+    padding: 5px; }
+
 bc-itunes-search {
   display: block;
   margin-bottom: 15px;
@@ -5862,8 +5870,9 @@ bc-itunes-search {
   margin-bottom: 5px; }
   .episode-item .episode-snippet {
     font-size: 10px;
-    background-color: #ddd;
-    margin-bottom: 5px; }
+    background-color: #eee;
+    margin-bottom: 5px;
+    color: #999; }
 
 html {
   position: relative;
