@@ -2,6 +2,16 @@
 
   <bc-itunes-search></bc-itunes-search>
 
+  <div ng-show="view.errors && view.errors.length > 0" class="row show-error-row">
+    <div class="col-xs-12">
+      <ul class="list-unstyled error-list">
+        <li ng-repeat="err in view.errors">
+          {{err}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
   <div class="row podcast-title-row">
     <div class="col-xs-3 col-xs-offset-1">
       <div class="img-wrapper">

@@ -1,3 +1,14 @@
+
+.error-list {
+  background-color: rgba(255,0,0,0.5);
+  border:solid red 1px;
+  border-radius:5px;
+  padding:5px;
+  li {
+    padding:5px;
+  }
+}
+
 bc-itunes-search {
   // border:solid blue 1px;
   display:block;
@@ -63,7 +74,8 @@ bc-itunes-search {
   margin-bottom:5px;
   .episode-snippet {
     font-size:10px;
-    background-color: #ddd;
+    background-color: #eee;
     margin-bottom:5px;
+    color:#999;
   }
 }

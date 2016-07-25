@@ -61,9 +61,10 @@ Twitter - production - Blazecast-g23
 https://apps.twitter.com/app/12637284
 
 
-
 ---
 # Rss Feed Service
+
+Added a helper function to ensure correct protocol for links
 
 courtesy of: https://www.youtube.com/watch?v=5r5RYlpZYPY
 One caveat - his code does not specify a limit for number of entries returned.
@@ -79,6 +80,8 @@ https://itunes.apple.com/us/podcast/kevin-pollaks-chat-show/id314845608?mt=2&ign
 
 ---
 # Notes for add_player_from_tutorial branch
+
+FYI this branch may be doa
 >run the following commands
 
 npm i -g yo
