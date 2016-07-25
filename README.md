@@ -64,7 +64,6 @@ https://apps.twitter.com/app/12637284
 ---
 # Rss Feed Service
 
-Added a helper function to ensure correct protocol for links
 
 courtesy of: https://www.youtube.com/watch?v=5r5RYlpZYPY
 One caveat - his code does not specify a limit for number of entries returned.
