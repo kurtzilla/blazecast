@@ -5895,6 +5895,13 @@ bc-itunes-search {
     margin-bottom: 5px;
     color: #999; }
 
+.grid-item {
+  float: left;
+  width: 150px;
+  height: 150px;
+  margin: 15px;
+  border: 2px solid rgba(0, 0, 0, 0.5); }
+
 html {
   position: relative;
   min-height: 100%; }
