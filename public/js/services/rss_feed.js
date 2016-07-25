@@ -3,11 +3,6 @@ app.service('rssFeed', function($http, $q){
   this.$http = $http;
   this.$q = $q;
 
-  this.formatProtocol = function(link, desiredProtocol){
-    return link.replace(/^http:\/\//g, desiredProtocol + '://')
-      .replace(/^https:\/\//g, desiredProtocol + '://');
-  };
-
   this.loadFeed = function(url){
     var deferral = this.$q.defer();
 

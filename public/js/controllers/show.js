@@ -1,9 +1,7 @@
 
 
-
-
-
-app.controller('ShowCtrl', function($rootScope, $scope, $location, $routeParams, $http, rssFeed) {
+app.controller('ShowCtrl', function($rootScope, $scope, $location, $routeParams,
+  $http, rssFeed, formatProtocolFilter) {
 
   $scope.view = {};
 
@@ -29,10 +27,13 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $routeParams,
     if(feed && feed.entries){
       feed.entries.forEach(function(episode){
         if(episode.mediaGroups && episode.mediaGroups.length > 0){
-          episode.url = rssFeed.formatProtocol(episode.mediaGroups[0].contents[0].url, proto);
+
+          // episode.url = rssFeed.formatProtocol(episode.mediaGroups[0].contents[0].url, proto);
+          episode.url = formatProtocolFilter(episode.mediaGroups[0].contents[0].url, proto);
           episode.filesize = episode.mediaGroups[0].contents[0].fileSize;
         } else {
-          episode.url = rssFeed.formatProtocol(episode.link, proto);
+          // episode.url = rssFeed.formatProtocol(episode.link, proto);
+          episode.url = formatProtocolFilter(episode.link, proto);
           episode.filesize = '';
         }
       });
