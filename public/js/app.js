@@ -35,6 +35,11 @@ var app = angular.module( 'MyApp', ['ui.router', 'satellizer', 'ngResource',
       controller: 'SignupCtrl',
       resolve: { skipIfAuthenticated: skipIfAuthenticated }
     })
+    .state('browse', {
+      url: '/browse',
+      templateUrl: 'partials/browse.html',
+      controller: 'BrowseCtrl'
+    })
     .state('account', {
       url: '/account',
       templateUrl: 'partials/profile.html',
