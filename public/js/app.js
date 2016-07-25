@@ -1,49 +1,65 @@
-var app = angular.module( 'MyApp', ['ngRoute', 'satellizer', 'ngResource',
+var app = angular.module( 'MyApp', ['ui.router', 'satellizer', 'ngResource',
     'ngSanitize', 'com.2fdevs.videogular', 'com.2fdevs.videogular.plugins.controls',
     ])
-  .config(function($routeProvider, $locationProvider, $authProvider) {
-    $locationProvider.html5Mode(true);
+  .config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
+    $urlRouterProvider.otherwise("/");
 
-    $routeProvider
-    .when('/', {
-      templateUrl: 'partials/home.html'
+
+
+    // $stateProvider
+    //   .state('home', {
+    //     url: '/',
+    //     controller: "HomeController",
+    //     templateUrl: "templates/home.html"
+    //   })
+    $stateProvider
+    .state('home', {
+      url: '/',
+      templateUrl: 'partials/home.html',
+      controller: 'HomeCtrl'
     })
-    .when('/contact', {
+    .state('contact', {
+      url: '/contact',
       templateUrl: 'partials/contact.html',
       controller: 'ContactCtrl'
     })
-    .when('/login', {
+    .state('login', {
+      url: '/login',
       templateUrl: 'partials/login.html',
       controller: 'LoginCtrl',
       resolve: { skipIfAuthenticated: skipIfAuthenticated }
     })
-    .when('/signup', {
+    .state('signup', {
+      url: '/signup',
       templateUrl: 'partials/signup.html',
       controller: 'SignupCtrl',
       resolve: { skipIfAuthenticated: skipIfAuthenticated }
     })
-    .when('/account', {
+    .state('account', {
+      url: '/account',
       templateUrl: 'partials/profile.html',
       controller: 'ProfileCtrl',
       resolve: { loginRequired: loginRequired }
     })
-    .when('/forgot', {
+    .state('forgot', {
+      url: '/forgot',
       templateUrl: 'partials/forgot.html',
       controller: 'ForgotCtrl',
       resolve: { skipIfAuthenticated: skipIfAuthenticated }
     })
-    .when('/reset/:token', {
+    .state('resetToken', {
+      url: '/reset/:token',
       templateUrl: 'partials/reset.html',
       controller: 'ResetCtrl',
       resolve: { skipIfAuthenticated: skipIfAuthenticated }
     })
-    .when('/show/:provider_id', {
+    .state('showProviderId', {
+      url: '/show/:provider_id',
       templateUrl: 'partials/show.html',
       controller: 'ShowCtrl'
     })
-    .otherwise({
-      templateUrl: 'partials/404.html'
-    });
+    $locationProvider.html5Mode(true);
+
 
     // TODO handle this by sharing config info!!!
     var isLocal = window.location.host.toLowerCase() === 'localhost:3000';
