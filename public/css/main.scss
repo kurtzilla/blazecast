@@ -53,9 +53,19 @@ footer {
   height: 44px;
   padding: 10px 30px;
   bottom: 0;
-  background-color: #fff;
+  background-color: #f4f4f4;
   border-top: 1px solid #e0e0e0;
+  text-align: center;
 }
+.socialIcons{
+  height: 40px;
+  background-color: #f4f4f4;
+  cursor: pointer;
+}
+#iconContainer {
+  background-color: #f4f4f4;
+}
+
 
 .login-container {
   max-width: 555px;
