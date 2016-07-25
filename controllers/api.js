@@ -2,6 +2,10 @@
 
 /* This portion of the api will only return non-sensitive key values */
 
+exports.serveiTunesDummy = function(req, res, next) {
+  res.json({data: 'data'})
+};
+
 
 /**
  * GET /contact

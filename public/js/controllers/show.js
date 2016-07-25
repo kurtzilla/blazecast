@@ -1,6 +1,6 @@
 
 
-app.controller('ShowCtrl', function($rootScope, $scope, $location, $routeParams,
+app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
   $http, rssFeed, formatProtocolFilter) {
 
   $scope.view = {};
@@ -8,11 +8,11 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $routeParams,
   $http.jsonp('https://itunes.apple.com/lookup', {
     params: {
       'callback': 'JSON_CALLBACK',
-      'id': $routeParams.provider_id
+      'id': $stateParams.provider_id
     }
   })
   .then(function(data){
-    // console.log('DATA', data.data.results);
+    // console.log('DATA', data);
     if(data && data.data && data.data.results && data.data.results.length > 0){
       $scope.view.podcast = data.data.results[0];
       return rssFeed.loadFeed($scope.view.podcast.feedUrl);
