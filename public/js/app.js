@@ -1,4 +1,4 @@
-angular.module('MyApp', ['ngRoute', 'satellizer'])
+var app = angular.module('MyApp', ['ngRoute', 'satellizer', 'ngResource'])
   .config(function($routeProvider, $locationProvider, $authProvider) {
     $locationProvider.html5Mode(true);
 
@@ -34,6 +34,10 @@ angular.module('MyApp', ['ngRoute', 'satellizer'])
         templateUrl: 'partials/reset.html',
         controller: 'ResetCtrl',
         resolve: { skipIfAuthenticated: skipIfAuthenticated }
+      })
+      .when('/show/:provider_id', {
+        templateUrl: 'partials/show.html',
+        controller: 'ShowCtrl'
       })
       .otherwise({
         templateUrl: 'partials/404.html'

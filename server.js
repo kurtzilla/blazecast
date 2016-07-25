@@ -90,6 +90,7 @@ app.get('/auth/twitter/callback',
   userController.authTwitterCallback);
 
 
+app.get('/api/podcast/:id', apiController.getPodcast);
 // console.log('SETUP API ROUTE');
 // app.get('/api/envkey',
 //   apiController.apiEnvKey);

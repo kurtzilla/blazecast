@@ -1,0 +1,69 @@
+bc-itunes-search {
+  // border:solid blue 1px;
+  display:block;
+  margin-bottom:15px;
+  font-size:9px;
+
+  // TODO constrain width
+  ul {
+    // border:solid red 1px;
+    position:absolute;
+    padding-right:45px;
+    z-index:96;
+    background-color: rgba(200,200,200, .9);
+    padding-top:10px;
+    padding-bottom:15px;
+    margin-right:20px;
+    overflow: scroll;
+    display:block;
+    width:100%;
+
+    // TODO use a mixin? to keep this just a bit short of the page height
+    max-height:400px;
+
+    // TODO style - with flexbox?
+    li {
+      display:block;
+      padding:5px;
+      float:left;
+      clear: both;
+      width:100%;
+      cursor: pointer;
+
+      .img-wrapper {
+        width:15%;
+      }
+      span {
+        width:80%;
+      }
+      .img-wrapper, span {
+        float:left;
+      }
+    }
+    li:nth-child(odd) {
+      background-color: #eee;
+    }
+    li:hover {
+      background-color: #444;
+      color:white;
+    }
+  }
+}
+
+// SHOW PAGE
+.show-podcast {
+  .podcast-title-col {
+    font-size:2em;
+  }
+}
+
+.episode-item {
+  border:solid #999 1px;
+  padding:5px;
+  margin-bottom:5px;
+  .episode-snippet {
+    font-size:10px;
+    background-color: #ddd;
+    margin-bottom:5px;
+  }
+}

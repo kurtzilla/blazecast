@@ -1,3 +1,4 @@
+
 angular.module('MyApp')
   .controller('ContactCtrl', function($scope, Contact) {
     $scope.sendContactForm = function() {

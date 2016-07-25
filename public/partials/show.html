@@ -1,0 +1,32 @@
+<div class="container-fluid show-podcast">
+
+  <bc-itunes-search></bc-itunes-search>
+
+  <div class="row podcast-title-row">
+    <div class="col-xs-3 col-xs-offset-1">
+      <div class="img-wrapper">
+        <img ng-src="{{view.podcast.artworkUrl100}}" />
+      </div>
+    </div>
+    <div class="col-xs-8 podcast-title-col">
+      <strong>{{view.podcast.collectionId}}</strong> {{view.podcast.collectionName}}
+    </div>
+  </div>
+
+  <div class="row episode-row">
+    <div class="col-xs-12">
+      <ul class="list-unstyled">
+        <li ng-repeat="episode in view.episodes" class="episode-item">
+          <strong>{{episode.title}}</strong>
+          <span>{{episode.publishedDate}}</span>
+          <span>{{episode.filesize}}</span>
+          <a href="{{episode.url}}"><span class="glyphicon glyphicon-play"></span></a>
+          <div class="episode-snippet">
+            {{episode.contentSnippet}}
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
