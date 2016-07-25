@@ -31,13 +31,16 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $routeParams,
           // episode.url = rssFeed.formatProtocol(episode.mediaGroups[0].contents[0].url, proto);
           episode.url = formatProtocolFilter(episode.mediaGroups[0].contents[0].url, proto);
           episode.filesize = episode.mediaGroups[0].contents[0].fileSize;
+          episode.publishedDate = new Date(episode.publishedDate) // convert date string to date object
         } else {
           // episode.url = rssFeed.formatProtocol(episode.link, proto);
           episode.url = formatProtocolFilter(episode.link, proto);
           episode.filesize = '';
+          episode.publishedDate = new Date(episode.publishedDate) // convert date string to date object
         }
       });
       $scope.view.episodes = feed.entries;
+
     }
   })
   .catch(function(err){

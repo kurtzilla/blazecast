@@ -28,7 +28,7 @@
       <ul class="list-unstyled">
         <li ng-repeat="episode in view.episodes" class="episode-item">
           <strong>{{episode.title}}</strong>
-          <span>{{episode.publishedDate}}</span>
+          <span>{{episode.publishedDate | date : 'MMMM d, yyyy'}}</span>
           <span>{{episode.filesize}}</span>
           <a href="{{episode.url}}"><span class="glyphicon glyphicon-play"></span></a>
           <div class="episode-snippet">
