@@ -88,6 +88,8 @@ app.post('/auth/twitter',
   userController.authTwitter);
 app.get('/auth/twitter/callback',
   userController.authTwitterCallback);
+app.get('/itunesdummydata',
+  apiController.serveiTunesDummy);
 
 
 //app.get('/api/podcast/:id', apiController.getPodcast);
