@@ -1,5 +1,4 @@
 
-
 app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
   $http, rssFeed, formatProtocolFilter) {
 
@@ -25,23 +24,21 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
     var proto = $location.$$protocol;
 
     $scope.view.episodes = [];
-    if(feed && feed.entries){
-      feed.entries.forEach(function(episode){
-        if(episode.mediaGroups && episode.mediaGroups.length > 0){
 
-          // episode.url = rssFeed.formatProtocol(episode.mediaGroups[0].contents[0].url, proto);
-          episode.url = formatProtocolFilter(episode.mediaGroups[0].contents[0].url, proto);
-          episode.filesize = episode.mediaGroups[0].contents[0].fileSize;
-          episode.publishedDate = new Date(episode.publishedDate) // convert date string to date object
-        } else {
-          // episode.url = rssFeed.formatProtocol(episode.link, proto);
-          episode.url = formatProtocolFilter(episode.link, proto);
-          episode.filesize = '';
-          episode.publishedDate = new Date(episode.publishedDate) // convert date string to date object
+    if(feed && feed.entries){
+      var entries = feed.entries.filter(function(itm){
+        // console.log('REDUCER', itm);
+        if(itm.mediaGroups && itm.mediaGroups.length > 0){
+          itm.url = formatProtocolFilter(itm.mediaGroups[0].contents[0].url, proto);
+          itm.filesize = itm.mediaGroups[0].contents[0].fileSize;
+          itm.type = itm.mediaGroups[0].contents[0].type;
+
+          return(itm.url && itm.url.trim().length > 0)
         }
       });
-      $scope.view.episodes = feed.entries;
 
+      // console.log('ENTRIES', entries);
+      $scope.view.episodes = entries;
     }
   })
   .catch(function(err){
@@ -49,4 +46,21 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
     $scope.view.errors = [err];
     // console.log($scope.view.errors);
   });
+
+  $scope.addToFavorites = function () {
+    var userId = $rootScope.currentUser.id;
+    var podcastId = $scope.view.podcast.collectionId;
+    var podcastName = $scope.view.podcast.collectionName;
+    var feedUrl = $scope.view.podcast.feedUrl;
+    var requestUrl = '/api/users/' + userId + '/favorite/' + podcastId;
+    var postData = {
+      podcastName: podcastName,
+      feedUrl: feedUrl
+    };
+
+    $http.post(requestUrl, postData)
+    .then(function(data){
+      console.log('favorite added');
+    });
+  };
 });

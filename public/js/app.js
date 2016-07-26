@@ -4,14 +4,6 @@ var app = angular.module( 'MyApp', ['ui.router', 'satellizer', 'ngResource',
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
     $urlRouterProvider.otherwise("/");
 
-
-
-    // $stateProvider
-    //   .state('home', {
-    //     url: '/',
-    //     controller: "HomeController",
-    //     templateUrl: "templates/home.html"
-    //   })
     $stateProvider
     .state('home', {
       url: '/',
@@ -58,11 +50,11 @@ var app = angular.module( 'MyApp', ['ui.router', 'satellizer', 'ngResource',
       templateUrl: 'partials/show.html',
       controller: 'ShowCtrl'
     })
-    // .state('itunesdummy', {
-    //   url: '/itunesdummy',
-    //   templateUrl: 'partials/itunesdummy.html',
-    //   controller: 'DumCtrl'
-    // })
+    .state('itunesdummy', {
+      url: '/itunesdummy',
+      templateUrl: 'partials/itunesdummy.html',
+      controller: 'DumCtrl'
+    })
     $locationProvider.html5Mode(true);
 
 

@@ -1,0 +1,27 @@
+<button class="btn btn-success btn-sm btn-play" ng-click="addEpisodeToPlayer(episode);">Play</button>
+
+  <strong class='episodeTitle'>{{episode.title}}</strong>
+    <h5 class='podcastRating'><strong>Rating: </strong>
+    <i class="fa fa-star-o" aria-hidden="true"></i>
+    <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+    <i class="fa fa-star-o" aria-hidden="true"></i>
+    <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+    <i class="fa fa-star-o" aria-hidden="true"></i>
+    <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+    <i class="fa fa-star-o" aria-hidden="true"></i>
+    <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+    <i class="fa fa-star-o" aria-hidden="true"></i>
+    <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+  </h5>
+  <a href="{{episode.url}}"><span class="glyphicon glyphicon-play"></span></a>
+  <input class='addEpisode' type="checkbox">
+    <span class='episodePublishDate'>{{episode.publishedDate | date : 'MMMM d, yyyy'}}
+    </span>
+    <h5 class='moreDetails'>More
+      <i ng-click='showDetails =! showDetails' class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </h5>
+      <span>{{episode.filesize}}</span>
+      <div ng-show='showDetails' class="episode-snippet">
+      {{episode.contentSnippet}}
+      </div>

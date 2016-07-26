@@ -67,39 +67,16 @@
 
   <div class="row episode-row">
     <div class="col-xs-12">
-      <ul class="list-unstyled">
+      <div class="error-list" ng-show="view.episodes.length === 0">
+        Sorry, this podcast does not have playable episodes.
+      </div>
+      <ul class="list-unstyled" ng-show="view.episodes.length > 0">
         <li ng-repeat="episode in view.episodes | orderBy: filterBy | filter:searchTitle" class="episode-item">
-          <strong class='episodeTitle'>{{episode.title}}</strong>
-          <h5 class='podcastRating'><strong>Rating: </strong>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
-          </h5>
-          <a href="{{episode.url}}"><span class="glyphicon glyphicon-play"></span></a>
-          <input class='addEpisode' type="checkbox">
-            <span class='episodePublishDate'>{{episode.publishedDate | date : 'MMMM d, yyyy'}}
-            </span>
-            <h5 class='moreDetails'>More
-              <i ng-click='showDetails =! showDetails' class="fa fa-chevron-down" aria-hidden="true">
-              </i>
-            </h5>
-              <span>{{episode.filesize}}</span>
-              <div ng-show='showDetails' class="episode-snippet">
-              {{episode.contentSnippet}}
-              </div>
-
-        </li>
-      </ul>
+          <bc-episode-search-result episode="episode">
+          </bc-episode-search-result>
+            </li>
     </div>
   </div>
-
 </div>
 
 <!-- <strong>{{view.podcast.collectionId}}</strong> -->

@@ -6,10 +6,11 @@ app.service('rssFeed', function($http, $q){
   this.loadFeed = function(url){
     var deferral = this.$q.defer();
 
+    // TODO make num configurable
     this.$http.jsonp('https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=1000&q=' +
       url + '&callback=JSON_CALLBACK')
     .then(function(response){
-      // console.log('RESPONSE', response);
+
       if(response && response.data && response.data.responseData && response.data.responseData.feed){
         deferral.resolve(response.data.responseData.feed);
       } else {
@@ -19,6 +20,7 @@ app.service('rssFeed', function($http, $q){
     .catch(function(err){
       deferral.reject(err);
     });
+    
     return deferral.promise;
   };
 });
