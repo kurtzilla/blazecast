@@ -13,22 +13,17 @@ exports.addPodcastToFavorites = function (req, res, next) {
 
 
 // var config = require('../knexfile');
-// var knex = require('../db/knex');//(config);
+var knex = require('../db/knex');//(config);
 // var bookshelf = app.get('bookshelf');
 
 /* This portion of the api will only return non-sensitive key values */
 //
 exports.testApi = function(req, res) {
-  console.log('REQ', req.body);
-//
-//   res.json(200,'testing API');
-//   // return knex.destroy()
-//   // .then(function(data){
-//   //   return bookshelf.knex('users').select('*').first()
-//   //
-//   // .then(function(data){
-//   //   res.json(200,'testing API', data);
-//   // });
+  // console.log('REQ', req.body);
+  return knex('users').select('*').first()
+  .then(function(data){
+    res.json(200, data);
+  });
 }
 
 /**
