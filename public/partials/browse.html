@@ -1,1 +1,17 @@
-<h1>Browse</h1>
+<h1>Browse Our Library</h1>
+
+<bc-itunes-search></bc-itunes-search>
+
+<label class='filterLabel' for="filter">Filter By:</label>
+<select name='filter' ng-model='filterBy'>
+    <option value="rating">Rating</option>
+    <option value="publishedDate">Oldest</option>
+    <option value="-publishedDate">Newest</option>
+</select>
+<label class='filterLabel'for="search">Search By Title:</label>
+<input class='filterSearch' type="text" ng-model='searchTitle'>
+</div>
+
+<div class="grid">
+    <img ng-repeat='podcast in view.podcasts | orderBy: filterBy | filter:searchTitle' ng-click='showPage(podcast.collectionId)'class='grid-item'ng-src="{{podcast.artworkUrl600}}" alt="">
+  </div>

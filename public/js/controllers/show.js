@@ -1,6 +1,4 @@
-
-app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
-  $http, rssFeed, formatProtocolFilter) {
+app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams, $http, rssFeed, formatProtocolFilter) {
 
   $scope.view = {};
 
