@@ -54,6 +54,16 @@ var app = angular.module( 'MyApp', ['ui.router', 'satellizer', 'ngResource',
       templateUrl: 'partials/show.html',
       controller: 'ShowCtrl'
     })
+    .state('itunesdummy', {
+      url: '/itunesdummy',
+      templateUrl: 'partials/itunesdummy.html',
+      controller: 'DumCtrl'
+    })
+    .state('dashboard', {
+      url: '/dashboard',
+      templateUrl: 'partials/dashboard.html',
+      controller: 'DashboardCtrl'
+    })
     $locationProvider.html5Mode(true);
 
 

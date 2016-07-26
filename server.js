@@ -88,8 +88,19 @@ app.post('/auth/twitter',
   userController.authTwitter);
 app.get('/auth/twitter/callback',
   userController.authTwitterCallback);
+app.get('/itunesdummydata',
+  apiController.serveiTunesDummy);
+
+// post to this route to follow this podcast for a user
+app.post('/api/users/:user_id/follow/:podcast_id',
+  apiController.followPodcast);
+
+// get user data
+app.get('/api/users/:user_id/dashboard',
+  apiController.getUserDashboard)
 
 
+app.get('/api/testApi', apiController.testApi);
 //app.get('/api/podcast/:id', apiController.getPodcast);
 // console.log('SETUP API ROUTE');
 // app.get('/api/envkey',
