@@ -91,6 +91,10 @@ app.get('/auth/twitter/callback',
 app.get('/itunesdummydata',
   apiController.serveiTunesDummy);
 
+// post to this route to add a podcast as a favorite for a user
+app.post('/api/users/:user_id/favorite/:podcast_id',
+  apiController.addPodcastToFavorites);
+
 
 //app.get('/api/podcast/:id', apiController.getPodcast);
 // console.log('SETUP API ROUTE');
