@@ -1,13 +1,18 @@
+<div id="dashboard">
 
-<h1>{{ view.userName }}'s Dashboard</h1>
+  <h1>{{ view.userName }}'s Dashboard</h1>
 
-<div class="row podcast-title-row" ng-repeat="podcast in view.following track by $index">
-    <div class="col-xs-3 col-xs-offset-1">
-        <div class="img-wrapper">
-            <!-- <img ng-src="{{podcast.artworkUrl100 | formatProtocol}}" /> -->
-        </div>
+  <div id="podcastList">
+
+    <div class="row podcast-title-row" ng-repeat="podcast in view.following track by $index">
+
+      <div id="podcastDiv"class="col-xs-8 podcast-title-col">
+        <img src="{{podcast.images}}"></img>
+        <strong>{{podcast.name}}</strong>
+      </div>
+
     </div>
-    <div class="col-xs-8 podcast-title-col">
-        <strong>{{podcast.name}}</strong> {{podcast.feedUrl}}
-    </div>
+
+  </div>
+
 </div>
