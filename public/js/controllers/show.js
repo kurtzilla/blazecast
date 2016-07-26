@@ -46,14 +46,16 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
     // console.log($scope.view.errors);
   });
 
-  $scope.addToFavorites = function () {
-    console.log($scope.view.podcast.artworkUrl60)
+
+
+  $scope.followPodcast = function () {
     var userId = $rootScope.currentUser.id;
     var podcastId = $scope.view.podcast.collectionId;
     var podcastName = $scope.view.podcast.collectionName;
     var feedUrl = $scope.view.podcast.feedUrl;
     var images = $scope.view.podcast.artworkUrl600;
-    var requestUrl = '/api/users/' + userId + '/favorite/' + podcastId;
+    var requestUrl = '/api/users/' + userId + '/follow/' + podcastId;
+
     var postData = {
       podcastName: podcastName,
       feedUrl: feedUrl,
@@ -62,7 +64,7 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
 
     $http.post(requestUrl, postData)
     .then(function(data){
-      console.log('favorite added');
+      console.log('you are now following this podcast');
     });
   };
 });

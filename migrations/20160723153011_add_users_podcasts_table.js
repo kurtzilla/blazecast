@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
         table.increments();
         table.integer('user_id').references('users.id');
         table.integer('podcast_id').references('podcasts.id');
-        table.boolean('favorite');
+        table.boolean('follow');
         table.integer('rating');
     });
 };

@@ -5,7 +5,7 @@ exports.serveiTunesDummy = function(req, res, next) {
   res.json(itunesdummydata.data);
 };
 
-exports.addPodcastToFavorites = function (req, res, next) {
+exports.followPodcast = function (req, res, next) {
   var userId = req.params.user_id;
   var providerId = req.params.podcast_id;
   var podcastName = req.body.podcastName;
@@ -32,11 +32,13 @@ exports.addPodcastToFavorites = function (req, res, next) {
     .then(function(data) {
       var podcastId = data[0];
       return knex('users_podcasts')
+
       .insert({
         user_id: userId,
         podcast_id: podcastId,
-        favorite: true
+        follow: true
       })
+
     })
     .then(function(data) {
       res.end();
