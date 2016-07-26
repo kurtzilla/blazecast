@@ -66,7 +66,7 @@ exports.getFollows = function(req, res, next) {
     .then(function(follows) {
       res.json(follows)
     })
-// >>>>>>> 196e9a4a983254c60c5dd113a12bed133d1a2ae0
+
 };
 
 // exports.getUserDashboard = function (req, res, next) {
