@@ -1,10 +1,13 @@
 
-app.controller('DashboardCtrl', function($rootScope, $scope, $http) {
+app.controller('DashboardCtrl', function ($scope, $rootScope, $http) {
+  var user = $rootScope.currentUser;
 
-  $scope.view = {};
+  $scope.view = {
+    userName: user.name
+  };
 
   $http.get('/api/users/' + $rootScope.currentUser.id + '/follow').then(function(data) {
-    $scope.view.follows = data.data;
+    $scope.view.following = data.data;
   })
 
 });

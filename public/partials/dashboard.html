@@ -1,8 +1,13 @@
-<h1>Dashboard</h1>
 
-<h2>My follows</h2>
-<div ng-repeat="follow in view.follows">
-  <h3>{{follow.name}}</h3>
-  <p>{{follow.provider_id}}</p>
-  <p>{{follow.feedUrl}}</p>
+<h1>{{ view.userName }}'s Dashboard</h1>
+
+<div class="row podcast-title-row" ng-repeat="podcast in view.following track by $index">
+    <div class="col-xs-3 col-xs-offset-1">
+        <div class="img-wrapper">
+            <!-- <img ng-src="{{podcast.artworkUrl100 | formatProtocol}}" /> -->
+        </div>
+    </div>
+    <div class="col-xs-8 podcast-title-col">
+        <strong>{{podcast.name}}</strong> {{podcast.feedUrl}}
+    </div>
 </div>

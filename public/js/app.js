@@ -33,12 +33,6 @@ var app = angular.module( 'MyApp', ['ui.router', 'satellizer', 'ngResource',
       controller: 'ProfileCtrl',
       resolve: { loginRequired: loginRequired }
     })
-    .state('dashboard', {
-      url: '/dashboard',
-      templateUrl: 'partials/dashboard.html',
-      controller: 'DashboardCtrl',
-      resolve: { loginRequired: loginRequired }
-    })
     .state('forgot', {
       url: '/forgot',
       templateUrl: 'partials/forgot.html',
@@ -60,6 +54,11 @@ var app = angular.module( 'MyApp', ['ui.router', 'satellizer', 'ngResource',
       url: '/itunesdummy',
       templateUrl: 'partials/itunesdummy.html',
       controller: 'DumCtrl'
+    })
+    .state('dashboard', {
+      url: '/dashboard',
+      templateUrl: 'partials/dashboard.html',
+      controller: 'DashboardCtrl'
     })
     $locationProvider.html5Mode(true);
 
