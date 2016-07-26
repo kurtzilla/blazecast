@@ -50,6 +50,12 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
   });
 
   $scope.addToFavorites = function () {
-    console.log('adding this podcast to favorites...');
+    var userId = $rootScope.currentUser.id;
+    var podcastId = $scope.view.podcast.collectionId;
+
+    $http.get('/api/users/' + userId + '/favorite/' + podcastId)
+        .then(function(data){
+          console.log(data);
+        });
   };
 });
