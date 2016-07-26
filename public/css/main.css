@@ -5914,7 +5914,16 @@ bc-itunes-search {
     color: #999; }
 
 .episodePublishDate {
-  float: right; }
+  float: right;
+  margin-right: 10px; }
+
+.episodeTitle {
+  margin-right: 10px; }
+
+.addEpisode {
+  float: right;
+  height: 15px;
+  width: 15px; }
 
 .filterLabel {
   font-size: 14px; }

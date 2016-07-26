@@ -55,9 +55,9 @@
     <div class="col-xs-5 podcast-title-col">
       <label class='filterLabel' for="filter">Filter By:</label>
       <select name='filter' ng-model='filterBy'>
-          <option value="title">title</option>
-          <option value="rating">rating</option>
-          <option value="date">date</option>
+          <option value="rating">Rating</option>
+          <option value="publishedDate">Oldest</option>
+          <option value="-publishedDate">Newest</option>
       </select>
       <label class='filterLabel'for="search">Search By Title:</label>
       <input class='filterSearch' type="text" ng-model='searchTitle'>
@@ -68,13 +68,27 @@
     <div class="col-xs-12">
       <ul class="list-unstyled">
         <li ng-repeat="episode in view.episodes | orderBy: filterBy | filter:searchTitle" class="episode-item">
-          <strong>{{episode.title}}</strong>
-          <span class='episodePublishDate'>{{episode.publishedDate | date : 'MMMM d, yyyy'}}</span>
-          <span>{{episode.filesize}}</span>
+          <strong class='episodeTitle'>{{episode.title}}</strong>
           <a href="{{episode.url}}"><span class="glyphicon glyphicon-play"></span></a>
-          <div class="episode-snippet">
-            {{episode.contentSnippet}}
-          </div>
+          <input class='addEpisode' type="checkbox">
+            <span class='episodePublishDate'>{{episode.publishedDate | date : 'MMMM d, yyyy'}} </span>
+            <h5 class='podcastRating'><strong>Rating: </strong>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+            </h5>
+              <span>{{episode.filesize}}</span>
+            <div class="episode-snippet">
+              {{episode.contentSnippet}}
+            </div>
+
         </li>
       </ul>
     </div>
