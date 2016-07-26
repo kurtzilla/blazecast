@@ -1,0 +1,8 @@
+<button class="btn btn-success btn-sm btn-play" ng-click="addEpisodeToPlayer(episode);">Play</button>
+<strong>{{episode.title}}</strong>
+<span>{{episode.publishedDate}}</span>
+<span>{{episode.filesize}}</span>
+<a href="{{episode.url}}"><span class="glyphicon glyphicon-play"></span></a>
+<div class="episode-snippet">
+  {{episode.contentSnippet}}
+</div>
