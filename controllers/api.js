@@ -1,4 +1,5 @@
-
+var config = require('../knexfile');
+var knex = require('knex')(config);
 var itunesdummydata = require('../itunesdummydata');
 
 exports.serveiTunesDummy = function(req, res, next) {
@@ -6,8 +7,39 @@ exports.serveiTunesDummy = function(req, res, next) {
 };
 
 exports.addPodcastToFavorites = function (req, res, next) {
-  console.log('ok');
-  res.end('ok');
+  var userId = req.params.user_id;
+  var providerId = req.params.podcast_id;
+  var podcastName = req.body.podcastName;
+  var feedUrl = req.body.feedUrl;
+
+  // first, check to see if podcast is already in database
+  knex('podcasts')
+    .where('provider_id', providerId)
+    .then(function(data) {
+      if (!data.length) { // podcast is not present in database
+        return knex('podcasts')
+          .insert({
+            provider_id: providerId,
+            name: podcastName,
+            feedUrl: feedUrl
+          })
+          .returning('id');
+      } else { // podcast found in database
+        return new Promise((resolve, reject) => {resolve([data[0].id])}); // return a promise to preserve chain
+      }
+    })
+    .then(function(data) {
+      var podcastId = data[0];
+      return knex('users_podcasts')
+        .insert({
+          user_id: userId,
+          podcast_id: podcastId,
+          favorite: true
+        })
+    })
+    .then(function(data) {
+      res.end();
+    })
 }
 
 

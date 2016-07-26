@@ -49,10 +49,17 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
   $scope.addToFavorites = function () {
     var userId = $rootScope.currentUser.id;
     var podcastId = $scope.view.podcast.collectionId;
+    var podcastName = $scope.view.podcast.collectionName;
+    var feedUrl = $scope.view.podcast.feedUrl;
+    var requestUrl = '/api/users/' + userId + '/favorite/' + podcastId;
+    var postData = {
+      podcastName: podcastName,
+      feedUrl: feedUrl
+    };
 
-    $http.post('/api/users/' + userId + '/favorite/' + podcastId)
-        .then(function(data){
-          console.log(data);
-        });
+    $http.post(requestUrl, postData)
+    .then(function(data){
+      console.log('favorite added');
+    });
   };
 });
