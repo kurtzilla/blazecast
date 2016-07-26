@@ -95,6 +95,24 @@ bc-itunes-search {
   }
 }
 
+.podcastCoverImg {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+}
+.podcastTitle {
+  margin-top: 0;
+}
+.podcastInfo {
+  margin-top: 5px;
+}
+.podcastRating {
+  margin-bottom: 15px;
+}
+.podcastDescription {
+  margin-top: 5px;
+  line-height: 20px;
+}
 .episode-row {
   max-height:400px;
   overflow: scroll;

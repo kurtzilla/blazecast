@@ -15,6 +15,7 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
     // console.log('DATA', data);
     if(data && data.data && data.data.results && data.data.results.length > 0){
       $scope.view.podcast = data.data.results[0];
+      console.log($scope.view.podcast);
       return rssFeed.loadFeed($scope.view.podcast.feedUrl);
     }
   })
