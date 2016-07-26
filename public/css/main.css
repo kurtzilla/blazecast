@@ -5893,7 +5893,9 @@ bc-itunes-search {
   margin-top: 5px; }
 
 .podcastRating {
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  margin-right: 10px;
+  display: inline-block; }
 
 .podcastDescription {
   margin-top: 5px;
@@ -5919,6 +5921,13 @@ bc-itunes-search {
 
 .episodeTitle {
   margin-right: 10px; }
+
+.moreDetails {
+  display: inline-block;
+  float: right;
+  text-align: center;
+  margin-right: 20px;
+  color: lightblue; }
 
 .addEpisode {
   float: right;
