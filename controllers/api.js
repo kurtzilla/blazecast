@@ -5,7 +5,7 @@ exports.serveiTunesDummy = function(req, res, next) {
   res.json(itunesdummydata.data);
 };
 
-exports.addPodcastToFavorites = function (req, res, next) {
+exports.followPodcast = function (req, res, next) {
   var userId = req.params.user_id;
   var providerId = req.params.podcast_id;
   var podcastName = req.body.podcastName;
