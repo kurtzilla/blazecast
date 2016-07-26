@@ -91,9 +91,13 @@ app.get('/auth/twitter/callback',
 app.get('/itunesdummydata',
   apiController.serveiTunesDummy);
 
-// post to this route to add a podcast as a favorite for a user
-app.post('/api/users/:user_id/favorite/:podcast_id',
-  apiController.addPodcastToFavorites);
+// post to this route to follow this podcast for a user
+app.post('/api/users/:user_id/follow/:podcast_id',
+  apiController.followPodcast);
+
+// get user data
+app.get('/api/users/:user_id/dashboard',
+  apiController.getUserDashboard)
 
 
 app.get('/api/testApi', apiController.testApi);
