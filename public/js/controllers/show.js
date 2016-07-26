@@ -18,7 +18,7 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
     }
   })
   .then(function(feed){
-    // console.log('feed data', feed);
+    console.log('feed data', feed);
     // console.log('LOCATION', $location.$$protocol);
     var proto = $location.$$protocol;
 
@@ -33,6 +33,11 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
           itm.type = itm.mediaGroups[0].contents[0].type;
 
           return(itm.url && itm.url.trim().length > 0)
+
+        } else if(itm.url && itm.url.trim().length > 0 &&
+          (itm.toLowerCase().indexOf('.mp3') !== -1 || itm.toLowerCase().indexOf('.mp4') !== -1)){
+          itm.type = "audio/mpeg";
+          return true;
         }
       });
 
