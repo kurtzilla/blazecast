@@ -5,6 +5,6 @@ var bookshelf = require('bookshelf')(knex);
 bookshelf.plugin('virtuals');
 bookshelf.plugin('visibility');
 
-knex.migrate.latest();
+// knex.migrate.latest();
 
 module.exports = bookshelf;

@@ -8,13 +8,5 @@ app.controller('DumCtrl', function($rootScope, $scope, $location, $stateParams,
     console.log(data);
   })
 
-  $http.jsonp('https://itunes.apple.com/lookup', {
-    params: {
-      'callback': 'JSON_CALLBACK',
-      'id': $stateParams.provider_id
-    }
-  })
-  .then(function(data){
-    console.log('DATA', data);
-  })
+  
 });
