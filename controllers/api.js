@@ -33,7 +33,7 @@ exports.addPodcastToFavorites = function (req, res, next) {
         .insert({
           user_id: userId,
           podcast_id: podcastId,
-          favorite: true
+          follow: true
         })
     })
     .then(function(data) {
