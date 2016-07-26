@@ -117,7 +117,6 @@ bc-itunes-search {
   margin-bottom: 15px;
   margin-right: 10px;
   display: inline-block;
-
 }
 .podcastDescription {
   margin-top: 5px;
@@ -127,7 +126,6 @@ bc-itunes-search {
   max-height:400px;
   overflow: scroll;
 }
-
 .episode-item {
   border:solid #999 1px;
   padding:5px;
@@ -153,17 +151,17 @@ bc-itunes-search {
   margin-right: 20px;
   color: lightblue;
 }
-
+#playButton {
+  margin-right: 10px;
+}
 .addEpisode {
   float: right;
   height: 15px;
   width: 15px;
 }
-
 .filterLabel{
   font-size: 14px;
 }
-
 .filterSearch {
   height: 24px;
   width: 150px;

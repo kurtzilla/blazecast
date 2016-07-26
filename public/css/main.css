@@ -5936,6 +5936,9 @@ bc-itunes-search {
   margin-right: 20px;
   color: lightblue; }
 
+#playButton {
+  margin-right: 10px; }
+
 .addEpisode {
   float: right;
   height: 15px;
