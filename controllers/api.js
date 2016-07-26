@@ -33,11 +33,11 @@ exports.followPodcast = function (req, res, next) {
       var podcastId = data[0];
       return knex('users_podcasts')
 
-      .insert({
-        user_id: userId,
-        podcast_id: podcastId,
-        follow: true
-      })
+        .insert({
+          user_id: userId,
+          podcast_id: podcastId,
+          following: true
+        })
 
     })
     .then(function(data) {
@@ -45,18 +45,41 @@ exports.followPodcast = function (req, res, next) {
     })
 }
 
-exports.getUserDashboard = function (req, res, next) {
-  knex.queryBuilder()
-    .select('podcasts.images', 'podcasts.name', 'podcasts.feedUrl')
-    .from('podcasts')
-    .innerJoin('users_podcasts', 'podcasts.id', 'podcast_id')
-    .innerJoin('users', 'users.id', 'user_id')
-    .where('users.id', req.params.user_id)
-    .then(function(data) {
-      console.log(data)
-      res.json(data);
-    });
+// exports.getUserDashboard = function (req, res, next) {
+//   knex.queryBuilder()
+//     .select('podcasts.images', 'podcasts.name', 'podcasts.feedUrl')
+//     .from('podcasts')
+//     .innerJoin('users_podcasts', 'podcasts.id', 'podcast_id')
+//     .innerJoin('users', 'users.id', 'user_id')
+//     .where('users.id', req.params.user_id)
+//     .then(function(data) {
+//       console.log(data)
+//       res.json(data);
+//     });
+
+exports.getFollows = function(req, res, next) {
+  var userId = req.params.user_id;
+  knex('podcasts')
+    .join('users_podcasts','podcasts.id', '=', 'podcast_id')
+    .where('user_id', userId)
+    .andWhere('following', true)
+    .then(function(follows) {
+      res.json(follows)
+    })
+// >>>>>>> 196e9a4a983254c60c5dd113a12bed133d1a2ae0
 };
+
+// exports.getUserDashboard = function (req, res, next) {
+//   knex.queryBuilder()
+//     .select('podcasts.name')
+//     .from('podcasts')
+//     .innerJoin('users_podcasts', 'podcasts.id', 'podcast_id')
+//     .innerJoin('users', 'users.id', 'user_id')
+//     .where('users.id', req.params.user_id)
+//     .then(function(data) {
+//       res.json(data);
+//     });
+// };
 
 /* This portion of the api will only return non-sensitive key values */
 //
