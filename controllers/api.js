@@ -1,9 +1,9 @@
-
+var itunesdummydata = require('../itunesdummydata');
 
 /* This portion of the api will only return non-sensitive key values */
 
 exports.serveiTunesDummy = function(req, res, next) {
-  res.json({data: 'data'})
+  res.json(itunesdummydata.data);
 };
 
 
