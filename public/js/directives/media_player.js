@@ -1,25 +1,32 @@
 
-
-
 // bc-media-player
-app.directive('bcMediaPlayer', function($rootScope, formatProtocolFilter, $location){
+app.directive('bcMediaPlayer', function(mediaPlayerService){
   return {
     restrict: 'E',
     scope: {},
     templateUrl: 'partials/media_player.html',
-    controller: ['$sce', function($scope, $sce) {
+    controller: function($scope) {
       $scope.view = {};
       $scope.config = {};
-      $scope.config.sources = [];
+      // TODO make autoplay a configurable option
+      $scope.config.autoPlay = true;
 
-      // this.config = {
-      //   sources: [
-      //     {src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/audios/videogular.mp3"),
-      //       type: "audio/mpeg"},
-      //     {src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/audios/videogular.ogg"),
-      //       type: "audio/ogg"}
-      //     ]
+      $scope.config.sources = function(){
+        return mediaPlayerService.sourceQueue;
+      };
 
-    }]
+
+      // API functionality
+      $scope.player = {};
+      $scope.player.controller = {};
+      var controller = this;
+			$scope.player.controller.API = null;
+
+			$scope.player.controller.onPlayerReady = function(API) {
+        // TODO syncplay and pause on newly added podcasts
+        // console.log('API?', API);
+				$scope.player.controller.API = API;
+			};
+    }
   }
 });
