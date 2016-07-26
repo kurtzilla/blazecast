@@ -33,13 +33,6 @@
          <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
        </h4>
     </div>
-    <div class="col-xs-4 podcast-title-col">
-      <select ng-model='filterBy'>
-          <option value="name">name</option>
-          <option value="rating">rating</option>
-          <option value=""></option>
-      </select>
-    </div>
     <div class="col-xs-8 podcast-title-col">
        <h5 class='podcastInfo'>
          <strong>Genre: </strong> {{view.podcast.primaryGenreName}}
@@ -56,16 +49,27 @@
     </div>
   </div>
 
-  <div class="row podcast-title-row">
+      <div class="col-xs-7 podcast-title-col">
 
+      </div>
+    <div class="col-xs-5 podcast-title-col">
+      <label class='filterLabel' for="filter">Filter By:</label>
+      <select name='filter' ng-model='filterBy'>
+          <option value="title">title</option>
+          <option value="rating">rating</option>
+          <option value="date">date</option>
+      </select>
+      <label class='filterLabel'for="search">Search By Title:</label>
+      <input class='filterSearch' type="text" ng-model='searchTitle'>
+    </div>
   </div>
 
   <div class="row episode-row">
     <div class="col-xs-12">
       <ul class="list-unstyled">
-        <li ng-repeat="episode in view.episodes | orderBy: filterBy" class="episode-item">
+        <li ng-repeat="episode in view.episodes | orderBy: filterBy | filter:searchTitle" class="episode-item">
           <strong>{{episode.title}}</strong>
-          <span>{{episode.publishedDate | date : 'MMMM d, yyyy'}}</span>
+          <span class='episodePublishDate'>{{episode.publishedDate | date : 'MMMM d, yyyy'}}</span>
           <span>{{episode.filesize}}</span>
           <a href="{{episode.url}}"><span class="glyphicon glyphicon-play"></span></a>
           <div class="episode-snippet">
