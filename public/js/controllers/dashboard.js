@@ -10,7 +10,7 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http) {
   $http.get('/api/users/' + user.id + '/dashboard')
     .then(function (data) {
       console.log(data);
-      $scope.view.favorites = data.data;
+      $scope.view.following = data.data;
     })
 
   // console.log(user);
