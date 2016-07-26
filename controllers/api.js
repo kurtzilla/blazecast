@@ -33,7 +33,7 @@ exports.followPodcast = function (req, res, next) {
         .insert({
           user_id: userId,
           podcast_id: podcastId,
-          follow: true
+          following: true
         })
     })
     .then(function(data) {
@@ -47,7 +47,7 @@ exports.getFollows = function(req, res, next) {
   knex('podcasts')
     .join('users_podcasts','podcasts.id', '=', 'podcast_id')
     .where('user_id', userId)
-    .andWhere('favorite', true)
+    .andWhere('following', true)
     .then(function(follows) {
       res.json(follows)
     })
