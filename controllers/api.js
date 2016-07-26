@@ -1,5 +1,4 @@
-var config = require('../knexfile');
-var knex = require('knex')(config);
+var knex = require('../db/knex');
 var itunesdummydata = require('../itunesdummydata');
 
 exports.serveiTunesDummy = function(req, res, next) {
@@ -42,12 +41,6 @@ exports.addPodcastToFavorites = function (req, res, next) {
     })
 }
 
-
-
-// var config = require('../knexfile');
-var knex = require('../db/knex');//(config);
-// var bookshelf = app.get('bookshelf');
-
 /* This portion of the api will only return non-sensitive key values */
 //
 exports.testApi = function(req, res) {
@@ -57,6 +50,7 @@ exports.testApi = function(req, res) {
     res.json(200, data);
   });
 }
+
 
 /**
  * GET /contact
