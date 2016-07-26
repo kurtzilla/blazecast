@@ -1,34 +1,17 @@
 <h1>Browse Our Library</h1>
 
-<div ng-click='showPage(1)' class="grid">
-    <!-- ng-repeat="podcast in podcasts" -->
+<bc-itunes-search></bc-itunes-search>
 
-  <div class="grid-item">
-    <!-- data-masonry='{ "columnWidth": 200, "itemSelector": ".grid-item" }'  -->
-    <!-- <img ng-src="{{ "coverImage" }}" alt="A masonry brick"> -->
+<label class='filterLabel' for="filter">Filter By:</label>
+<select name='filter' ng-model='filterBy'>
+    <option value="rating">Rating</option>
+    <option value="publishedDate">Oldest</option>
+    <option value="-publishedDate">Newest</option>
+</select>
+<label class='filterLabel'for="search">Search By Title:</label>
+<input class='filterSearch' type="text" ng-model='searchTitle'>
+</div>
+
+<div class="grid">
+    <img ng-repeat='podcast in view.podcasts | orderBy: filterBy | filter:searchTitle' ng-click='showPage(podcast.collectionId)'class='grid-item'ng-src="{{podcast.artworkUrl600}}" alt="">
   </div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-</div>
-<div class="grid">
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-</div>
-<div class="grid">
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-</div>
