@@ -96,6 +96,7 @@ app.post('/api/users/:user_id/favorite/:podcast_id',
   apiController.addPodcastToFavorites);
 
 
+app.get('/api/testApi', apiController.testApi);
 //app.get('/api/podcast/:id', apiController.getPodcast);
 // console.log('SETUP API ROUTE');
 // app.get('/api/envkey',

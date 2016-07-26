@@ -26,18 +26,14 @@
 
   <div class="row episode-row">
     <div class="col-xs-12">
-      <ul class="list-unstyled">
+      <div class="error-list" ng-show="view.episodes.length === 0">
+        Sorry, this podcast does not have playable episodes.
+      </div>
+      <ul class="list-unstyled" ng-show="view.episodes.length > 0">
         <li ng-repeat="episode in view.episodes" class="episode-item">
-          <strong>{{episode.title}}</strong>
-          <span>{{episode.publishedDate | date : 'MMMM d, yyyy'}}</span>
-          <span>{{episode.filesize}}</span>
-          <a href="{{episode.url}}"><span class="glyphicon glyphicon-play"></span></a>
-          <div class="episode-snippet">
-            {{episode.contentSnippet}}
-          </div>
+          <bc-episode-search-result episode="episode"></bc-episode-search-result>
         </li>
       </ul>
     </div>
   </div>
-
 </div>
