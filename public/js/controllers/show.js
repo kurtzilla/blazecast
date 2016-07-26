@@ -48,4 +48,8 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
     $scope.view.errors = [err];
     // console.log($scope.view.errors);
   });
+
+  $scope.addToFavorites = function () {
+    console.log('adding this podcast to favorites...');
+  };
 });
