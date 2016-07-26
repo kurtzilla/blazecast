@@ -6066,3 +6066,14 @@ textarea {
   border-radius: 2px;
   letter-spacing: 0.2em;
   text-transform: uppercase; }
+
+#podcastDiv {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  align-items: center; }
+  #podcastDiv img {
+    width: 150px;
+    height: 150px; }
+  #podcastDiv strong {
+    width: 150px; }

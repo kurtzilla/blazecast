@@ -10,6 +10,7 @@ exports.addPodcastToFavorites = function (req, res, next) {
   var providerId = req.params.podcast_id;
   var podcastName = req.body.podcastName;
   var feedUrl = req.body.feedUrl;
+  var images = req.body.images;
 
   // first, check to see if podcast is already in database
   knex('podcasts')
@@ -20,7 +21,8 @@ exports.addPodcastToFavorites = function (req, res, next) {
           .insert({
             provider_id: providerId,
             name: podcastName,
-            feedUrl: feedUrl
+            feedUrl: feedUrl,
+            images: images
           })
           .returning('id');
       } else { // podcast found in database
@@ -30,11 +32,11 @@ exports.addPodcastToFavorites = function (req, res, next) {
     .then(function(data) {
       var podcastId = data[0];
       return knex('users_podcasts')
-        .insert({
-          user_id: userId,
-          podcast_id: podcastId,
-          favorite: true
-        })
+      .insert({
+        user_id: userId,
+        podcast_id: podcastId,
+        favorite: true
+      })
     })
     .then(function(data) {
       res.end();
@@ -43,12 +45,13 @@ exports.addPodcastToFavorites = function (req, res, next) {
 
 exports.getUserDashboard = function (req, res, next) {
   knex.queryBuilder()
-    .select('podcasts.name')
+    .select('podcasts.images', 'podcasts.name', 'podcasts.feedUrl')
     .from('podcasts')
     .innerJoin('users_podcasts', 'podcasts.id', 'podcast_id')
     .innerJoin('users', 'users.id', 'user_id')
     .where('users.id', req.params.user_id)
     .then(function(data) {
+      console.log(data)
       res.json(data);
     });
 };
