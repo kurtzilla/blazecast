@@ -1,1 +1,8 @@
 <h1>Dashboard</h1>
+
+<h2>My follows</h2>
+<div ng-repeat="follow in view.follows">
+  <h3>{{follow.name}}</h3>
+  <p>{{follow.provider_id}}</p>
+  <p>{{follow.feedUrl}}</p>
+</div>

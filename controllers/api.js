@@ -41,6 +41,17 @@ exports.addPodcastToFavorites = function (req, res, next) {
     })
 }
 
+exports.getFollows = function(req, res, next) {
+  var userId = req.params.user_id;
+  knex('podcasts')
+    .join('users_podcasts','podcasts.id', '=', 'podcast_id')
+    .where('user_id', userId)
+    .andWhere('favorite', true)
+    .then(function(follows) {
+      res.json(follows)
+    })
+};
+
 /* This portion of the api will only return non-sensitive key values */
 //
 exports.testApi = function(req, res) {
