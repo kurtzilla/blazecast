@@ -4,14 +4,6 @@ var app = angular.module( 'MyApp', ['ui.router', 'satellizer', 'ngResource',
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
     $urlRouterProvider.otherwise("/");
 
-
-
-    // $stateProvider
-    //   .state('home', {
-    //     url: '/',
-    //     controller: "HomeController",
-    //     templateUrl: "templates/home.html"
-    //   })
     $stateProvider
     .state('home', {
       url: '/',
