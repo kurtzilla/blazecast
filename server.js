@@ -95,6 +95,10 @@ app.get('/itunesdummydata',
 app.post('/api/users/:user_id/favorite/:podcast_id',
   apiController.addPodcastToFavorites);
 
+// get user data
+app.get('/api/users/:user_id/dashboard',
+  apiController.getUserDashboard)
+
 
 app.get('/api/testApi', apiController.testApi);
 //app.get('/api/podcast/:id', apiController.getPodcast);

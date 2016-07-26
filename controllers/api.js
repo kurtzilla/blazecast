@@ -41,6 +41,18 @@ exports.addPodcastToFavorites = function (req, res, next) {
     })
 }
 
+exports.getUserDashboard = function (req, res, next) {
+  knex.queryBuilder()
+    .select('podcasts.name')
+    .from('podcasts')
+    .innerJoin('users_podcasts', 'podcasts.id', 'podcast_id')
+    .innerJoin('users', 'users.id', 'user_id')
+    .where('users.id', req.params.user_id)
+    .then(function(data) {
+      res.json(data);
+    });
+};
+
 /* This portion of the api will only return non-sensitive key values */
 //
 exports.testApi = function(req, res) {
