@@ -6,6 +6,10 @@ exports.serveiTunesDummy = function(req, res, next) {
   res.json(itunesdummydata.data);
 };
 
+exports.addPodcastToFavorites = function (req, res, next) {
+  console.log('ok');
+  res.end('ok');
+}
 
 /**
  * GET /contact
