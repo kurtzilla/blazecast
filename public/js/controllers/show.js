@@ -45,15 +45,20 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
     // console.log($scope.view.errors);
   });
 
+
+
   $scope.followPodcast = function () {
     var userId = $rootScope.currentUser.id;
     var podcastId = $scope.view.podcast.collectionId;
     var podcastName = $scope.view.podcast.collectionName;
     var feedUrl = $scope.view.podcast.feedUrl;
+    var images = $scope.view.podcast.artworkUrl600;
     var requestUrl = '/api/users/' + userId + '/follow/' + podcastId;
+
     var postData = {
       podcastName: podcastName,
-      feedUrl: feedUrl
+      feedUrl: feedUrl,
+      images: images
     };
 
     $http.post(requestUrl, postData)
