@@ -3,6 +3,7 @@ var dotenv = require('dotenv');
 dotenv.load();
 
 module.exports = {
+  development: {
     client: 'pg',
     // pool: { min: 0, max: 0},
     connection: process.env.DATABASE_URL || {
@@ -11,4 +12,9 @@ module.exports = {
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME
     }
+  },
+  production : {
+    client: 'pg',
+    connection: process.env.DATABASE_URL
+  }
 };
