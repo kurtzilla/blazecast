@@ -5965,23 +5965,60 @@ bc-itunes-search {
   margin: 15px;
   border: 2px solid rgba(0, 0, 0, 0.5); }
 
+.home {
+  font-family: 'Play', sans-serif; }
+
 #blazecast {
-  border: 1px solid black;
   text-align: center;
   width: 100vw;
   height: 35vh; }
 
 #abstract {
-  border: 1px solid blue;
   text-align: center;
   width: 100vw;
   height: 49vh; }
 
+.abstract {
+  text-align: center;
+  margin: 50px 100px;
+  font-size: 20px;
+  font-family: 'Play', sans-serif; }
+
 #meetTheTeam {
-  border: 1px solid green;
   text-align: center;
   width: 100vw;
-  height: 100vh; }
+  height: 100vh;
+  max-height: 400px;
+  overflow: scroll; }
+
+.imageHolder {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  border-radius: 100px; }
+
+.left {
+  float: left; }
+  .left img {
+    display: inline-block;
+    margin-left: 100px;
+    margin-bottom: 0; }
+  .left p {
+    width: 500px;
+    display: inline-block;
+    float: right;
+    font-family: 'Play', sans-serif; }
+
+.right {
+  float: right; }
+  .right img {
+    display: inline-block;
+    margin-right: 100px; }
+  .right p {
+    width: 500px;
+    display: inline-block;
+    float: left;
+    font-family: 'Play', sans-serif; }
 
 html {
   position: relative;
