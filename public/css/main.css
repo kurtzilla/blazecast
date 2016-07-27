@@ -5836,7 +5836,8 @@ bc-media-player {
     width: 100%;
     height: 50px;
     margin: auto;
-    overflow: hidden; }
+    overflow: hidden;
+    margin-top: 50px; }
 
 bc-episode-search-result .btn-play {
   display: inline-block; }
@@ -6014,9 +6015,13 @@ ul.rating {
 #meetTheTeam {
   text-align: center;
   width: 100%;
-  height: 100px; }
+  height: 100%; }
   #meetTheTeam h1 {
-    margin: 50px; }
+    margin-bottom: 50px; }
+  #meetTheTeam div {
+    border-bottom: 1px solid grey;
+    padding-bottom: 50px;
+    margin-bottom: 10px; }
 
 .imageHolder {
   width: 200px;
