@@ -8,7 +8,15 @@ app.filter('removeProtocol', function($location) {
   }
 });
 
+app.filter('proxyResource', function(){
+  return function(input){
+    var encoded = btoa(input);
+    return '/proxyresource/' + encoded;
+  }
+});
 
+
+// TBA - robk
 app.filter('formatProtocol', ['$location', function($location){
    return function(input){
 
