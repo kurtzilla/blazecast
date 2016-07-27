@@ -37,8 +37,7 @@ exports.followPodcast = function (req, res, next) {
         .andWhere('podcast_id', podcastId);
     })
     .then(function(data) {
-      var following = data[0].following;
-      console.log('following:', following);
+      var following = data[0] ? data[0].following : true;
       if (!data.length) {
         return knex('users_podcasts')
         .insert({
@@ -54,8 +53,7 @@ exports.followPodcast = function (req, res, next) {
           .where('podcast_id', podcastId);
       }
     })
-    .then(function(data) {
-      console.log('data2:', data);
+    .then(function() {
       res.end();
     });
 }
