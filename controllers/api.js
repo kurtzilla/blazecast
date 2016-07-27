@@ -12,6 +12,7 @@ exports.followPodcast = function (req, res, next) {
   var podcastName = req.body.podcastName;
   var feedUrl = req.body.feedUrl;
   var images = req.body.images;
+  var podcastId;
 
   // first, check to see if podcast is already in database
   knex('podcasts')
@@ -30,20 +31,32 @@ exports.followPodcast = function (req, res, next) {
         return new Promise((resolve, reject) => {resolve([data[0].id])}); // return a promise to preserve chain
       }
     })
-    .then(function(data) {
-      var podcastId = data[0];
+    .then(function(data) { // check to see if podcast is already followed by this user
+      podcastId = data[0];
       return knex('users_podcasts')
-
+        .where('user_id', userId)
+        .andWhere('podcast_id', podcastId);
+    })
+    .then(function(data) {
+      var following = data[0] ? data[0].following : true;
+      if (!data.length) {
+        return knex('users_podcasts')
         .insert({
           user_id: userId,
           podcast_id: podcastId,
           following: true
-        })
-
+        });
+      } else {
+        return knex('users_podcasts')
+          .update({
+            following: !following
+          })
+          .where('podcast_id', podcastId);
+      }
     })
-    .then(function(data) {
+    .then(function() {
       res.end();
-    })
+    });
 }
 
 exports.addEpisodes = function(req, res, next) {
@@ -73,18 +86,6 @@ exports.getFollows = function(req, res, next) {
     })
 
 };
-
-// exports.getUserDashboard = function (req, res, next) {
-//   knex.queryBuilder()
-//     .select('podcasts.name')
-//     .from('podcasts')
-//     .innerJoin('users_podcasts', 'podcasts.id', 'podcast_id')
-//     .innerJoin('users', 'users.id', 'user_id')
-//     .where('users.id', req.params.user_id)
-//     .then(function(data) {
-//       res.json(data);
-//     });
-// };
 
 /* This portion of the api will only return non-sensitive key values */
 //
