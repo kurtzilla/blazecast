@@ -22,6 +22,7 @@ var User = require('./models/User');
 var userController = require('./controllers/user');
 var contactController = require('./controllers/contact');
 var apiController = require('./controllers/api');
+var resourceController = require('./controllers/resource');
 
 var app = express();
 
@@ -97,21 +98,19 @@ app.get('/itunesdummydata',
 app.post('/api/users/:user_id/follow/:podcast_id',
   apiController.followPodcast);
 
-// get user data
-// app.get('/api/users/:user_id/dashboard',
-//   apiController.getUserDashboard)
-
 app.get('/api/users/:user_id/follow',
   apiController.getFollows);
+app.get('/api/podcasts/:podcast_id/follow',
+  apiController.getEpisodes);
+app.get('/api/testApi',
+  apiController.testApi);
+app.get('/api/podcasts/:itunes_podcast_id/episodes',
+  apiController.getFedPodcastEpisodes);
 
 
-app.get('/api/testApi', apiController.testApi);
-//app.get('/api/podcast/:id', apiController.getPodcast);
-// console.log('SETUP API ROUTE');
-// app.get('/api/envkey',
-//   apiController.apiEnvKey);
-// app.post('/api/envkey/:key',
-//   apiController.apiEnvKey);
+app.get('/proxyresource/:resourceurl',
+  resourceController.proxyResource);
+
 
 // app.post('/api/users/:user_id/playlists/new',
 //   apiController.newPlaylist);

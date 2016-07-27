@@ -4,9 +4,16 @@ angular.module('MyApp')
   $scope.view = {};
   $scope.view.showId = "";
   $scope.view.query = '';
+  $scope.view.filterBy = '';
+  $scope.filterByCategory = function(item){
+    if(!$scope.view.filterBy || $scope.view.filterBy.trim().length === 0){
+
+      return true;
+    }
+    return item.genres.join().indexOf($scope.view.filterBy) !== -1;
+  }
 
   $scope.showPage = function(id){
-    console.log('clicked');
     // location.assign('/show/' + id);
     $location.path('/show/' + id);
   }
@@ -19,10 +26,13 @@ angular.module('MyApp')
   };
 
   $scope.$watchCollection('view.query', function() {
+    $scope.view.filterBy = '';
+    console.log($scope.view.query);
     if ($scope.view.query.length > 0) {
       Media.search({ query: $scope.view.query}, function(data) {
         $scope.displayResults = true;
         $scope.view.podcasts = data.results;
+
       });
     } else {
       $http.get('/itunesdummydata').then(function(data){
