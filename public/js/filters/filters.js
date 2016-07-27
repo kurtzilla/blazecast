@@ -1,3 +1,14 @@
+
+app.filter('removeProtocol', function() {
+  return function (input) {
+    if(input){
+      return input.replace(/^http:\/\//g, '//')
+                  .replace(/^https:\/\//g, '//');
+    }
+  }
+});
+
+
 app.filter('formatProtocol', ['$location', function($location){
    return function(input){
 
