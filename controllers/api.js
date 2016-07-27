@@ -70,20 +70,22 @@ exports.getFollows = function(req, res, next) {
 };
 
 exports.favoriteEpisode = function(req, res, next) {
+  // TEST ME: localhost:3000/api/users/5/favorite/179950332/96517
   var userId = req.params.user_id;
   var providerId = req.params.provider_id;
-  var episodeId = req.params.episode_id;
+  var itunesEpisodeId = req.params.itunes_episode_id;
   // var podcastName = req.body.podcastName;
   // var episodeName = req.body.episodeName;
   // var feedUrl = req.body.feedUrl;
   // var images = req.body.images;
+  var podcastId;
 
-  // ADD TO PODCAST TABLE IF !
-  knex('podcast')
+  // ADD TO PODCAST TABLE IF NOT THERE
+  knex('podcasts')
     .where('provider_id', providerId)
     .then(function(data) {
       if (!data.length) {
-        knex('podcasts')
+        return knex('podcasts')
         .insert({
           provider_id: providerId
           // name: podcastName,
@@ -93,40 +95,115 @@ exports.favoriteEpisode = function(req, res, next) {
       } else { // podcast found in database
         return new Promise((resolve, reject) => {resolve([data[0].id])}); // return a promise to preserve chain
       }
-    }).then(function(podcastId) {
-    // ADD TO EPISODE TABLE IF !
+    }).then(function(data) {
+      podcastId = data[0];
+    // ADD TO EPISODE TABLE IF NOT THERE
       knex('episodes')
-        .where('episode_id', episodeId)
+        .where('itunes_episode_id', itunesEpisodeId)
         .then(function(data) {
           if (!data.length) {
-            knex('episodes')
+            return knex('episodes')
             .insert({
-              itunes_episode_id: episodeId,
+              itunes_episode_id: itunesEpisodeId,
               podcast_id: podcastId
               // name: episodeName
             })
           }
         })
-    // ADD TO JOIN TABLE IF !, AND TOGGLE FAVORITE
+    // ADD TO JOIN TABLE IF NOT THERE, AND TOGGLE FAVORITE
     knex('users_episodes')
       .where('user_id', userId)
-      .andWhere('episode_id', episodeId)
+      .andWhere('itunes_episode_id', itunesEpisodeId)
       .then(function(data) {
+        console.log(data);
         if (!data.length) {
-          knex('users_episodes')
+          return knex('users_episodes')
           .insert({
             user_id: userId,
-            episode_id: episodeId,
+            itunes_episode_id: itunesEpisodeId,
             // user_podcast_id: [query table for id]
             favorite: true
           })
         } else {
-          knex('users_episodes')
+          return knex('users_episodes')
+          .update({
+            favorite: !data[0].favorite
+          })
           .where('user_id', userId)
-          .andWhere('episode_id', episodeId)
-          .update('favorite', !data.favorite)
+          .andWhere('itunes_episode_id', itunesEpisodeId)
         }
       })
+  }).then(function() {
+    res.end();
+  })
+}
+
+exports.saveEpisode = function(req, res, next) {
+  // TEST ME: localhost:3000/api/users/5/favorite/179950332/96517
+  var userId = req.params.user_id;
+  var providerId = req.params.provider_id;
+  var itunesEpisodeId = req.params.itunes_episode_id;
+  // var podcastName = req.body.podcastName;
+  // var episodeName = req.body.episodeName;
+  // var feedUrl = req.body.feedUrl;
+  // var images = req.body.images;
+  var podcastId;
+
+  // ADD TO PODCAST TABLE IF NOT THERE
+  knex('podcasts')
+    .where('provider_id', providerId)
+    .then(function(data) {
+      if (!data.length) {
+        return knex('podcasts')
+        .insert({
+          provider_id: providerId
+          // name: podcastName,
+          // feedUrl: feedUrl,
+          // images: images
+        }).returning('id');
+      } else { // podcast found in database
+        return new Promise((resolve, reject) => {resolve([data[0].id])}); // return a promise to preserve chain
+      }
+    }).then(function(data) {
+      podcastId = data[0];
+    // ADD TO EPISODE TABLE IF NOT THERE
+      knex('episodes')
+        .where('itunes_episode_id', itunesEpisodeId)
+        .then(function(data) {
+          if (!data.length) {
+            return knex('episodes')
+            .insert({
+              itunes_episode_id: itunesEpisodeId,
+              podcast_id: podcastId
+              // name: episodeName
+            })
+          }
+        })
+    // ADD TO JOIN TABLE IF NOT THERE, AND TOGGLE FAVORITE
+    knex('users_episodes')
+      .where('user_id', userId)
+      .andWhere('itunes_episode_id', itunesEpisodeId)
+      .then(function(data) {
+        console.log(data);
+        if (!data.length) {
+          return knex('users_episodes')
+          .insert({
+            user_id: userId,
+            itunes_episode_id: itunesEpisodeId,
+            // user_podcast_id: [query table for id]
+            save_for_later: true
+          })
+        } else {
+          return knex('users_episodes')
+          .update({
+            save_for_later: !data[0].save_for_later
+          })
+          .where('user_id', userId)
+          .andWhere('itunes_episode_id', itunesEpisodeId)
+        }
+      })
+  }).then(function() {
+    res.end();
   })
 }
 
