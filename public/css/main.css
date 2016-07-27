@@ -5958,6 +5958,31 @@ bc-itunes-search {
   height: 24px;
   width: 150px; }
 
+.rating {
+  color: #a9a9a9;
+  margin: 0;
+  padding: 0; }
+
+ul.rating {
+  display: inline-block; }
+
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer; }
+
+.rating .filled {
+  color: black; }
+
+.ratingTitle {
+  display: inline-block; }
+
+.stars {
+  display: inline-block; }
+
 .grid-item {
   float: left;
   width: 150px;
