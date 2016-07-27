@@ -1,5 +1,9 @@
+require('dotenv').config();
 var knex = require('../db/knex');
 var itunesdummydata = require('../itunesdummydata');
+var Audiosearch = require('../lib/audiosearch-client');
+var audiosearch = new Audiosearch(process.env.AUDIOSEARCH_KEY, process.env.AUDIOSEARCH_SECRET);
+
 
 
 exports.serveiTunesDummy = function(req, res, next) {
@@ -8,7 +12,6 @@ exports.serveiTunesDummy = function(req, res, next) {
 
 exports.followPodcast = function (req, res, next) {
 
-  console.log(req.body);
 
   var userId = req.params.user_id;
   var providerId = req.params.podcast_id;
@@ -19,7 +22,6 @@ exports.followPodcast = function (req, res, next) {
   var podcastId;
 
 
-  console.log(episodes)
 
   // var episodes =
 
@@ -41,7 +43,6 @@ exports.followPodcast = function (req, res, next) {
     }
   })
   .then(function(data) {
-    console.log(data);
     return data;
   })
   .then(function(data) { // check to see if podcast is already followed by this user
@@ -83,67 +84,25 @@ exports.followPodcast = function (req, res, next) {
 
     }
   });
-
-    // knex('episodes')
-    // .insert({
-    //   podcast_id: providerId,
-    //   name: episodes.title
-    // })
-    // .catch(function(err) {
-    //   console.log(err);
-    // })
 }
-
-exports.unfollowPodcast = function(req, res, next) {
-  // console.log('podcast' + req.params.podcast_id);
-  knex('podcasts')
-  .where({ 'id': req.params.podcast_id })
-  .del()
-  // .then(function(data) {
-  //   console.log(data);
-  // })
-}
-
-// exports.addEpisodes = function(req, res, next) {
-//   console.log(req);
-// }
-
-// exports.getUserDashboard = function (req, res, next) {
-//   knex.queryBuilder()
-//     .select('podcasts.images', 'podcasts.name', 'podcasts.feedUrl')
-//     .from('podcasts')
-//     .innerJoin('users_podcasts', 'podcasts.id', 'podcast_id')
-//     .innerJoin('users', 'users.id', 'user_id')
-//     .where('users.id', req.params.user_id)
-//     .then(function(data) {
-//       console.log(data)
-//       res.json(data);
-//     });
 
 exports.getFollows = function(req, res, next) {
   var userId = req.params.user_id;
-  console.log('through')
   knex('podcasts')
     .join('users_podcasts','podcasts.id', '=', 'podcast_id')
     .where('user_id', userId)
     .andWhere('following', true)
     .then(function(follows) {
-      // console.log(follows)
       res.json(follows)
     })
 
 };
 
 exports.getEpisodes = function(req, res, next) {
-  console.log("SOMETHING")
   knex('episodes')
-  // .join('users_podcasts','podcasts.id', '=', 'podcast_id')
   .select('*')
   .where('podcast_id', req.params.podcast_id)
-  // .andWhere('following', true)
   .then(function(episodes) {
-    // console.log(follows)
-    console.log(episodes)
     res.json(episodes)
   })
 };
@@ -151,7 +110,6 @@ exports.getEpisodes = function(req, res, next) {
 /* This portion of the api will only return non-sensitive key values */
 //
 exports.testApi = function(req, res) {
-  // console.log('REQ', req.body);
   return knex('users').select('*').first()
   .then(function(data){
     res.json(200, data);
@@ -159,20 +117,31 @@ exports.testApi = function(req, res) {
 }
 
 
-/**
- * GET /contact
- */
-// exports.apiEnvKey = function(req, res) {
-//   // TODO add security!!!!s
-//   var environment = {};
-//   var key = req.params.key;
-//
-//   if(key === 'all'){
-//     environment.FACEBOOK_ID = process.env.FACEBOOK_ID;
-//     environment.TWITTER_KEY = process.env.TWITTER_KEY;
-//     environment.GOOGLE_ID = process.env.GOOGLE_ID;
-//     environment.HOST = process.env.HOST;
-//   }
-//
-//   res.json(environment);
-// };
+// https://www.audiosear.ch/developer#!/shows/get_shows_itunes_id_id
+// /api/:podcastId/episodes
+// https://www.audiosear.ch/api/shows?itunes_id=1598914170424545
+exports.getFedPodcastEpisodes = function(req, res, next){
+
+  var podcast = {};
+  var pId = req.params.itunes_podcast_id;
+
+  return audiosearch.get('/shows', {'itunes_id':pId})
+  .then(function(data){
+    podcast = data;
+    var episodePromises = [];
+    if(podcast.episode_ids.length > 0){
+      podcast.episode_ids.forEach(function(itm){
+        episodePromises.push( audiosearch.getEpisode(itm) );
+      });
+    }
+    return Promise.all(episodePromises);
+  })
+  .then(function(data){
+    podcast.eCollection = data;
+    res.send(podcast);
+  })
+  .catch(function(err){
+    console.log('ERROR AT API CATCH', err);
+    res.send(err);
+  });
+}
