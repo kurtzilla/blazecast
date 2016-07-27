@@ -26,13 +26,14 @@
 <label class='filterLabel' for="filter">Filter By:</label>
 <select name='filter' ng-model='filterBy'>
   <option value="rating">Rating</option>
+  <option value="genre">Genre</option>
   <option value="publishedDate">Oldest</option>
   <option value="-publishedDate">Newest</option>
 </select>
 <label class='filterLabel'for="search">Search By Title:</label>
-<input class='filterSearch' type="text" ng-model='searchTitle'>
+<input class='filterSearch' type="text" ng-model='searchGenre'>
 </div>
 
 <div class="grid">
-  <img ng-repeat='podcast in view.podcasts | orderBy: filterBy | filter:searchTitle' ng-click='showPage(podcast.collectionId)'class='grid-item'ng-src="{{podcast.artworkUrl600}}" alt="">
+  <img ng-repeat='podcast in view.podcasts | orderBy:filterBy | filter:searchGenre' ng-click='showPage(podcast.collectionId)'class='grid-item'ng-src="{{podcast.artworkUrl600}}" alt="">
 </div>
