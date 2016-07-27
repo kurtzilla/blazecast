@@ -3,7 +3,6 @@
 }
 footer {
   height:30px !important;
-
   span {
     font-size:9px;
     color:#ccc;
@@ -12,7 +11,6 @@ footer {
 
 bc-media-player {
   display:block;
-  position: absolute;
   bottom:5px;  /* avoid a parent padding/margin issue */
   width:100%;
 
