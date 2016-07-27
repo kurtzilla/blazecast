@@ -97,7 +97,7 @@ exports.getFedPodcastEpisodes = function(req, res, next){
   return audiosearch.get('/shows', {'itunes_id':pId})
   .then(function(data){
     podcast = data;
-    console.log('DATA FROM REMOTE', data);
+    // console.log('DATA FROM REMOTE', data);
     var episodePromises = [];
     if(podcast.episode_ids.length > 0){
       podcast.episode_ids.forEach(function(itm){

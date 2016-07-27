@@ -108,7 +108,7 @@ app.get('/api/testApi', apiController.testApi);
 
 // app.get('/api/episodes/search', apiController.episodesSearch);
 
-app.get('/api/:itunes_podcast_id/episodes',
+app.get('/api/podcasts/:itunes_podcast_id/episodes',
   apiController.getFedPodcastEpisodes);
 
 

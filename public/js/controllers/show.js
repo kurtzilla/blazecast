@@ -11,7 +11,7 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
 
     // Call api to get episodes on our behalf - use podcast id
     // /api/:podcastId/episodes
-    $http.get('/api/' + $stateParams.provider_id + '/episodes')
+    $http.get('/api/podcasts/' + $stateParams.provider_id + '/episodes')
     .then(function(data){
       // console.log('FINAL', data.data.error);
 
