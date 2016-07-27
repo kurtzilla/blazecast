@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
         table.increments();
         table.integer('podcast_id').references('podcasts.id');
         table.string('name');
+        table.string('feedUrl');
         table.integer('length');
     });
 };

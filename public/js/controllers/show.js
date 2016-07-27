@@ -12,6 +12,8 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
  }
 
 
+  // $scope.view.following = [];
+
   $http.jsonp('https://itunes.apple.com/lookup', {
     params: {
       'callback': 'JSON_CALLBACK',
@@ -58,22 +60,100 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
 
 
   $scope.followPodcast = function () {
+    // console.log($scope.view.episodes.slice(0,-10))
     var userId = $rootScope.currentUser.id;
     var podcastId = $scope.view.podcast.collectionId;
     var podcastName = $scope.view.podcast.collectionName;
     var feedUrl = $scope.view.podcast.feedUrl;
     var images = $scope.view.podcast.artworkUrl600;
+    var episodes = $scope.view.episodes;
     var requestUrl = '/api/users/' + userId + '/follow/' + podcastId;
+    // var reqEpisodesUrl = '/api/users/addEpisodes';
 
     var postData = {
       podcastName: podcastName,
       feedUrl: feedUrl,
-      images: images
+      images: images,
+      episodes: []
     };
+
+
+
+    var episodeArray = [];
+
+    // console.log(episodes[0])
+
+    for (var i = 0; i < episodes.length; i++) {
+      var episode = {
+        title: episodes[i].title,
+        url: episodes[i].url,
+
+      }
+      postData.episodes.push(episode);
+      // $scope.view.following[following.length].episodes.push(episode);
+    }
+
+    // console.log($scope.view.following.length);
+
+    // ($scope.view.following).push(postData);
+
+
 
     $http.post(requestUrl, postData)
     .then(function(data){
       console.log('you are now following this podcast');
     });
+
+
+
+    // var countToLimit = 0; //Max is 10
+    //
+    // for (var i = 0; i < episodes.length; i++) {
+    //
+    //   countToLimit ++;
+    //
+    //   if (i == episodes.length) {
+    //
+    //     episodeArray.push(episodes[i]);
+    //
+    //     // console.log(i + ': ' + episodes[i]);
+    //
+    //     $scope.addEpisodes = function() {
+    //
+    //       $http.post(reqEpisodesUrl, episodeArray)
+    //       .then(function(data){
+    //         console.log(i + ': ' + data);
+    //       });
+    //
+    //     }();
+    //
+    //
+    //   }  else if (countToLimit < 1) {
+    //
+    //     episodeArray.push(episodes[i]);
+    //
+    //     console.log(i + ': ' + episodes[i]);
+    //
+    //   } else if(countToLimit == 1) {
+    //
+    //     episodeArray.push(episodes[i]);
+    //
+    //     countToLimit = 0;
+    //
+    //     console.log(i + ': ' + episodes[i]);
+    //
+    //     $scope.addEpisodes = function() {
+    //
+    //       $http.post(reqEpisodesUrl, episodeArray)
+    //       .then(function(data){
+    //         console.log(i + ': ' + data);
+    //         episodeArray = [];
+    //       });
+    //
+    //     }();
+    //
+    //
+    //   }
+    // }
   };
 });
