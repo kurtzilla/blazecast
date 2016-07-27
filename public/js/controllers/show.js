@@ -1,12 +1,11 @@
+
 app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams, $http, rssFeed, formatProtocolFilter) {
 
+  var proto = $location.$$protocol;
+  var _useItunes = false;
   $scope.view = {};
   $scope.view.podcast = {};
   $scope.view.episodes = [];
-
-  var proto = $location.$$protocol;
-  var _useItunes = true;
-
 
   if(!_useItunes){
 
@@ -14,42 +13,73 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
     // /api/:podcastId/episodes
     $http.get('/api/' + $stateParams.provider_id + '/episodes')
     .then(function(data){
-      // display returned collection of episodes
-      // console.log('FINAL', data);
+      // console.log('FINAL', data.data.error);
+
+      if(data.data.error){
+        // throw Error(data.data.error); // THIS LOGS AN ERROR TO THE CONSOLE!!!
+        $scope.view.errors = ['We\'re sorry, there is no information for that podcast'];
+        return;
+      }
+
       $scope.view.podcast = data.data;
-      console.log('FINAL', $scope.view.podcast);
-      console.log('PROTO', proto);
+      // console.log('PODCAST', $scope.view.podcast);
+      //artworkUrl600, collectionName (title), primaryGenreName, releaseDate, description
+      $scope.view.podcast.collectionName = $scope.view.podcast.title;
+
+      // TODO is it worth it to ping the api more times to get category info?
+      // TODO is releaseDate relevant for a podcast? We do have that info for episodes
+      $scope.view.podcast.primaryGenreName = '';
+      $scope.view.podcast.releaseDate = '';
+      // $scope.view.podcast.description = '';
+      if($scope.view.podcast.image_files && $scope.view.podcast.image_files[0]){
+        $scope.view.podcast.artworkUrl600 =
+          ($scope.view.podcast.image_files[0].url.thumb) ?
+            $scope.view.podcast.image_files[0].url.thumb : $scope.view.podcast.image_files[0].url.full;
+      }
 
       if ($scope.view.podcast.eCollection) {
-        console.log('LEN', $scope.view.podcast.eCollection.length);
-        var entries = $scope.view.podcast.filter(function (itm) {
-          console.log('REDUCER', itm);
+        // console.log('LEN', $scope.view.podcast.eCollection.length);
+
+        var entries = $scope.view.podcast.eCollection.filter(function (itm) {
+          // console.log('REDUCER', itm);
+          //title, publishedDate, contentSnippet
+
+          // digitalLocation ???? - on first try, file didn't yield a file
+
           if (itm.audio_files && itm.audio_files.length > 0) {
-      //       var audio = itm.audio_files[0];
-      //       itm.url = formatProtocolFilter(audio.url[0], proto);
-      //       itm.filesize = itm.duration;
-      //       itm.type = "audio/mpeg";
-      //
-      //       return (itm.url && itm.url.trim().length > 0)
+            var audio = itm.audio_files[0];
+            // TODO filter urls
+            itm.url = formatProtocolFilter(audio.url[0], proto);
+
+            if (itm.url && itm.url.trim().length > 0 && itm.url.trim().toLowerCase().indexOf('.mp') !== -1){
+              itm.publishedDate = itm.date_added;
+              itm.contentSnippet =
+                (itm.description.trim().length > 255) ?
+                  itm.description.trim().substr(0, 255) + '...' :
+                  itm.description.trim();
+              itm.filesize = itm.duration;
+              itm.type = "audio/mpeg";
+              return true;
+            }
           }
+          return false;
         });
       } else {
         $scope.view.episodes = [];// reset
       }
-
       // console.log('ENTRIES', entries);
-      // $scope.view.episodes = entries;
+      $scope.view.episodes = entries;
 
     })
     .catch(function(err){
-      // TODO log errors "can't connect" etc
-      $scope.view.errors = [err];
+      // console.log('ERROR', err);
+      $scope.view.errors = ['We\'re sorry, there is no information for that podcast'];
     });
 
+    // END OF AUDIOSEAR.CH search
 
 
-
-  } else {
+  } else { // iTunes search
 
     $http.jsonp('https://itunes.apple.com/lookup', {
       params: {
@@ -94,8 +124,6 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
       $scope.view.errors = [err];
     });
   }
-
-
 
   $scope.followPodcast = function () {
     var userId = $rootScope.currentUser.id;

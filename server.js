@@ -109,14 +109,7 @@ app.get('/api/testApi', apiController.testApi);
 // app.get('/api/episodes/search', apiController.episodesSearch);
 
 app.get('/api/:itunes_podcast_id/episodes',
-  apiController.getFedPodcastEpisodes)
-
-//app.get('/api/podcast/:id', apiController.getPodcast);
-// console.log('SETUP API ROUTE');
-// app.get('/api/envkey',
-//   apiController.apiEnvKey);
-// app.post('/api/envkey/:key',
-//   apiController.apiEnvKey);
+  apiController.getFedPodcastEpisodes);
 
 
 app.get('*', function(req, res) {
