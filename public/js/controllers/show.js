@@ -7,6 +7,11 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
     max: 5
   }]
 
+  $http.get('/api/users/' + $rootScope.currentUser.id + '/follow')
+    .then(function(data) {
+      $scope.view.following = data.data[0].following;
+    });
+
   $scope.getSelectedRating = function (rating) {
      console.log(rating);
  }
@@ -101,59 +106,9 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
 
     $http.post(requestUrl, postData)
     .then(function(data){
-      console.log('you are now following this podcast');
+      // console.log('you are now following this podcast')
+      $scope.view.following = !$scope.view.following;
     });
-
-
-
-    // var countToLimit = 0; //Max is 10
-    //
-    // for (var i = 0; i < episodes.length; i++) {
-    //
-    //   countToLimit ++;
-    //
-    //   if (i == episodes.length) {
-    //
-    //     episodeArray.push(episodes[i]);
-    //
-    //     // console.log(i + ': ' + episodes[i]);
-    //
-    //     $scope.addEpisodes = function() {
-    //
-    //       $http.post(reqEpisodesUrl, episodeArray)
-    //       .then(function(data){
-    //         console.log(i + ': ' + data);
-    //       });
-    //
-    //     }();
-    //
-    //
-    //   }  else if (countToLimit < 1) {
-    //
-    //     episodeArray.push(episodes[i]);
-    //
-    //     console.log(i + ': ' + episodes[i]);
-    //
-    //   } else if(countToLimit == 1) {
-    //
-    //     episodeArray.push(episodes[i]);
-    //
-    //     countToLimit = 0;
-    //
-    //     console.log(i + ': ' + episodes[i]);
-    //
-    //     $scope.addEpisodes = function() {
-    //
-    //       $http.post(reqEpisodesUrl, episodeArray)
-    //       .then(function(data){
-    //         console.log(i + ': ' + data);
-    //         episodeArray = [];
-    //       });
-    //
-    //     }();
-    //
-    //
-    //   }
-    // }
   };
+  console.log('$scope:', $scope);
 });
