@@ -22,6 +22,7 @@ var User = require('./models/User');
 var userController = require('./controllers/user');
 var contactController = require('./controllers/contact');
 var apiController = require('./controllers/api');
+var resourceController = require('./controllers/resource');
 
 var app = express();
 
@@ -97,10 +98,6 @@ app.get('/itunesdummydata',
 app.post('/api/users/:user_id/follow/:podcast_id',
   apiController.followPodcast);
 
-// get user data
-// app.get('/api/users/:user_id/dashboard',
-//   apiController.getUserDashboard)
-
 app.get('/api/users/:user_id/follow',
   apiController.getFollows);
 
@@ -116,6 +113,11 @@ app.get('/api/testApi',
 //   apiController.apiEnvKey);
 // app.post('/api/envkey/:key',
 //   apiController.apiEnvKey);
+
+
+app.get('/proxyresource/:resourceurl',
+  resourceController.proxyResource);
+
 
 
 app.get('*', function(req, res) {
