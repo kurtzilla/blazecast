@@ -5821,7 +5821,6 @@ footer {
 
 bc-media-player {
   display: block;
-  position: absolute;
   bottom: 5px;
   /* avoid a parent padding/margin issue */
   width: 100%; }
@@ -6051,7 +6050,6 @@ footer {
   padding: 10px 30px;
   bottom: 0;
   background-color: #f4f4f4;
-  border-top: 1px solid #e0e0e0;
   text-align: center; }
 
 .socialIcons {
