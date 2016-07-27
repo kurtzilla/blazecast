@@ -102,11 +102,37 @@ bc-itunes-search {
   }
 }
 
+.podcastCoverImg {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+}
+.followButton{
+  width: 100px;
+  margin-top: 5px;
+  margin-left: 50px;
+  background-color: black;
+  color: white;
+}
+.podcastTitle {
+  margin-top: -5px;
+}
+.podcastInfo {
+  margin-top: 5px;
+}
+.podcastRating {
+  margin-bottom: 15px;
+  margin-right: 10px;
+  display: inline-block;
+}
+.podcastDescription {
+  margin-top: 5px;
+  line-height: 20px;
+}
 .episode-row {
   max-height:400px;
   overflow: scroll;
 }
-
 .episode-item {
   border:solid #999 1px;
   padding:5px;
@@ -117,4 +143,33 @@ bc-itunes-search {
     margin-bottom:5px;
     color:#999;
   }
+}
+.episodePublishDate {
+  float: right;
+  margin-right: 10px;
+}
+.episodeTitle {
+  margin-right: 10px;
+}
+.moreDetails {
+  display: inline-block;
+  float: right;
+  text-align: center;
+  margin-right: 20px;
+  color: lightblue;
+}
+#playButton {
+  margin-right: 10px;
+}
+.addEpisode {
+  float: right;
+  height: 15px;
+  width: 15px;
+}
+.filterLabel{
+  font-size: 14px;
+}
+.filterSearch {
+  height: 24px;
+  width: 150px;
 }

@@ -5,7 +5,7 @@ exports.serveiTunesDummy = function(req, res, next) {
   res.json(itunesdummydata.data);
 };
 
-exports.addPodcastToFavorites = function (req, res, next) {
+exports.followPodcast = function (req, res, next) {
   var userId = req.params.user_id;
   var providerId = req.params.podcast_id;
   var podcastName = req.body.podcastName;
@@ -33,13 +33,37 @@ exports.addPodcastToFavorites = function (req, res, next) {
         .insert({
           user_id: userId,
           podcast_id: podcastId,
-          favorite: true
+          following: true
         })
     })
     .then(function(data) {
       res.end();
     })
 }
+
+
+exports.getFollows = function(req, res, next) {
+  var userId = req.params.user_id;
+  knex('podcasts')
+    .join('users_podcasts','podcasts.id', '=', 'podcast_id')
+    .where('user_id', userId)
+    .andWhere('following', true)
+    .then(function(follows) {
+      res.json(follows)
+    })
+};
+
+// exports.getUserDashboard = function (req, res, next) {
+//   knex.queryBuilder()
+//     .select('podcasts.name')
+//     .from('podcasts')
+//     .innerJoin('users_podcasts', 'podcasts.id', 'podcast_id')
+//     .innerJoin('users', 'users.id', 'user_id')
+//     .where('users.id', req.params.user_id)
+//     .then(function(data) {
+//       res.json(data);
+//     });
+// };
 
 /* This portion of the api will only return non-sensitive key values */
 //
@@ -49,6 +73,18 @@ exports.testApi = function(req, res) {
   .then(function(data){
     res.json(200, data);
   });
+}
+
+
+exports.getPodcastEpisodes = function(req, res, next){
+  var providerId = req.params.podcast_id;
+
+}
+
+// TODO this is actually an oAuth auth call - might not need
+exports.episodesSearch = function(req, res){
+  console.log('hit Episode Search API');
+
 }
 
 
