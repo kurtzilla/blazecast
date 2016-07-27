@@ -1,5 +1,10 @@
+// require('dotenv').config();
+
 var knex = require('../db/knex');
 var itunesdummydata = require('../itunesdummydata');
+// var Audiosearch = require('../lib/audiosearch-client');
+// var audiosearch = new Audiosearch(process.env.AUDIOSEARCH_KEY, process.env.AUDIOSEARCH_SECRET);
+
 
 exports.serveiTunesDummy = function(req, res, next) {
   res.json(itunesdummydata.data);
@@ -92,16 +97,54 @@ exports.testApi = function(req, res) {
 }
 
 
-exports.getPodcastEpisodes = function(req, res, next){
-  var providerId = req.params.podcast_id;
+// /api/:podcastId/episodes
+exports.getFedPodcastEpisodes = function(req, res, next){
+  //
+  // var podcast = {};
+  // var pId = req.params.itunes_podcast_id;
+  // // console.log('BEGIN API CALL', pId);
+  // // take the id and get episodes from
+  // // var url = '?itunes_id=' + pId;
+  //
+  // // info for api call
+  // // https://www.audiosear.ch/developer#!/shows/get_shows_itunes_id_id
+  // // GET /shows?itunes_id={id}
+  // // https://www.audiosear.ch/api/shows?itunes_id=1598914170424545
+  // audiosearch.get('/shows', {'itunes_id':pId})
+  // .then(function(data){
+  //   // console.log('DATA', data);
+  //   podcast = data;
+  //   var episodePromises = [];
+  //
+  //   if(podcast.episode_ids.length > 0){
+  //     podcast.episode_ids.forEach(function(itm){
+  //       episodePromises.push(
+  //         audiosearch.getEpisode(itm)
+  //       );
+  //     });
+  //   }
+  //   return Promise.all(episodePromises);
+  // })
+  // .then(function(data){
+  //   // console.log('EPISODES', data);
+  //   podcast.eCollection = data;
+  //
+  //   res.send(podcast);
+  // })
+  // .catch(function(err){
+  //   console.log('ERROR', err);
+  // });
+  //
+  //
+
 
 }
 
-// TODO this is actually an oAuth auth call - might not need
-exports.episodesSearch = function(req, res){
-  console.log('hit Episode Search API');
-
-}
+// // TODO this is actually an oAuth auth call - might not need
+// exports.episodesSearch = function(req, res){
+//   console.log('hit Episode Search API');
+//
+// }
 
 
 /**

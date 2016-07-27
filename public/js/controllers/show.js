@@ -1,14 +1,50 @@
 app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams, $http, rssFeed, formatProtocolFilter) {
 
   $scope.view = {};
+  $scope.view.podcast = {};
+  $scope.view.episodes = [];
 
-  var _useItunes = false;
+  var proto = $location.$$protocol;
+  var _useItunes = true;
+
 
   if(!_useItunes){
 
-    // Call api to get episodes on our behalf
+    // Call api to get episodes on our behalf - use podcast id
     // /api/:podcastId/episodes
+    $http.get('/api/' + $stateParams.provider_id + '/episodes')
+    .then(function(data){
+      // display returned collection of episodes
+      // console.log('FINAL', data);
+      $scope.view.podcast = data.data;
+      console.log('FINAL', $scope.view.podcast);
+      console.log('PROTO', proto);
 
+      if ($scope.view.podcast.eCollection) {
+        console.log('LEN', $scope.view.podcast.eCollection.length);
+        var entries = $scope.view.podcast.filter(function (itm) {
+          console.log('REDUCER', itm);
+          if (itm.audio_files && itm.audio_files.length > 0) {
+      //       var audio = itm.audio_files[0];
+      //       itm.url = formatProtocolFilter(audio.url[0], proto);
+      //       itm.filesize = itm.duration;
+      //       itm.type = "audio/mpeg";
+      //
+      //       return (itm.url && itm.url.trim().length > 0)
+          }
+        });
+      } else {
+        $scope.view.episodes = [];// reset
+      }
+
+      // console.log('ENTRIES', entries);
+      // $scope.view.episodes = entries;
+
+    })
+    .catch(function(err){
+      // TODO log errors "can't connect" etc
+      $scope.view.errors = [err];
+    });
 
 
 
@@ -25,20 +61,14 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
       // console.log('DATA', data);
       if (data && data.data && data.data.results && data.data.results.length > 0) {
         $scope.view.podcast = data.data.results[0];
-        //console.log($scope.view.podcast);
         return rssFeed.loadFeed($scope.view.podcast.feedUrl);
       }
     })
     .then(function (feed) {
       // console.log('feed data', feed);
-      // console.log('LOCATION', $location.$$protocol);
-      var proto = $location.$$protocol;
-
-      $scope.view.episodes = [];
 
       if (feed && feed.entries) {
         var entries = feed.entries.filter(function (itm) {
-          // console.log('REDUCER', itm);
           if (itm.mediaGroups && itm.mediaGroups.length > 0) {
             itm.url = formatProtocolFilter(itm.mediaGroups[0].contents[0].url, proto);
             itm.filesize = itm.mediaGroups[0].contents[0].fileSize;
@@ -55,12 +85,13 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
 
         // console.log('ENTRIES', entries);
         $scope.view.episodes = entries;
+      } else {
+        $scope.view.episodes = [];// reset
       }
     })
     .catch(function (err) {
       // console.log('error', err);
       $scope.view.errors = [err];
-      // console.log($scope.view.errors);
     });
   }
 

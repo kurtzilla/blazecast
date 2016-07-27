@@ -105,9 +105,11 @@ app.get('/api/users/:user_id/follow',
 
 app.get('/api/testApi', apiController.testApi);
 
-app.get('/api/episodes/search', apiController.episodesSearch);
 
-app.get('/api/:podcast_itunes_id/episodes', apiController.getPodcastEpisodes)
+// app.get('/api/episodes/search', apiController.episodesSearch);
+
+app.get('/api/:itunes_podcast_id/episodes',
+  apiController.getFedPodcastEpisodes)
 
 //app.get('/api/podcast/:id', apiController.getPodcast);
 // console.log('SETUP API ROUTE');

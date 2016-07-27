@@ -81,6 +81,13 @@ the 274 figure is from here:
 https://itunes.apple.com/us/podcast/kevin-pollaks-chat-show/id314845608?mt=2&ign-mpt=uo%3D4
 
 
+---
+#Audiosearch
+
+TODO get keys for Heroku
+AUDIOSEARCH_KEY
+AUDIOSEARCH_SECRET
+
 
 ---
 # Notes for add_player_from_tutorial branch
