@@ -10,12 +10,17 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http) {
     $scope.view.following = data.data;
   })
 
-  // $scope.unfollowPodcast = function(podcast) {
-  //   $http.get('/api/podcasts/' + podcast.id + '/unfollow')
-  //   .then(function(data) {
-  //     console.log(data)
-  //   })
-  // }
+  $scope.followPodcast = function(podcast) {
+
+    delete $scope.view.following[podcast.id]
+
+    $http.get('/api/podcasts/' + podcast.id + '/follow')
+    .then(function(data) {
+      console.log(data)
+
+
+    })
+  }
 
   $scope.getEpisodes = function(podcast) {
 
