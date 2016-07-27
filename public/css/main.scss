@@ -48,21 +48,20 @@ body {
 }
 
 footer {
-  position: absolute;
   width: 100%;
   height: 44px;
   padding: 10px 30px;
   bottom: 0;
-  background-color: #f4f4f4;
+  background-color: #383539;
   text-align: center;
 }
 .socialIcons{
   height: 40px;
-  background-color: #f4f4f4;
+  background-color: #383539;
   cursor: pointer;
 }
 #iconContainer {
-  background-color: #f4f4f4;
+  background-color: #383539;
 }
 
 
@@ -315,4 +314,44 @@ textarea {
   &:hover {
     bottom: 5px;
   }
+}
+
+#episodeView {
+  height: 53vh;
+  width: 100vh;
+  overflow-y: scroll;
+}
+
+#episodeDiv {
+  height: 50px;
+  margin: 8px;
+  // border: 1px solid black;
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  strong {
+    font-family: sans-serif;
+    font-size: 15px;
+  }
+  button {
+    background-color: blue;
+    color: white;
+    border: none;
+    // margin-top: -8px;
+    height: 30px;
+  }
+}
+#unfollowBtn {
+    position: relative;
+    height: 25px;
+    width: 25px;
+    background-color: black;
+    color: white;
+    border: none;
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    margin-left: -34px;
+    margin-top: -10px;
 }
