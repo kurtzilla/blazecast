@@ -66,6 +66,7 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
 
     var episodeArray = [];
 
+
     $http.post(requestUrl, postData)
     .then(function(data){
       console.log('you are now following this podcast');
@@ -75,45 +76,43 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
 
     for (var i = 0; i < episodes.length; i++) {
 
-      var parseArray = JSON.stringify(episodeArray);
-
       countToLimit ++;
 
       if (i == episodes.length) {
 
         episodeArray.push(episodes[i]);
 
-        console.log(i + ': ' + parseArray);
+        // console.log(i + ': ' + episodes[i]);
 
         $scope.addEpisodes = function() {
 
-          $http.post(reqEpisodesUrl, parseArray)
+          $http.post(reqEpisodesUrl, episodeArray)
           .then(function(data){
-            console.log(i + ': ' + JSON.parse(data));
+            console.log(i + ': ' + data);
           });
 
         }();
 
 
-      }  else if (countToLimit < 8) {
+      }  else if (countToLimit < 1) {
 
         episodeArray.push(episodes[i]);
 
-        console.log(i + ': ' + parseArray);
+        console.log(i + ': ' + episodes[i]);
 
-      } else if(countToLimit == 8) {
+      } else if(countToLimit == 1) {
 
         episodeArray.push(episodes[i]);
 
         countToLimit = 0;
 
-        console.log(i + ': ' + parseArray);
+        console.log(i + ': ' + episodes[i]);
 
         $scope.addEpisodes = function() {
 
-          $http.post(reqEpisodesUrl, parseArray)
+          $http.post(reqEpisodesUrl, episodeArray)
           .then(function(data){
-            console.log(i + ': ' + JSON.parse(data));
+            console.log(i + ': ' + data);
             episodeArray = [];
           });
 
