@@ -5958,6 +5958,13 @@ bc-itunes-search {
   height: 24px;
   width: 150px; }
 
+.grid-item {
+  float: left;
+  width: 150px;
+  height: 150px;
+  margin: 15px;
+  border: 2px solid rgba(0, 0, 0, 0.5); }
+
 #blazecast {
   border: 1px solid black;
   text-align: center;
