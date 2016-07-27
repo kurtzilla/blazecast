@@ -8,7 +8,6 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http) {
 
   $http.get('/api/users/' + $rootScope.currentUser.id + '/follow').then(function(data) {
     $scope.view.following = data.data;
-    console.log('HERE')
   })
 
   // $scope.unfollowPodcast = function(podcast) {
@@ -19,14 +18,10 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http) {
   // }
 
   $scope.getEpisodes = function(podcast) {
-    // var requestUrl = '/api/podcasts/' + podcast.id;
-    // console.log(podcast);
-    // console.log('Find episodes for podcast ' + JSON.stringify($scope.view.following[podcast.id - 1].episodes));
 
     $http.get('/api/podcasts/' + podcast.id + '/follow')
     .then(function(data){
       $scope.view.episodes = data.data;
-      console.log($scope.view.episodes)
     });
   }
 
