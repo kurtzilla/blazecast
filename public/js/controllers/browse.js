@@ -23,6 +23,7 @@ angular.module('MyApp')
       Media.search({ query: $scope.view.query}, function(data) {
         $scope.displayResults = true;
         $scope.view.podcasts = data.results;
+
       });
     } else {
       $http.get('/itunesdummydata').then(function(data){
