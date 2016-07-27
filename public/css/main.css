@@ -6020,8 +6020,6 @@ ul.rating {
   width: 100%;
   height: calc(100% - 56px);
   color: #383539; }
-  #abstract h1 {
-    margin: 0; }
 
 #bgvid {
   position: relative;
@@ -6029,7 +6027,7 @@ ul.rating {
   width: 100%;
   height: calc(100% - 56px);
   z-index: -100;
-  opacity: 0.5;
+  opacity: 0.2;
   background-size: cover; }
 
 .overlay {
@@ -6044,6 +6042,13 @@ ul.rating {
   flex-direction: column;
   align-items: center;
   justify-content: center; }
+  .overlay h1 {
+    font-size: 5em; }
+  .overlay p {
+    margin-top: 50px;
+    margin-left: 250px;
+    margin-right: 250px;
+    font-size: 30px; }
 
 .abstract {
   position: relative;
