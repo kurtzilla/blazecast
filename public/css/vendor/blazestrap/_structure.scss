@@ -6,14 +6,12 @@ body {
 }
 
 footer {
-  height:30px !important;
+  height: 1% !important;
   background-color: #383539;
   span {
     font-size:9px;
     color:#ccc;
   }
-}
-.socialIcons {
 }
 
 bc-media-player {
@@ -228,12 +226,17 @@ ul.rating {
   font-family: 'Play', sans-serif;
 }
 #blazecast {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-around;
+
   position:relative;
   text-align: center;
   width: 100vw;
   height: 100vh;
   background-color: #383539;
-  padding-top: 50px;
+  padding-top: 1%;
   h1 {
     padding-bottom: 50px;
     margin-bottom: 0;
@@ -243,6 +246,11 @@ ul.rating {
    -webkit-text-fill-color: transparent;
   }
 }
+
+#arrow {
+  position: relative;
+}
+
 #logoImg {
   margin-top: 12%;
 }
@@ -251,14 +259,14 @@ ul.rating {
   position: relative;
   text-align: center;
   width: 100%;
-  height: calc(100% - 56px);
+  height: 100%;
   color: #383539;
 }
 #bgvid {
   position:relative;
   top: 50%;
   width: 100%;
-  height: calc(100% - 56px);
+  height: 100%;
   z-index: -100;
   opacity: 0.1;
   background-size:cover;
@@ -331,14 +339,14 @@ ul.rating {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-color: #afaeaf;
-    padding: 50px;
+    padding: 10%;
   }
   div {
-    padding-bottom: 50px;
-    margin-bottom: 10px;
+    padding-bottom: 10%;
+    margin-bottom: 1%;
     background-color: #ccc;
-    padding-left: 250px;
-    padding-right: 250px;
+    padding-left: 20%;
+    padding-right: 20%;
     margin-left: 5px;
     margin-right: 5px;
     h3, p {
