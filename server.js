@@ -97,19 +97,14 @@ app.get('/itunesdummydata',
 app.post('/api/users/:user_id/follow/:podcast_id',
   apiController.followPodcast);
 
-// get user data
-// app.get('/api/users/:user_id/dashboard',
-//   apiController.getUserDashboard)
+
 
 app.get('/api/users/:user_id/follow',
   apiController.getFollows);
-
-
-app.get('/api/testApi', apiController.testApi);
-
-
-// app.get('/api/episodes/search', apiController.episodesSearch);
-
+app.get('/api/podcasts/:podcast_id/follow',
+  apiController.getEpisodes);
+app.get('/api/testApi',
+  apiController.testApi);
 app.get('/api/podcasts/:itunes_podcast_id/episodes',
   apiController.getFedPodcastEpisodes);
 

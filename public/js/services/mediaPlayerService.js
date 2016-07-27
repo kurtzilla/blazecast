@@ -5,6 +5,9 @@ app.service('mediaPlayerService', function($sce, $window){
 
   // videogular only uses src and type attribs
   this.convertEpisodeToSource = function(episode){
+
+    console.log('hit 2')
+
     var source = {};
     source.src = $sce.trustAsResourceUrl(episode.audio_url);
     // source.src = episode.url;
@@ -14,6 +17,8 @@ app.service('mediaPlayerService', function($sce, $window){
   };
 
   this.addEpisodeToPlayer = function(episode){
+
+    console.log('hit 1')
     // console.log('THIS?', episode);
     // TODO set attribute on player for title?
     this.sourceQueue = [this.convertEpisodeToSource(episode)];

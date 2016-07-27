@@ -140,23 +140,39 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
   }
 
   $scope.followPodcast = function () {
+    // console.log($scope.view.episodes.slice(0,-10))
     var userId = $rootScope.currentUser.id;
     var podcastId = $scope.view.podcast.collectionId;
     var podcastName = $scope.view.podcast.collectionName;
     var feedUrl = $scope.view.podcast.feedUrl;
+
     var images =  $scope.view.podcast.image_url;
+    var episodes = $scope.view.episodes;
 
     var requestUrl = '/api/users/' + userId + '/follow/' + podcastId;
 
     var postData = {
       podcastName: podcastName,
       feedUrl: feedUrl,
-      images: images
+      images: images,
+      episodes: []
     };
+
+    var episodeArray = [];
+
+    for (var i = 0; i < episodes.length; i++) {
+      var episode = {
+        title: episodes[i].title,
+        url: episodes[i].url,
+
+      }
+      postData.episodes.push(episode);
+    }
 
     $http.post(requestUrl, postData)
     .then(function(data){
       console.log('you are now following this podcast');
     });
+
   };
 });
