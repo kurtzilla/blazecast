@@ -18,22 +18,34 @@
           ng-model="result">
         <span class="img-wrapper"><img ng-src="{{result.artworkUrl30 | formatProtocol}}"/></span>
         <span><strong>{{result.collectionName}}</strong> {{result.artistName}}</span>
+        <span>{{view.genre}}</span>
       </li>
     </ul>
   </div>
 </div>
 
 <label class='filterLabel' for="filter">Filter By:</label>
-<select name='filter' ng-model='filterBy'>
-  <option value="rating">Rating</option>
-  <option value="genre">Genre</option>
-  <option value="publishedDate">Oldest</option>
-  <option value="-publishedDate">Newest</option>
+<select name='filter' ng-model='view.filterBy'>
+  <option disabled>Subject</option>
+  <option value="Food">Food</option>
+  <option value="Literature">Literature</option>
+  <option value="Design">Design</option>
+  <option value="Performing Arts">Performing Arts</option>
+  <option value="Visual Arts">Visual Arts</option>
+  <option value="Comedy">Comedy</option>
+  <option value="Education">Education</option>
+  <option value="Training<">Training</option>
+  <option value="Music">Music</option>
+  <option value="Tech News">Tech News</option>
+  <option>Outdoor</option>
+  <option>Training</option>
+  <option value="Music">Music</option>
 </select>
-<label class='filterLabel'for="search">Search By Title:</label>
-<input class='filterSearch' type="text" ng-model='searchGenre'>
+<!-- <label class='filterLabel'for="search">Search By Title:</label> -->
+<!-- <input class='filterSearch' type="text" ng-model='searchGenre'> -->
 </div>
 
 <div class="grid">
-  <img ng-repeat='podcast in view.podcasts | orderBy:filterBy | filter:searchGenre' ng-click='showPage(podcast.collectionId)'class='grid-item'ng-src="{{podcast.artworkUrl600}}" alt="">
+  <img ng-repeat='podcast in view.podcasts | filter: filterByCategory' ng-click='showPage(podcast.collectionId)'class='grid-item'ng-src="{{podcast.artworkUrl600}}" alt="">
+  <div></div>
 </div>
