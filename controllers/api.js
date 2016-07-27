@@ -12,7 +12,6 @@ exports.serveiTunesDummy = function(req, res, next) {
 
 exports.followPodcast = function (req, res, next) {
 
-  console.log(req.body);
 
   var userId = req.params.user_id;
   var providerId = req.params.podcast_id;
@@ -23,7 +22,6 @@ exports.followPodcast = function (req, res, next) {
   var podcastId;
 
 
-  console.log(episodes)
 
   // var episodes =
 
@@ -45,7 +43,6 @@ exports.followPodcast = function (req, res, next) {
     }
   })
   .then(function(data) {
-    console.log(data);
     return data;
   })
   .then(function(data) { // check to see if podcast is already followed by this user
@@ -87,57 +84,25 @@ exports.followPodcast = function (req, res, next) {
 
     }
   });
-
-    // knex('episodes')
-    // .insert({
-    //   podcast_id: providerId,
-    //   name: episodes.title
-    // })
-    // .catch(function(err) {
-    //   console.log(err);
-    // })
 }
-
-// exports.addEpisodes = function(req, res, next) {
-//   console.log(req);
-// }
-
-// exports.getUserDashboard = function (req, res, next) {
-//   knex.queryBuilder()
-//     .select('podcasts.images', 'podcasts.name', 'podcasts.feedUrl')
-//     .from('podcasts')
-//     .innerJoin('users_podcasts', 'podcasts.id', 'podcast_id')
-//     .innerJoin('users', 'users.id', 'user_id')
-//     .where('users.id', req.params.user_id)
-//     .then(function(data) {
-//       console.log(data)
-//       res.json(data);
-//     });
 
 exports.getFollows = function(req, res, next) {
   var userId = req.params.user_id;
-  console.log('through')
   knex('podcasts')
     .join('users_podcasts','podcasts.id', '=', 'podcast_id')
     .where('user_id', userId)
     .andWhere('following', true)
     .then(function(follows) {
-      // console.log(follows)
       res.json(follows)
     })
 
 };
 
 exports.getEpisodes = function(req, res, next) {
-  console.log("SOMETHING")
   knex('episodes')
-  // .join('users_podcasts','podcasts.id', '=', 'podcast_id')
   .select('*')
   .where('podcast_id', req.params.podcast_id)
-  // .andWhere('following', true)
   .then(function(episodes) {
-    // console.log(follows)
-    console.log(episodes)
     res.json(episodes)
   })
 };
@@ -145,7 +110,6 @@ exports.getEpisodes = function(req, res, next) {
 /* This portion of the api will only return non-sensitive key values */
 //
 exports.testApi = function(req, res) {
-  // console.log('REQ', req.body);
   return knex('users').select('*').first()
   .then(function(data){
     res.json(200, data);
@@ -158,14 +122,12 @@ exports.testApi = function(req, res) {
 // https://www.audiosear.ch/api/shows?itunes_id=1598914170424545
 exports.getFedPodcastEpisodes = function(req, res, next){
 
-  // console.log('BEGIN API CALL', req.params);
   var podcast = {};
   var pId = req.params.itunes_podcast_id;
 
   return audiosearch.get('/shows', {'itunes_id':pId})
   .then(function(data){
     podcast = data;
-    // console.log('DATA FROM REMOTE', data);
     var episodePromises = [];
     if(podcast.episode_ids.length > 0){
       podcast.episode_ids.forEach(function(itm){
