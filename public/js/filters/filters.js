@@ -1,5 +1,5 @@
 
-app.filter('removeProtocol', function() {
+app.filter('removeProtocol', function($location) {
   return function (input) {
     if(input){
       return input.replace(/^http:\/\//g, '')

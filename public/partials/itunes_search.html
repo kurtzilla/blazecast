@@ -18,7 +18,7 @@
           ng-repeat="result in results"
           style="unstyled-list"
           ng-model="result">
-        <span class="img-wrapper"><img ng-src="{{result.artworkUrl30 | removeProtocol }}"/></span>
+        <span class="img-wrapper"><img ng-src="{{result.artworkUrl30 }}"/></span>
         <span><strong>{{result.collectionName}}</strong> {{result.artistName}}</span>
       </li>
     </ul>
