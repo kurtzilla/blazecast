@@ -10,6 +10,7 @@ var jwt = require('jsonwebtoken');
 var moment = require('moment');
 var request = require('request');
 var sass = require('node-sass-middleware');
+var favicon = require('serve-favicon');
 
 // Load environment variables from .env file
 dotenv.load();
@@ -25,6 +26,7 @@ var apiController = require('./controllers/api');
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
+app.use(favicon(path.join(__dirname, './public/images', 'favicon.ico')));
 app.use(compression());
 app.use(sass({ src: path.join(__dirname, 'public'), dest: path.join(__dirname, 'public') }));
 app.use(logger('dev'));
@@ -119,6 +121,15 @@ app.get('/api/testApi',
 app.get('*', function(req, res) {
   res.redirect('/#' + req.originalUrl);
 });
+
+// app.post('/api/users/:user_id/playlists/new',
+//   apiController.newPlaylist);
+//
+// app.post('/api/users/:user_id/save/:episode_id',
+//   apiController.saveEpisode);
+//
+// app.post('/api/users/:user_id/favorite/:episode_id',
+//   apiController.favoriteEpisode);
 
 
 // Production error handler

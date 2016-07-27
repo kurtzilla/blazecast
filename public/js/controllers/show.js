@@ -1,6 +1,16 @@
 app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams, $http, rssFeed, formatProtocolFilter) {
 
   $scope.view = {};
+  $scope.view.rating = 0;
+  $scope.view.ratings = [{
+    current: 3,
+    max: 5
+  }]
+
+  $scope.getSelectedRating = function (rating) {
+     console.log(rating);
+ }
+
 
   // $scope.view.following = [];
 
