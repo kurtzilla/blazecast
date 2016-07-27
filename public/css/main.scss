@@ -317,6 +317,19 @@ textarea {
   }
 }
 
+#unfollowBtn {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  background-color: black;
+  color: white;
+  border: none;
+  box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  margin-left: -34px;
+  margin-top: -10px;
+}
+
 #episodeView {
   height: 53vh;
   width: 100vh;

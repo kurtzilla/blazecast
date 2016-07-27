@@ -11,6 +11,10 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http) {
     console.log('HERE')
   })
 
+  $scope.unfollowPodcast = function(podcast) {
+    $http.post('/api/podcasts/' + podcast.id + '/follow')
+  }
+
   $scope.getEpisodes = function(podcast) {
     // var requestUrl = '/api/podcasts/' + podcast.id;
     // console.log(podcast);

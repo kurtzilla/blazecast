@@ -107,6 +107,9 @@ app.get('/api/users/:user_id/follow',
 app.get('/api/podcasts/:podcast_id/follow',
   apiController.getEpisodes);
 
+app.post('/api/podcasts/:podcast_id/follow',
+  apiController.unfollowPodcast);
+
 
 app.get('/api/testApi',
   apiController.testApi);
