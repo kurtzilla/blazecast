@@ -2,8 +2,8 @@
 app.filter('removeProtocol', function() {
   return function (input) {
     if(input){
-      return input.replace(/^http:\/\//g, '//')
-                  .replace(/^https:\/\//g, '//');
+      return input.replace(/^http:\/\//g, '')
+                  .replace(/^https:\/\//g, '');
     }
   }
 });
