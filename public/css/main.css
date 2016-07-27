@@ -5983,6 +5983,10 @@ bc-itunes-search {
   width: 100vw;
   height: 100vh; }
 
+.teamImage {
+  border: 1px solid black;
+  border-radius: 50%; }
+
 html {
   position: relative;
   min-height: 100%; }
