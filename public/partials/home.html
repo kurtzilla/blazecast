@@ -1,40 +1,21 @@
-<div class="container-fluid">
+<bc-itunes-search></bc-itunes-search>
 
-  <bc-itunes-search></bc-itunes-search>
-
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="panel">
-        <div class="panel-body">
-          <h3>Heading</h3>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-            condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-            Donec sed odio dui.</p>
-          <a href="#" role="button" class="btn btn-default">View details</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="panel">
-        <div class="panel-body">
-          <h3>Heading</h3>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-            condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-            Donec sed odio dui.</p>
-          <a href="#" role="button" class="btn btn-default">View details</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="panel">
-        <div class="panel-body">
-          <h3>Heading</h3>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-            condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-            Donec sed odio dui.</p>
-          <a href="#" role="button" class="btn btn-default">View details</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<div id="blazecast">
+  <div><img src="http://www.clker.com/cliparts/q/9/x/q/Y/T/flame-torch.svg" alt="" height='175px'></div>
+</div>
+<hr>
+<div id="abstract">
+  <h1 class='home'>About Blazecast</h1>
+  <p class='abstract'>Find yourself wishing you had a better way to store and manage your podcasts? Look no further. Blazecast saves your favorite podcasts to your very own Dashboard. Browse, listen, and add podcasts to your collection easily. Sign up today to get started!  </p>
+</div>
+<hr>
+<div id="meetTheTeam">
+  <h1 class='home'>Meet the Team</h1>
+  <div ng-repeat='teamMember in view.teamMembers'
+      ng-class-odd="'left'"
+        ng-class-even="'right'">
+    <h3 class='home'>{{teamMember.name}}</h3>
+   <img class='imageHolder' ng-src="{{teamMember.imageUrl}}" alt="">
+   <p>{{teamMember.about}}</p>
+   </div>
 </div>

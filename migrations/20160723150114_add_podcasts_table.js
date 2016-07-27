@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
         table.string('provider_name');
         table.string('name');
         table.string('feedUrl');
+        table.string('images');
     })
 };
 

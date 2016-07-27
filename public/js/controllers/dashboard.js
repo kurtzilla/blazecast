@@ -1,5 +1,4 @@
 
-
 app.controller('DashboardCtrl', function ($scope, $rootScope, $http) {
   var user = $rootScope.currentUser;
 
@@ -7,13 +6,8 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http) {
     userName: user.name
   };
 
-  $http.get('/api/users/' + user.id + '/dashboard')
-    .then(function (data) {
-      console.log(data);
-      $scope.view.following = data.data;
-    })
-
-  // console.log(user);
-
+  $http.get('/api/users/' + $rootScope.currentUser.id + '/follow').then(function(data) {
+    $scope.view.following = data.data;
+  })
 
 });

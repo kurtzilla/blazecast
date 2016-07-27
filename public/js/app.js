@@ -1,6 +1,5 @@
 var app = angular.module( 'MyApp', ['ui.router', 'satellizer', 'ngResource',
-    'ngSanitize', 'com.2fdevs.videogular', 'com.2fdevs.videogular.plugins.controls',
-    ])
+    'ngSanitize', 'com.2fdevs.videogular', 'com.2fdevs.videogular.plugins.controls'])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
     $urlRouterProvider.otherwise("/");
 
@@ -27,6 +26,11 @@ var app = angular.module( 'MyApp', ['ui.router', 'satellizer', 'ngResource',
       controller: 'SignupCtrl',
       resolve: { skipIfAuthenticated: skipIfAuthenticated }
     })
+    .state('browse', {
+      url: '/browse',
+      templateUrl: 'partials/browse.html',
+      controller: 'BrowseCtrl'
+    })
     .state('account', {
       url: '/account',
       templateUrl: 'partials/profile.html',
@@ -49,11 +53,6 @@ var app = angular.module( 'MyApp', ['ui.router', 'satellizer', 'ngResource',
       url: '/show/:provider_id',
       templateUrl: 'partials/show.html',
       controller: 'ShowCtrl'
-    })
-    .state('itunesdummy', {
-      url: '/itunesdummy',
-      templateUrl: 'partials/itunesdummy.html',
-      controller: 'DumCtrl'
     })
     .state('dashboard', {
       url: '/dashboard',
