@@ -17,7 +17,7 @@
 
     <div ng-repeat="podcast in view.following track by $index">
 
-      <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="getDummy()">
+      <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="getEpisodes(podcast)">
 
         <img src="{{podcast.images}}" ng-click="searchTitle = podcast.name"></img>
         <!-- <strong>{{podcast.name}}</strong> -->
@@ -25,6 +25,9 @@
 
     </div>
 
+  </div>
+  <div id="episodeDiv" ng-repeat="episode in view.episodes">
+    <h1>{{episode.name}}</h1>
   </div>
   <!-- <div class="row episode-row">
     <div class="col-xs-12">
