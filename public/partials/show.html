@@ -13,10 +13,13 @@
   </div>
 
   <div class="row podcast-title-row">
-    <div class="col-xs-2 col-xs-offset-1">
+    <div class="col-xs-3">
       <div class="img-wrapper">
         <img class='podcastCoverImg' ng-src="{{view.podcast.artworkUrl600 | formatProtocol}}" />
-        <button class='followButton' ng-click="followPodcast()">Follow</button>
+        <button class='followButton' ng-click="followPodcast()">
+          <span ng-if="!view.following">Follow</span>
+          <span ng-if="view.following">Unfollow</span>
+        </button>
       </div>
     </div>
     <div class="col-xs-6 podcast-title-col">
@@ -25,7 +28,6 @@
        <!-- <p>{{rating.current}}</p> -->
        <h4 class='ratingTitle'>Rating: </h4>
        <div class='stars' star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
-
      </div>
     </div>
     <div class="col-xs-8 podcast-title-col">
@@ -39,16 +41,14 @@
     <div class="col-xs-8 podcast-title-col">
        <h5 class='podcastDescription'>
          <strong>Description: </strong>
-         Lorem ipsum dolor sit amet, diam faucibus ut semper rhoncus wisi, dolor quisque libero facilisis dolor, aenean turpis nibh integer dictum. Aliquam nec dui consequat dui bibendum suspendisse, lorem cras, libero nec.
+         {{view.podcast.description}}
       </h5>
       <hr>
     </div>
   </div>
 
-      <div class="col-xs-7 podcast-title-col">
-
-      </div>
-    <div class="col-xs-5 podcast-title-col">
+  <div class="row">
+    <div class="col-xs-5 col-xs-offset-7">
       <label class='filterLabel' for="filter">Filter By:</label>
       <select name='filter' ng-model='filterBy'>
           <option value="rating">Rating</option>
@@ -72,7 +72,5 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div><!-- end episode row -->
 </div>
-
-<!-- <strong>{{view.podcast.collectionId}}</strong> -->

@@ -97,8 +97,8 @@ exports.followPodcast = function (req, res, next) {
 exports.unfollowPodcast = function(req, res, next) {
   // console.log('podcast' + req.params.podcast_id);
   knex('podcasts')
-  .where({ 'id': req.params.podcast_id })
-  .del()
+  .where({ id: req.params.podcast_id })
+  .delete
   // .then(function(data) {
   //   console.log(data);
   // })

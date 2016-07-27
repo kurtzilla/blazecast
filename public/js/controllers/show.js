@@ -1,18 +1,8 @@
 app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams, $http, rssFeed, formatProtocolFilter) {
 
   $scope.view = {};
-  $scope.view.rating = 0;
-  $scope.view.ratings = [{
-    current: 3,
-    max: 5
-  }]
 
-  $scope.getSelectedRating = function (rating) {
-     console.log(rating);
- }
-
-
-  // $scope.view.following = [];
+  $scope.view.following = [];
 
   $http.jsonp('https://itunes.apple.com/lookup', {
     params: {
@@ -95,13 +85,13 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
 
     // console.log($scope.view.following.length);
 
-    // ($scope.view.following).push(postData);
+    ($scope.view.following).push(postData);
 
 
 
     $http.post(requestUrl, postData)
     .then(function(data){
-      console.log('you are now following this podcast');
+      // console.log('you are now following this podcast');
     });
 
 
