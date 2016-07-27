@@ -106,7 +106,8 @@ app.get('/api/podcasts/:podcast_id/follow',
   apiController.getEpisodes);
 
 
-app.get('/api/testApi', apiController.testApi);
+app.get('/api/testApi',
+  apiController.testApi);
 //app.get('/api/podcast/:id', apiController.getPodcast);
 // console.log('SETUP API ROUTE');
 // app.get('/api/envkey',

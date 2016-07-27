@@ -1,7 +1,6 @@
 var knex = require('../db/knex');
 var itunesdummydata = require('../itunesdummydata');
 
-var podcastCount = 0;
 
 exports.serveiTunesDummy = function(req, res, next) {
   res.json(itunesdummydata.data);
@@ -9,7 +8,7 @@ exports.serveiTunesDummy = function(req, res, next) {
 
 exports.followPodcast = function (req, res, next) {
 
-  podcastCount ++;
+  console.log(req.body);
 
   var userId = req.params.user_id;
   var providerId = req.params.podcast_id;
@@ -18,6 +17,7 @@ exports.followPodcast = function (req, res, next) {
   var images = req.body.images;
   var episodes = req.body.episodes;
   var podcastId;
+
 
   console.log(episodes)
 
@@ -39,6 +39,10 @@ exports.followPodcast = function (req, res, next) {
     } else { // podcast found in database
       return new Promise((resolve, reject) => {resolve([data[0].id])}); // return a promise to preserve chain
     }
+  })
+  .then(function(data) {
+    console.log(data);
+    return data;
   })
   .then(function(data) { // check to see if podcast is already followed by this user
     podcastId = data[0];
@@ -68,8 +72,9 @@ exports.followPodcast = function (req, res, next) {
 
       knex('episodes')
       .insert({
-        podcast_id: podcastCount,
-        name: episodes[i].title
+        podcast_id: podcastId,
+        name: episodes[i].title,
+        feedUrl: episodes[i].url
       })
       .catch(function(err) {
         console.log(err);
@@ -123,6 +128,7 @@ exports.getEpisodes = function(req, res, next) {
   console.log("SOMETHING")
   knex('episodes')
   // .join('users_podcasts','podcasts.id', '=', 'podcast_id')
+  .select('*')
   .where('podcast_id', req.params.podcast_id)
   // .andWhere('following', true)
   .then(function(episodes) {
