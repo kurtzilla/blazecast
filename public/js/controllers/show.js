@@ -11,6 +11,11 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
     max: 5
   }]
 
+  $http.get('/api/users/' + $rootScope.currentUser.id + '/follow')
+    .then(function(data) {
+      $scope.view.following = data.data[0].following;
+    });
+
   $scope.getSelectedRating = function (rating) {
     console.log(rating);
   }
@@ -171,8 +176,9 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
 
     $http.post(requestUrl, postData)
     .then(function(data){
-      console.log('you are now following this podcast');
+      // console.log('you are now following this podcast')
+      $scope.view.following = !$scope.view.following;
     });
-
   };
+  console.log('$scope:', $scope);
 });
