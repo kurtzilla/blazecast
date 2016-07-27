@@ -217,10 +217,18 @@ ul.rating {
   font-family: 'Play', sans-serif;
 }
 #blazecast {
-  // border: 1px solid black;
+  position:relative;
   text-align: center;
   width: 100vw;
-  height: 35vh;
+  background-color: #111111;
+  padding-top: 50px;
+  h1 {
+    padding-bottom: 50px;
+    font-size: 5em;
+    background: -webkit-linear-gradient(#fcba00, #910000);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+  }
 }
 
 #abstract {
@@ -242,7 +250,6 @@ ul.rating {
     margin-bottom: 50px;
   }
   div {
-    border-bottom: 1px solid grey;
     padding-bottom: 50px;
     margin-bottom: 10px;
   }

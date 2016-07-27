@@ -3658,7 +3658,6 @@ tbody.collapse.in {
 .navbar {
   position: relative;
   min-height: 56px;
-  margin-bottom: 21px;
   border: 1px solid transparent; }
   .navbar:before, .navbar:after {
     content: " ";
@@ -5997,9 +5996,17 @@ ul.rating {
   font-family: 'Play', sans-serif; }
 
 #blazecast {
+  position: relative;
   text-align: center;
   width: 100vw;
-  height: 35vh; }
+  background-color: #111111;
+  padding-top: 50px; }
+  #blazecast h1 {
+    padding-bottom: 50px;
+    font-size: 5em;
+    background: -webkit-linear-gradient(#fcba00, #910000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; }
 
 #abstract {
   text-align: center;
@@ -6019,7 +6026,6 @@ ul.rating {
   #meetTheTeam h1 {
     margin-bottom: 50px; }
   #meetTheTeam div {
-    border-bottom: 1px solid grey;
     padding-bottom: 50px;
     margin-bottom: 10px; }
 
