@@ -1,6 +1,6 @@
 
 // bc-test
-
+// <bc-test></bc-test>
 app.directive('bcTest', function(){
   return {
     restrict: 'E',
