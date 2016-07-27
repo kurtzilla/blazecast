@@ -3656,9 +3656,9 @@ tbody.collapse.in {
   border-top-left-radius: 0; }
 
 .navbar {
-  position: relative;
+  position: fixed;
+  width: 100%;
   min-height: 56px;
-  margin-bottom: 21px;
   border: 1px solid transparent; }
   .navbar:before, .navbar:after {
     content: " ";
@@ -5821,13 +5821,18 @@ button.close {
 * {
   font-family: 'Play', sans-serif; }
 
+body {
+  background-color: #383539; }
+
 footer {
-  height: 30px !important; }
+  height: 1% !important;
+  background-color: #383539; }
   footer span {
     font-size: 9px;
     color: #ccc; }
 
 bc-media-player {
+  background-color: #ccc;
   display: block;
   bottom: 5px;
   /* avoid a parent padding/margin issue */
@@ -5836,7 +5841,8 @@ bc-media-player {
     width: 100%;
     height: 50px;
     margin: auto;
-    overflow: hidden; }
+    overflow: hidden;
+    margin-top: 50px; }
 
 bc-episode-search-result .btn-play {
   display: inline-block; }
@@ -5999,32 +6005,135 @@ ul.rating {
   font-family: 'Play', sans-serif; }
 
 #blazecast {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-around;
+  position: relative;
   text-align: center;
   width: 100vw;
-  height: 35vh; }
+  height: 100vh;
+  background-color: #383539;
+  padding-top: 1%; }
+  #blazecast h1 {
+    padding-bottom: 50px;
+    margin-bottom: 0;
+    font-size: 5em;
+    background: -webkit-linear-gradient(#fcba00, #910000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; }
+
+#arrow {
+  position: relative; }
+
+#logoImg {
+  margin-top: 12%; }
 
 #abstract {
+  position: relative;
   text-align: center;
-  width: 100vw;
-  height: 49vh; }
+  width: 100%;
+  height: 100%;
+  color: #383539; }
+
+#bgvid {
+  position: relative;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  z-index: -100;
+  opacity: 0.1;
+  background-size: cover; }
+
+.overlay {
+  position: absolute;
+  color: #000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .overlay h1 {
+    background: -webkit-linear-gradient(#fcba00, #910000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 5em; }
+  .overlay p {
+    color: #ccc;
+    margin-top: 50px;
+    margin-left: 250px;
+    margin-right: 250px;
+    font-size: 30px; }
+
+.floating {
+  color: #ccc;
+  -webkit-animation-name: Floatingx;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-name: Floating;
+  -moz-animation-duration: 3s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: ease-in-out;
+  padding: 10%; }
+
+@-webkit-keyframes Floatingx {
+  from {
+    -webkit-transform: translate(0, 0px); }
+  65% {
+    -webkit-transform: translate(0, 15px); }
+  to {
+    -webkit-transform: translate(0, 0px); } }
+
+@-moz-keyframes Floating {
+  from {
+    -moz-transform: translate(0, 0px); }
+  65% {
+    -moz-transform: translate(0, 15px); }
+  to {
+    -moz-transform: translate(0, 0px); } }
 
 .abstract {
+  position: relative;
   text-align: center;
-  margin: 50px 100px;
   font-size: 20px;
   font-family: 'Play', sans-serif; }
 
 #meetTheTeam {
   text-align: center;
-  width: 100vw;
-  height: 100vh;
-  max-height: 400px;
-  overflow: scroll; }
+  background-color: #ccc; }
+  #meetTheTeam h1 {
+    font-size: 5em;
+    margin-top: 0;
+    margin-bottom: 0;
+    background: -webkit-linear-gradient(#fcba00, #910000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: #afaeaf;
+    padding: 10%; }
+  #meetTheTeam div {
+    padding-bottom: 10%;
+    margin-bottom: 1%;
+    background-color: #ccc;
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-left: 5px;
+    margin-right: 5px; }
+    #meetTheTeam div h3, #meetTheTeam div p {
+      color: #383539; }
+    #meetTheTeam div p {
+      font-size: 1.5em; }
+    #meetTheTeam div h3 {
+      font-size: 2em; }
 
 .imageHolder {
   width: 200px;
   height: 200px;
-  border: 1px solid black;
+  border: 2px solid #383539;
   border-radius: 100px; }
 
 .left {
@@ -6058,21 +6167,20 @@ body {
   margin-bottom: 44px; }
 
 footer {
-  position: absolute;
   width: 100%;
   height: 44px;
   padding: 10px 30px;
   bottom: 0;
-  background-color: #f4f4f4;
+  background-color: #383539;
   text-align: center; }
 
 .socialIcons {
   height: 40px;
-  background-color: #f4f4f4;
+  background-color: #383539;
   cursor: pointer; }
 
 #iconContainer {
-  background-color: #f4f4f4; }
+  background-color: #383539; }
 
 .login-container {
   max-width: 555px; }
