@@ -27,6 +27,7 @@
     "nodemailer": "^2.3.0",
     "pg": "^4.5.1",
     "request": "^2.69.0",
+    "serve-favicon": "^2.3.0",
     "videogular": "^1.4.4",
     "videogular-angulartics": "^1.4.4",
     "videogular-buffering": "^1.4.4",
