@@ -5,34 +5,23 @@ app.service('mediaPlayerService', function($sce, $window){
 
   // videogular only uses src and type attribs
   this.convertEpisodeToSource = function(episode){
+
+    console.log('hit 2')
+
     var source = {};
-    source.src = $sce.trustAsResourceUrl(episode.url);
+    source.src = $sce.trustAsResourceUrl(episode.audio_url);
+    // source.src = episode.url;
     source.type = episode.type;
+    // console.log('SOURCE',source);
     return source;
   };
 
   this.addEpisodeToPlayer = function(episode){
+
+    console.log('hit 1')
     // console.log('THIS?', episode);
-    // var title = episode.title;
-    // console.log('Add Selection', episode);
-    // ang_element = angular.element(element);
-
-    // pause if running
-
-    // this.sourceQueue = [];
-    this.sourceQueue = [this.convertEpisodeToSource(episode)];
-
     // TODO set attribute on player for title?
+    this.sourceQueue = [this.convertEpisodeToSource(episode)];
     // console.log(this.sourceQueue);
-    // notify player - or player sets watch? see directives/itunes_search.js
   };
 });
-
-
-// this.config = {
-//   sources: [
-//     {src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/audios/videogular.mp3"),
-//       type: "audio/mpeg"},
-//     {src: $sce.trustAsResourceUrl("http://static.videogular.com/assets/audios/videogular.ogg"),
-//       type: "audio/ogg"}
-//     ]
