@@ -29,4 +29,8 @@ bower_components
 .DS_Store
 Thumbs.db
 
+# Webstorm project folder
+.idea
+
+# Sass cache rebuild
 .sass-cache

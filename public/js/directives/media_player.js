@@ -16,17 +16,18 @@ app.directive('bcMediaPlayer', function(mediaPlayerService){
       };
 
 
+      //vg-player-ready="player.controller.onPlayerReady($API)"
       // API functionality
-      $scope.player = {};
-      $scope.player.controller = {};
-      var controller = this;
-			$scope.player.controller.API = null;
-
-			$scope.player.controller.onPlayerReady = function(API) {
-        // TODO syncplay and pause on newly added podcasts
-        // console.log('API?', API);
-				$scope.player.controller.API = API;
-			};
+      // $scope.player = {};
+      // $scope.player.controller = {};
+      // var controller = this;
+      // $scope.player.controller.API = null;
+      //
+      // $scope.player.controller.onPlayerReady = function(API) {
+      //   // TODO syncplay and pause on newly added podcasts
+      //   // console.log('API?', API);
+				// $scope.player.controller.API = API;
+      // };
     }
   }
 });
