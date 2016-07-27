@@ -13,7 +13,16 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
 
   $http.get('/api/users/' + $rootScope.currentUser.id + '/follow')
     .then(function(data) {
-      $scope.view.following = data.data[0].following;
+      var followedPodcasts = data.data;
+      var providerId = Number($stateParams.provider_id);
+      for (var i = 0; i < followedPodcasts.length; i++) {
+        if (followedPodcasts[i].provider_id === providerId) {
+          $scope.view.following = true;
+          return;
+        } else {
+          $scope.view.following = false;
+        }
+      }
     });
 
   $scope.getSelectedRating = function (rating) {
@@ -132,7 +141,6 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
           }
         });
 
-        // console.log('ENTRIES', episodes);
         $scope.view.episodes = episodes;
       } else {
         $scope.view.episodes = [];// reset
@@ -145,7 +153,7 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
   }
 
   $scope.followPodcast = function () {
-    // console.log($scope.view.episodes.slice(0,-10))
+    $scope.view.following = !$scope.view.following;
     var userId = $rootScope.currentUser.id;
     var podcastId = $scope.view.podcast.collectionId;
     var podcastName = $scope.view.podcast.collectionName;
@@ -176,8 +184,7 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
 
     $http.post(requestUrl, postData)
     .then(function(data){
-      // console.log('you are now following this podcast')
-      $scope.view.following = !$scope.view.following;
+
     });
   };
   console.log('$scope:', $scope);
