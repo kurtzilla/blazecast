@@ -1,15 +1,23 @@
 * {
   font-family: 'Play', sans-serif;
 }
+body {
+  background-color: #383539;
+}
+
 footer {
   height:30px !important;
+  background-color: #383539;
   span {
     font-size:9px;
     color:#ccc;
   }
 }
+.socialIcons {
+}
 
 bc-media-player {
+  background-color: #ccc;
   display:block;
   bottom:5px;  /* avoid a parent padding/margin issue */
   width:100%;
@@ -201,7 +209,7 @@ ul.rating {
   display: inline-block;
 }
 .episodeInfo {
-  display: inline-block; 
+  display: inline-block;
 }
 
 
@@ -242,7 +250,6 @@ ul.rating {
 #abstract {
   position: relative;
   text-align: center;
-  // background-color: #eee;
   width: 100%;
   height: calc(100% - 56px);
   color: #383539;
@@ -253,7 +260,7 @@ ul.rating {
   width: 100%;
   height: calc(100% - 56px);
   z-index: -100;
-  opacity: 0.2;
+  opacity: 0.1;
   background-size:cover;
 }
 .overlay{
@@ -269,9 +276,13 @@ ul.rating {
   align-items: center;
   justify-content: center;
   h1 {
+    background: -webkit-linear-gradient(#fcba00, #910000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 5em;
   }
   p {
+    color: #ccc;
     margin-top: 50px;
     margin-left: 250px;
     margin-right: 250px;
@@ -313,19 +324,39 @@ ul.rating {
   text-align: center;
   background-color: #ccc;
   h1 {
-    margin-bottom: 50px;
+    font-size: 5em;
+    margin-top: 0;
+    margin-bottom: 0;
+    background: -webkit-linear-gradient(#fcba00, #910000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: #afaeaf;
+    padding: 50px;
   }
   div {
     padding-bottom: 50px;
     margin-bottom: 10px;
     background-color: #ccc;
+    padding-left: 250px;
+    padding-right: 250px;
+    margin-left: 5px;
+    margin-right: 5px;
+    h3, p {
+      color: #383539;
+    }
+    p {
+      font-size: 1.5em;
+    }
+    h3 {
+      font-size: 2em;
+    }
   }
 }
 
 .imageHolder {
   width: 200px;
   height: 200px;
-  border: 1px solid black;
+  border: 2px solid #383539;
   border-radius: 100px;
 }
 .left {

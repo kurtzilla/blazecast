@@ -5821,13 +5821,18 @@ button.close {
 * {
   font-family: 'Play', sans-serif; }
 
+body {
+  background-color: #383539; }
+
 footer {
-  height: 30px !important; }
+  height: 30px !important;
+  background-color: #383539; }
   footer span {
     font-size: 9px;
     color: #ccc; }
 
 bc-media-player {
+  background-color: #ccc;
   display: block;
   bottom: 5px;
   /* avoid a parent padding/margin issue */
@@ -6030,7 +6035,7 @@ ul.rating {
   width: 100%;
   height: calc(100% - 56px);
   z-index: -100;
-  opacity: 0.2;
+  opacity: 0.1;
   background-size: cover; }
 
 .overlay {
@@ -6046,8 +6051,12 @@ ul.rating {
   align-items: center;
   justify-content: center; }
   .overlay h1 {
+    background: -webkit-linear-gradient(#fcba00, #910000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 5em; }
   .overlay p {
+    color: #ccc;
     margin-top: 50px;
     margin-left: 250px;
     margin-right: 250px;
@@ -6091,16 +6100,33 @@ ul.rating {
   text-align: center;
   background-color: #ccc; }
   #meetTheTeam h1 {
-    margin-bottom: 50px; }
+    font-size: 5em;
+    margin-top: 0;
+    margin-bottom: 0;
+    background: -webkit-linear-gradient(#fcba00, #910000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: #afaeaf;
+    padding: 50px; }
   #meetTheTeam div {
     padding-bottom: 50px;
     margin-bottom: 10px;
-    background-color: #ccc; }
+    background-color: #ccc;
+    padding-left: 250px;
+    padding-right: 250px;
+    margin-left: 5px;
+    margin-right: 5px; }
+    #meetTheTeam div h3, #meetTheTeam div p {
+      color: #383539; }
+    #meetTheTeam div p {
+      font-size: 1.5em; }
+    #meetTheTeam div h3 {
+      font-size: 2em; }
 
 .imageHolder {
   width: 200px;
   height: 200px;
-  border: 1px solid black;
+  border: 2px solid #383539;
   border-radius: 100px; }
 
 .left {
@@ -6138,16 +6164,16 @@ footer {
   height: 44px;
   padding: 10px 30px;
   bottom: 0;
-  background-color: #f4f4f4;
+  background-color: #383539;
   text-align: center; }
 
 .socialIcons {
   height: 40px;
-  background-color: #f4f4f4;
+  background-color: #383539;
   cursor: pointer; }
 
 #iconContainer {
-  background-color: #f4f4f4; }
+  background-color: #383539; }
 
 .login-container {
   max-width: 555px; }
@@ -6331,8 +6357,6 @@ textarea {
     margin-left: 5px; }
   #podcastDiv:hover {
     bottom: 5px; }
-<<<<<<< HEAD
-=======
 
 #episodeView {
   height: 53vh;
@@ -6355,4 +6379,3 @@ textarea {
     color: white;
     border: none;
     height: 30px; }
->>>>>>> 717fc602fcb401a672c7c2bb808f258505341ccd
