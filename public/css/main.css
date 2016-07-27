@@ -5818,6 +5818,9 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+* {
+  font-family: 'Play', sans-serif; }
+
 footer {
   height: 30px !important; }
   footer span {
