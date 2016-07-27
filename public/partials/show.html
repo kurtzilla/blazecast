@@ -15,8 +15,11 @@
   <div class="row podcast-title-row">
     <div class="col-xs-3">
       <div class="img-wrapper">
-        <img class='podcastCoverImg' ng-src="{{view.podcast.image_url}}" />
-        <button class='followButton' ng-click="followPodcast()">Follow</button>
+        <img class='podcastCoverImg' ng-src="{{view.podcast.artworkUrl600 | formatProtocol}}" />
+        <button class='followButton' ng-click="followPodcast()">
+          <span ng-if="!view.following">Follow</span>
+          <span ng-if="view.following">Unfollow</span>
+        </button>
       </div>
     </div>
     <div class="col-xs-6 podcast-title-col">
