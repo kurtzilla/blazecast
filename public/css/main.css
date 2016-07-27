@@ -5818,6 +5818,9 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+* {
+  font-family: 'Play', sans-serif; }
+
 footer {
   height: 30px !important; }
   footer span {
@@ -5826,7 +5829,6 @@ footer {
 
 bc-media-player {
   display: block;
-  position: absolute;
   bottom: 5px;
   /* avoid a parent padding/margin issue */
   width: 100%; }
@@ -5958,6 +5960,31 @@ bc-itunes-search {
   height: 24px;
   width: 150px; }
 
+.rating {
+  color: #a9a9a9;
+  margin: 0;
+  padding: 0; }
+
+ul.rating {
+  display: inline-block; }
+
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer; }
+
+.rating .filled {
+  color: black; }
+
+.ratingTitle {
+  display: inline-block; }
+
+.stars {
+  display: inline-block; }
+
 .grid-item {
   float: left;
   width: 150px;
@@ -6034,7 +6061,6 @@ footer {
   padding: 10px 30px;
   bottom: 0;
   background-color: #f4f4f4;
-  border-top: 1px solid #e0e0e0;
   text-align: center; }
 
 .socialIcons {

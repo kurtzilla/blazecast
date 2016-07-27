@@ -8,7 +8,7 @@
         <li ng-repeat="err in view.errors">
           {{err}}
         </li>
-      </ul>s
+      </ul>
     </div>
   </div>
 
@@ -21,18 +21,12 @@
     </div>
     <div class="col-xs-6 podcast-title-col">
        <h2 class='podcastTitle'>{{view.podcast.collectionName}}</h2>
-       <h4 class='podcastRating'><strong>Rating: </strong>
-         <i class="fa fa-star-o" aria-hidden="true"></i>
-         <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
-         <i class="fa fa-star-o" aria-hidden="true"></i>
-         <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
-         <i class="fa fa-star-o" aria-hidden="true"></i>
-         <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
-         <i class="fa fa-star-o" aria-hidden="true"></i>
-         <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
-         <i class="fa fa-star-o" aria-hidden="true"></i>
-         <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
-       </h4>
+       <div ng-repeat='rating in view.ratings'>
+       <!-- <p>{{rating.current}}</p> -->
+       <h4 class='ratingTitle'>Rating: </h4>
+       <div class='stars' star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
+
+     </div>
     </div>
     <div class="col-xs-8 podcast-title-col">
        <h5 class='podcastInfo'>

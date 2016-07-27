@@ -5,6 +5,15 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
   $scope.view = {};
   $scope.view.podcast = {};
   $scope.view.episodes = [];
+  $scope.view.rating = 0;
+  $scope.view.ratings = [{
+    current: 3,
+    max: 5
+  }]
+
+  $scope.getSelectedRating = function (rating) {
+    console.log(rating);
+  }
 
   if(!_useItunes){
 
@@ -26,10 +35,9 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
       $scope.view.podcast = data.data;
       $scope.view.podcast.collectionId = $stateParams.provider_id;
       $scope.view.podcast.collectionName = $scope.view.podcast.title;
-      $scope.view.podcast.arrtistName = '';
+      $scope.view.podcast.artistName = $scope.view.podcast.network;
       $scope.view.podcast.feedUrl =
         ($scope.view.podcast.urls && $scope.view.podcast.urls.ui) ? $scope.view.podcast.urls.ui : '';
-
 
       $scope.view.podcast.primaryGenreName = '';
       $scope.view.podcast.releaseDate = '';
@@ -45,7 +53,7 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
         // console.log('LEN', $scope.view.podcast.eCollection.length);
 
         var episodes = $scope.view.podcast.eCollection.filter(function (itm) {
-          console.log('FILTER ITEM', itm);
+          // console.log('FILTER ITEM', itm);
           itm.itunes_episode_id = itm.itunes_episode;
 
           if (itm.audio_files && itm.audio_files.length > 0) {
