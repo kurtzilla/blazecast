@@ -120,12 +120,12 @@ app.get('*', function(req, res) {
 
 // app.post('/api/users/:user_id/playlists/new',
 //   apiController.newPlaylist);
-//
+
 // app.post('/api/users/:user_id/save/:episode_id',
 //   apiController.saveEpisode);
-//
-// app.post('/api/users/:user_id/favorite/:episode_id',
-//   apiController.favoriteEpisode);
+
+app.get('/api/users/:user_id/favorite/:provider_id/:episode_id',
+  apiController.favoriteEpisode);
 
 
 // Production error handler
