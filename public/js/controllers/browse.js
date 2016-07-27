@@ -6,7 +6,6 @@ angular.module('MyApp')
   $scope.view.query = '';
 
   $scope.showPage = function(id){
-    console.log('clicked');
     // location.assign('/show/' + id);
     $location.path('/show/' + id);
   }
