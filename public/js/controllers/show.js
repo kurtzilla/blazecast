@@ -13,7 +13,16 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
 
   $http.get('/api/users/' + $rootScope.currentUser.id + '/follow')
     .then(function(data) {
-      $scope.view.following = data.data[0].following;
+      var followedPodcasts = data.data;
+      var providerId = Number($stateParams.provider_id);
+      for (var i = 0; i < followedPodcasts.length; i++) {
+        if (followedPodcasts[i].provider_id === providerId) {
+          $scope.view.following = true;
+          return;
+        } else {
+          $scope.view.following = false;
+        }
+      }
     });
 
   $scope.getSelectedRating = function (rating) {
@@ -26,7 +35,6 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
     // /api/:podcastId/episodes
     $http.get('/api/podcasts/' + $stateParams.provider_id + '/episodes')
     .then(function(data){
-      // console.log('FINAL', data.data.error);
 
       if(data.data.error){
         // throw Error(data.data.error); // THIS LOGS AN ERROR TO THE CONSOLE!!!
@@ -36,7 +44,6 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
 
       // TODO verify feedUrl from url??
       // TODO verify artistName from ??
-      console.log('PODCAST', data.data);
       $scope.view.podcast = data.data;
       $scope.view.podcast.collectionId = $stateParams.provider_id;
       $scope.view.podcast.collectionName = $scope.view.podcast.title;
@@ -55,10 +62,8 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
       }
 
       if ($scope.view.podcast.eCollection) {
-        // console.log('LEN', $scope.view.podcast.eCollection.length);
 
         var episodes = $scope.view.podcast.eCollection.filter(function (itm) {
-          // console.log('FILTER ITEM', itm);
           itm.itunes_episode_id = itm.itunes_episode;
 
           if (itm.audio_files && itm.audio_files.length > 0) {
@@ -85,12 +90,10 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
       } else {
         $scope.view.episodes = [];// reset
       }
-      // console.log('ENTRIES', episodes);
       $scope.view.episodes = episodes;
 
     })
     .catch(function(err){
-      // console.log('ERROR', err);
       $scope.view.errors = ['We\'re sorry, there is no information for that podcast'];
     });
 
@@ -106,7 +109,6 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
       }
     })
     .then(function (data) {
-      // console.log('DATA', data);
       if (data && data.data && data.data.results && data.data.results.length > 0) {
         $scope.view.podcast = data.data.results[0];
         $scope.view.podcast.image_url = $scope.view.podcast.artworkUrl600;
@@ -114,7 +116,6 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
       }
     })
     .then(function (feed) {
-      // console.log('feed data', feed);
 
       if (feed && feed.entries) {
         var episodes = feed.entries.filter(function (itm) {
@@ -132,20 +133,18 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
           }
         });
 
-        // console.log('ENTRIES', episodes);
         $scope.view.episodes = episodes;
       } else {
         $scope.view.episodes = [];// reset
       }
     })
     .catch(function (err) {
-      // console.log('error', err);
       $scope.view.errors = [err];
     });
   }
 
   $scope.followPodcast = function () {
-    // console.log($scope.view.episodes.slice(0,-10))
+    $scope.view.following = !$scope.view.following;
     var userId = $rootScope.currentUser.id;
     var podcastId = $scope.view.podcast.collectionId;
     var podcastName = $scope.view.podcast.collectionName;
@@ -176,9 +175,7 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
 
     $http.post(requestUrl, postData)
     .then(function(data){
-      // console.log('you are now following this podcast')
-      $scope.view.following = !$scope.view.following;
+
     });
   };
-  console.log('$scope:', $scope);
 });
