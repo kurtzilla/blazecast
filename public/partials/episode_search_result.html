@@ -4,26 +4,24 @@
   <span class="glyphicon glyphicon-play"></span> Play
 </button>
 
-<strong class='episodeTitle'>{{episode.title}}</strong>
-<h5 class='podcastRating'>
-  <strong>Rating: </strong>
-  <i class="fa fa-star-o" aria-hidden="true"></i>
-  <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
-  <i class="fa fa-star-o" aria-hidden="true"></i>
-  <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
-  <i class="fa fa-star-o" aria-hidden="true"></i>
-  <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
-  <i class="fa fa-star-o" aria-hidden="true"></i>
-  <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
-  <i class="fa fa-star-o" aria-hidden="true"></i>
-  <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
-</h5>
-<input class='addEpisode' type="checkbox">
-<span class='episodePublishDate'>{{episode.publishedDate | date:'medium'}}</span>
-<h5 class='moreDetails'>More
-  <i ng-click='showDetails =! showDetails' class="fa fa-chevron-down" aria-hidden="true"></i>
-</h5>
-<!-- <span>{{episode.filesize}}</span> -->
-<div ng-show='showDetails' class="episode-snippet">
-  {{episode.contentSnippet}}
-</div>
+
+  <strong class='episodeTitle'>{{episode.title}}</strong>
+  <div class='episodeInfo'>
+    <div ng-repeat='rating in view.ratings'>
+    <!-- <p>{{rating.current}}</p> -->
+      <h5 class='ratingTitle'>Rating: </h5>
+        <div class='stars' star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)">
+        </div>
+      </div>
+  </div>
+  <input class='addEpisode' type="checkbox">
+    <span class='episodePublishDate'>{{episode.publishedDate | date:'medium'}}
+    </span>
+    <h5 class='moreDetails'>More
+      <i ng-click='showDetails =! showDetails' class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </h5>
+      <!-- <span>{{episode.filesize}}</span> -->
+      <div ng-show='showDetails' class="episode-snippet">
+      {{episode.contentSnippet}}
+      </div>

@@ -5985,6 +5985,9 @@ ul.rating {
 .stars {
   display: inline-block; }
 
+.episodeInfo {
+  display: inline-block; }
+
 .grid-item {
   float: left;
   width: 150px;
