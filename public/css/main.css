@@ -5985,6 +5985,9 @@ ul.rating {
 .stars {
   display: inline-block; }
 
+.episodeInfo {
+  display: inline-block; }
+
 .grid-item {
   float: left;
   width: 150px;
@@ -6254,6 +6257,7 @@ textarea {
   #podcastDiv:hover {
     bottom: 5px; }
 
+
 #episodeView {
   height: 53vh;
   width: 100vh;
@@ -6275,3 +6279,4 @@ textarea {
     color: white;
     border: none;
     height: 30px; }
+

@@ -77,7 +77,6 @@ var app = angular.module( 'MyApp', ['ui.router', 'satellizer', 'ngResource',
       url: '/auth/google',
       clientId: (isLocal) ? '704647733540-r0l1rgc9s8mtbl9grnj3h6712adjjua5.apps.googleusercontent.com' :
       '704647733540-r0l1rgc9s8mtbl9grnj3h6712adjjua5.apps.googleusercontent.com',
-      // clientId: '631036554609-v5hm2amv4pvico3asfi97f54sc51ji4o.apps.googleusercontent.com'
       redirectUri: origin + '/auth/google/callback'
     });
     $authProvider.twitter({

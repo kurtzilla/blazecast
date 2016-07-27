@@ -1,10 +1,41 @@
+
+app.filter('removeProtocol', function($location) {
+  return function (input) {
+    if(input){
+      return input.replace(/^http:\/\//g, '')
+                  .replace(/^https:\/\//g, '');
+    }
+  }
+});
+
+
 app.filter('formatProtocol', ['$location', function($location){
    return function(input){
-     if(input){
-       var currentProtocol = $location.$$protocol;
-      //  console.log('PPP',currentProtocol, input);
-       return input.replace(/^http:\/\//g, currentProtocol + '://')
-         .replace(/^https:\/\//g, currentProtocol + '://');
-     }
+
+     return input;
+  //
+  // HOST
+  //    https://blazecast.heroku.com
+
+     // if(input){
+     //
+     //   var inp = input.replace(/^http:\/\//g, '//')
+     //      .replace(/^https:\/\//g, '//');
+     //
+     //   return inp;
+      //
+      //  var currentProtocol = $location.$$protocol;
+      //  var inp = '';
+      //
+      //  if(currentProtocol === "https" && input.toLowerCase().indexOf('http:') !== -1){
+      //    inp = input.replace(/^http:\/\//g, currentProtocol + '://')
+      //  } else {
+      //    inp = input;
+      //  }
+      //
+      // //  var inp = input.replace(/^http:\/\//g, currentProtocol + '://')
+      // //    .replace(/^https:\/\//g, currentProtocol + '://');
+      //  return inp;
+     //}
   };
 }]);
