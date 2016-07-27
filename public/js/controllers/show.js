@@ -1,7 +1,6 @@
 
-app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams, $http, rssFeed, formatProtocolFilter) {
+app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rssFeed) {
 
-  var proto = $location.$$protocol;
   var _useItunes = false;
   $scope.view = {};
   $scope.view.podcast = {};
@@ -21,18 +20,23 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
         return;
       }
 
+      // TODO verify feedUrl from url??
+      // TODO verify artistName from ??
+      console.log('PODCAST', data.data);
       $scope.view.podcast = data.data;
-      // console.log('PODCAST', $scope.view.podcast);
-      //artworkUrl600, collectionName (title), primaryGenreName, releaseDate, description
+      $scope.view.podcast.collectionId = $stateParams.provider_id;
       $scope.view.podcast.collectionName = $scope.view.podcast.title;
+      $scope.view.podcast.arrtistName = '';
+      $scope.view.podcast.feedUrl =
+        ($scope.view.podcast.urls && $scope.view.podcast.urls.ui) ? $scope.view.podcast.urls.ui : '';
 
-      // TODO is it worth it to ping the api more times to get category info?
-      // TODO is releaseDate relevant for a podcast? We do have that info for episodes
+
       $scope.view.podcast.primaryGenreName = '';
       $scope.view.podcast.releaseDate = '';
-      // $scope.view.podcast.description = '';
+
+      $scope.view.podcast.image_url = '';
       if($scope.view.podcast.image_files && $scope.view.podcast.image_files[0]){
-        $scope.view.podcast.artworkUrl600 =
+        $scope.view.podcast.image_url =
           ($scope.view.podcast.image_files[0].url.thumb) ?
             $scope.view.podcast.image_files[0].url.thumb : $scope.view.podcast.image_files[0].url.full;
       }
@@ -40,18 +44,19 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
       if ($scope.view.podcast.eCollection) {
         // console.log('LEN', $scope.view.podcast.eCollection.length);
 
-        var entries = $scope.view.podcast.eCollection.filter(function (itm) {
-          // console.log('REDUCER', itm);
-          //title, publishedDate, contentSnippet
-
-          // digitalLocation ???? - on first try, file didn't yield a file
+        var episodes = $scope.view.podcast.eCollection.filter(function (itm) {
+          console.log('FILTER ITEM', itm);
+          itm.itunes_episode_id = itm.itunes_episode;
 
           if (itm.audio_files && itm.audio_files.length > 0) {
             var audio = itm.audio_files[0];
             // TODO filter urls
-            itm.url = formatProtocolFilter(audio.url[0], proto);
+            itm.audio_url = audio.url[0];
 
-            if (itm.url && itm.url.trim().length > 0 && itm.url.trim().toLowerCase().indexOf('.mp') !== -1){
+            if (itm.audio_url &&
+                itm.audio_url.trim().length > 0 &&
+                itm.audio_url.trim().toLowerCase().indexOf('.mp') !== -1){
+
               itm.publishedDate = itm.date_added;
               itm.contentSnippet =
                 (itm.description.trim().length > 255) ?
@@ -67,8 +72,8 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
       } else {
         $scope.view.episodes = [];// reset
       }
-      // console.log('ENTRIES', entries);
-      $scope.view.episodes = entries;
+      // console.log('ENTRIES', episodes);
+      $scope.view.episodes = episodes;
 
     })
     .catch(function(err){
@@ -91,6 +96,7 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
       // console.log('DATA', data);
       if (data && data.data && data.data.results && data.data.results.length > 0) {
         $scope.view.podcast = data.data.results[0];
+        $scope.view.podcast.image_url = $scope.view.podcast.artworkUrl600;
         return rssFeed.loadFeed($scope.view.podcast.feedUrl);
       }
     })
@@ -98,23 +104,23 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
       // console.log('feed data', feed);
 
       if (feed && feed.entries) {
-        var entries = feed.entries.filter(function (itm) {
+        var episodes = feed.entries.filter(function (itm) {
           if (itm.mediaGroups && itm.mediaGroups.length > 0) {
-            itm.url = formatProtocolFilter(itm.mediaGroups[0].contents[0].url, proto);
+            itm.audio_url = itm.mediaGroups[0].contents[0].url;
             itm.filesize = itm.mediaGroups[0].contents[0].fileSize;
             itm.type = itm.mediaGroups[0].contents[0].type;
 
-            return (itm.url && itm.url.trim().length > 0)
+            return (itm.audio_url && itm.audio_url.trim().length > 0)
 
-          } else if (itm.url && itm.url.trim().length > 0 &&
-            (itm.toLowerCase().indexOf('.mp3') !== -1 || itm.toLowerCase().indexOf('.mp4') !== -1)) {
+          } else if (itm.url && itm.url.trim().length > 0 && itm.toLowerCase().indexOf('.mp') !== -1) {
+            itm.audio_url = itm.url;
             itm.type = "audio/mpeg";
             return true;
           }
         });
 
-        // console.log('ENTRIES', entries);
-        $scope.view.episodes = entries;
+        // console.log('ENTRIES', episodes);
+        $scope.view.episodes = episodes;
       } else {
         $scope.view.episodes = [];// reset
       }
@@ -130,7 +136,8 @@ app.controller('ShowCtrl', function($rootScope, $scope, $location, $stateParams,
     var podcastId = $scope.view.podcast.collectionId;
     var podcastName = $scope.view.podcast.collectionName;
     var feedUrl = $scope.view.podcast.feedUrl;
-    var images = $scope.view.podcast.artworkUrl600;
+    var images =  $scope.view.podcast.image_url;
+
     var requestUrl = '/api/users/' + userId + '/follow/' + podcastId;
 
     var postData = {

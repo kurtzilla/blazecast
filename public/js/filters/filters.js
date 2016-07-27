@@ -2,6 +2,9 @@ app.filter('formatProtocol', ['$location', function($location){
    return function(input){
 
      return input;
+  //
+  // HOST
+  //    https://blazecast.heroku.com
 
      // if(input){
      //
