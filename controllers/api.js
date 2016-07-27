@@ -6,6 +6,7 @@ exports.serveiTunesDummy = function(req, res, next) {
 };
 
 exports.followPodcast = function (req, res, next) {
+  // console.log($scope.view.episodes
   var userId = req.params.user_id;
   var providerId = req.params.podcast_id;
   var podcastName = req.body.podcastName;
@@ -43,6 +44,10 @@ exports.followPodcast = function (req, res, next) {
     .then(function(data) {
       res.end();
     })
+}
+
+exports.addEpisodes = function(req, res, next) {
+  console.log(req);
 }
 
 // exports.getUserDashboard = function (req, res, next) {

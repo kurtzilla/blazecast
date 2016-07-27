@@ -17,7 +17,7 @@
 
     <div ng-repeat="podcast in view.following track by $index">
 
-      <div id="podcastDiv" class="col-xs-8 podcast-title-col">
+      <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="getDummy()">
 
         <img src="{{podcast.images}}" ng-click="searchTitle = podcast.name"></img>
         <!-- <strong>{{podcast.name}}</strong> -->
@@ -26,16 +26,18 @@
     </div>
 
   </div>
-  <div class="col-xs-12">
-    <div class="error-list" ng-show="view.episodes.length === 0">
-      Sorry, this podcast does not have playable episodes.
+  <!-- <div class="row episode-row">
+    <div class="col-xs-12">
+      <div class="error-list" ng-show="view.episodes.length === 0">
+        Sorry, this podcast does not have playable episodes.
+      </div>
+      <ul class="list-unstyled" ng-show="view.episodes.length > 0">
+        <li ng-repeat="episode in view.episodes | orderBy: filterBy | filter:searchTitle" class="episode-item">
+          <bc-episode-search-result episode="episode">
+          </bc-episode-search-result>
+        </li>
+      </ul>
     </div>
-    <ul class="list-unstyled" ng-show="view.episodes.length > 0">
-      <li ng-repeat="episode in view.episodes | orderBy: filterBy | filter:searchTitle" class="episode-item">
-        <bc-episode-search-result episode="episode">
-        </bc-episode-search-result>
-      </li>
-    </ul>
-  </div>
+  </div> -->
 
 </div>
