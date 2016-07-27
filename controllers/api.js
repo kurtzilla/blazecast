@@ -1,5 +1,9 @@
+require('dotenv').config();
 var knex = require('../db/knex');
 var itunesdummydata = require('../itunesdummydata');
+var Audiosearch = require('../lib/audiosearch-client');
+var audiosearch = new Audiosearch(process.env.AUDIOSEARCH_KEY, process.env.AUDIOSEARCH_SECRET);
+
 
 
 exports.serveiTunesDummy = function(req, res, next) {
@@ -149,20 +153,33 @@ exports.testApi = function(req, res) {
 }
 
 
-/**
- * GET /contact
- */
-// exports.apiEnvKey = function(req, res) {
-//   // TODO add security!!!!s
-//   var environment = {};
-//   var key = req.params.key;
-//
-//   if(key === 'all'){
-//     environment.FACEBOOK_ID = process.env.FACEBOOK_ID;
-//     environment.TWITTER_KEY = process.env.TWITTER_KEY;
-//     environment.GOOGLE_ID = process.env.GOOGLE_ID;
-//     environment.HOST = process.env.HOST;
-//   }
-//
-//   res.json(environment);
-// };
+// https://www.audiosear.ch/developer#!/shows/get_shows_itunes_id_id
+// /api/:podcastId/episodes
+// https://www.audiosear.ch/api/shows?itunes_id=1598914170424545
+exports.getFedPodcastEpisodes = function(req, res, next){
+
+  // console.log('BEGIN API CALL', req.params);
+  var podcast = {};
+  var pId = req.params.itunes_podcast_id;
+
+  return audiosearch.get('/shows', {'itunes_id':pId})
+  .then(function(data){
+    podcast = data;
+    // console.log('DATA FROM REMOTE', data);
+    var episodePromises = [];
+    if(podcast.episode_ids.length > 0){
+      podcast.episode_ids.forEach(function(itm){
+        episodePromises.push( audiosearch.getEpisode(itm) );
+      });
+    }
+    return Promise.all(episodePromises);
+  })
+  .then(function(data){
+    podcast.eCollection = data;
+    res.send(podcast);
+  })
+  .catch(function(err){
+    console.log('ERROR AT API CATCH', err);
+    res.send(err);
+  });
+}

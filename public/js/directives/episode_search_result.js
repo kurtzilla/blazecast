@@ -1,5 +1,4 @@
 
-
 // bc-episode-search-result
 app.directive('bcEpisodeSearchResult', ['mediaPlayerService', function(mediaPlayerService){
   return {
