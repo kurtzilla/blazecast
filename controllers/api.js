@@ -12,7 +12,6 @@ exports.serveiTunesDummy = function(req, res, next) {
 
 exports.followPodcast = function (req, res, next) {
 
-
   var userId = req.params.user_id;
   var providerId = req.params.podcast_id;
   var podcastName = req.body.podcastName;
@@ -54,6 +53,7 @@ exports.followPodcast = function (req, res, next) {
   .then(function(data) {
     var following = data[0] ? data[0].following : true;
     if (!data.length) {
+      console.log("INSERTING PODCAST INTO DB");
       return knex('users_podcasts')
       .insert({
         user_id: userId,
@@ -172,8 +172,8 @@ exports.saveEpisode = function(req, res, next) {
   var userId = req.params.user_id;
   var providerId = req.params.provider_id;
   var itunesEpisodeId = req.params.itunes_episode_id;
-  // var podcastName = req.body.podcastName;
-  // var episodeName = req.body.episodeName;
+  var podcastName = req.body.podcastName;
+  var episodeName = req.body.episodeName;
   // var feedUrl = req.body.feedUrl;
   // var images = req.body.images;
   var podcastId;
@@ -185,8 +185,8 @@ exports.saveEpisode = function(req, res, next) {
       if (!data.length) {
         return knex('podcasts')
         .insert({
-          provider_id: providerId
-          // name: podcastName,
+          provider_id: providerId,
+          name: podcastName
           // feedUrl: feedUrl,
           // images: images
         }).returning('id');
@@ -199,12 +199,13 @@ exports.saveEpisode = function(req, res, next) {
       knex('episodes')
         .where('itunes_episode_id', itunesEpisodeId)
         .then(function(data) {
+          console.log('episodeName:', episodeName);
           if (!data.length) {
             return knex('episodes')
             .insert({
               itunes_episode_id: itunesEpisodeId,
-              podcast_id: podcastId
-              // name: episodeName
+              podcast_id: podcastId,
+              name: episodeName
             })
           }
         })
@@ -295,6 +296,8 @@ exports.getFedPodcastEpisodes = function(req, res, next){
   });
 
 }
+
+
 exports.unfollowPodcast = function (req, res, next) {
   var userId = req.params.user_id;
   var podcastId = req.params.podcast_id;
@@ -305,3 +308,25 @@ exports.unfollowPodcast = function (req, res, next) {
     .where('podcast_id', podcastId)
     .then(function(data) {})
 }
+
+
+exports.getSavedEpisodes = function (req, res, next) {
+  var userId = req.params.user_id;
+  knex('users_episodes')
+    .where('user_id', userId)
+    .andWhere('save_for_later', true)
+    .innerJoin('episodes', 'users_episodes.itunes_episode_id', 'episodes.itunes_episode_id')
+    .then(function(data) {
+      res.json(data);
+    })
+}
+
+
+// exports.getEpisodes = function(req, res, next) {
+//   knex('episodes')
+//   .select('*')
+//   .where('podcast_id', req.params.podcast_id)
+//   .then(function(episodes) {
+//     res.json(episodes)
+//   })
+// };
