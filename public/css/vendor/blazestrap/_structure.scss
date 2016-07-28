@@ -10,7 +10,9 @@ body {
 }
 
 footer {
+  position: absolute;
   height: 1% !important;
+  width: 100%;
   background-color: #383539;
   span {
     font-size:9px;
@@ -39,10 +41,12 @@ footer {
 }
 
 bc-media-player {
-  background-color: #ccc;
+  position: fixed;
+  overflow: hidden;
   display:block;
-  bottom:5px;  /* avoid a parent padding/margin issue */
+  bottom:0px;  /* avoid a parent padding/margin issue */
   width:100%;
+  z-index: 2000;
 
   .videogular-container {
   	width: 100%;
@@ -267,13 +271,34 @@ ul.rating {
 
 //BROWSE
 
-
+#searchBar {
+  text-align: center;
+  margin-left: 1%;
+}
+#searchArea {
+  margin-left: 25%;
+  margin-bottom: 1%;
+  color: #ccc;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+.gridContainer {
+  width: 100%;
+  height: 100%;
+}
 .grid-item {
   float: left;
   width: 150px;
   height: 150px;
   margin: 15px;
-  border: 2px solid hsla(0, 0%, 0%, 0.5);
+  border: 5px solid white;
+}
+#stuff{
+  background-color: #ccc;
+}
+.squares {
+  border: solid white 1px;
 }
 
 //HOME
