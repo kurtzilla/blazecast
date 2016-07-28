@@ -21,7 +21,7 @@ exports.followPodcast = function (req, res, next) {
   var episodes = req.body.episodes;
   var podcastId;
 
-
+console.log("data from show.js:",req.body);
 
   // var episodes =
 
@@ -29,6 +29,7 @@ exports.followPodcast = function (req, res, next) {
   knex('podcasts')
   .where('provider_id', providerId)
   .then(function(data) {
+    console.log('podcasts data:', data);
     if (!data.length) { // podcast is not present in database
       return knex('podcasts')
         .insert({
@@ -70,12 +71,13 @@ exports.followPodcast = function (req, res, next) {
   })
   .then(function() {
     for (var i = 0; i < episodes.length; i++) {
-
+      // console.log('episodes:',episodes);
       knex('episodes')
       .insert({
         podcast_id: podcastId,
         name: episodes[i].title,
-        feedUrl: episodes[i].url
+        feedUrl: episodes[i].url,
+        itunes_episode_id: episodes[i].itunesEpisodeId
       })
       .catch(function(err) {
         console.log(err);
@@ -98,10 +100,12 @@ exports.getFollows = function(req, res, next) {
 };
 
 exports.favoriteEpisode = function(req, res, next) {
+  console.log('adding favorite...');
   // TEST ME: localhost:3000/api/users/5/favorite/179950332/96517
   var userId = req.params.user_id;
   var providerId = req.params.provider_id;
   var itunesEpisodeId = req.params.itunes_episode_id;
+  console.log('req.params:',req.params);
   // var podcastName = req.body.podcastName;
   // var episodeName = req.body.episodeName;
   // var feedUrl = req.body.feedUrl;

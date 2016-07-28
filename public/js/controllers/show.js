@@ -91,7 +91,7 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
         $scope.view.episodes = [];// reset
       }
       $scope.view.episodes = episodes;
-
+      console.log('$scope:', $scope);
     })
     .catch(function(err){
       $scope.view.errors = ['We\'re sorry, there is no information for that podcast'];
@@ -165,11 +165,13 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
     var episodeArray = [];
 
     for (var i = 0; i < episodes.length; i++) {
+      console.log('episodes[i]:', episodes[i]);
       var episode = {
         title: episodes[i].title,
         url: episodes[i].url,
-
+        itunesEpisodeId: episodes[i].id
       }
+      // console.log('episode:', episode);
       postData.episodes.push(episode);
     }
 
