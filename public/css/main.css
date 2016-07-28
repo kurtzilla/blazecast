@@ -5823,6 +5823,8 @@ button.close {
 
 body {
   background-color: #383539; }
+  body .main-view-content {
+    padding-top: 70px; }
 
 footer {
   position: absolute;
@@ -5831,6 +5833,22 @@ footer {
   background-color: #383539; }
   footer span {
     font-size: 9px;
+    color: #ccc; }
+
+.mediaplayer-title-layer {
+  /* border: solid red 1px; */
+  color: #999;
+  font-size: .6em;
+  /*this sizing splits multi-lines right around the scrub bar */
+  top: -12px;
+  height: 26px;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  text-align: center; }
+  .mediaplayer-title-layer div {
+    display: inline; }
+  .mediaplayer-title-layer .mediaplayer-podcast-title {
     color: #ccc; }
 
 bc-media-player {
