@@ -296,6 +296,8 @@ exports.getFedPodcastEpisodes = function(req, res, next){
   });
 
 }
+
+
 exports.unfollowPodcast = function (req, res, next) {
   var userId = req.params.user_id;
   var podcastId = req.params.podcast_id;
@@ -306,6 +308,8 @@ exports.unfollowPodcast = function (req, res, next) {
     .where('podcast_id', podcastId)
     .then(function(data) {})
 }
+
+
 exports.getSavedEpisodes = function (req, res, next) {
   var userId = req.params.user_id;
   knex('users_episodes')
@@ -316,6 +320,8 @@ exports.getSavedEpisodes = function (req, res, next) {
       res.json(data);
     })
 }
+
+
 // exports.getEpisodes = function(req, res, next) {
 //   knex('episodes')
 //   .select('*')

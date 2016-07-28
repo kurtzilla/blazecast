@@ -5930,11 +5930,17 @@ bc-itunes-search {
 .show-podcast .podcast-title-col {
   font-size: 1.4em; }
 
+.podcast-title-row .img-wrapper {
+  text-align: center; }
+
+.filter-row {
+  white-space: nowrap; }
+
 .podcastCoverImg {
-  height: 200px;
-  width: 200px;
+  width: 100%;
+  max-width: 200px;
+  max-height: 200px;
   margin-top: 10%;
-  margin-left: 35%;
   border: 2px solid white; }
 
 .followButton {
