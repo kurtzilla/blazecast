@@ -52,12 +52,14 @@ var app = angular.module( 'MyApp', ['ui.router', 'satellizer', 'ngResource',
     .state('showProviderId', {
       url: '/show/:provider_id',
       templateUrl: 'partials/show.html',
-      controller: 'ShowCtrl'
+      controller: 'ShowCtrl',
+      resolve: { loginRequired: loginRequired }
     })
     .state('dashboard', {
       url: '/dashboard',
       templateUrl: 'partials/dashboard.html',
-      controller: 'DashboardCtrl'
+      controller: 'DashboardCtrl',
+      resolve: { loginRequired: loginRequired }
     })
     $locationProvider.html5Mode(true);
 

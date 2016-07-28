@@ -42,4 +42,12 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParam
       .then(function(){});
   };
 
+  $scope.showSaved = function () {
+    $http.get('/api/users/' + user.id + '/savedPodcasts')
+      .then(function(data){
+        var savedEps = data.data;
+        $scope.view.episodes = savedEps;
+      });
+  }
+
 });
