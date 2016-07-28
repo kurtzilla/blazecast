@@ -1,5 +1,5 @@
 
-app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParams) {
+app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams, episodeService) {
   var user = $rootScope.currentUser;
 
   $scope.view = {
@@ -16,6 +16,17 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParam
     .then(function(data){
       $scope.view.episodes = data.data;
     });
+
+    episodeService.populateEpisodesByItunesPodcastId(podcast.provider_id)
+    .then(function(data){
+      console.log(data);
+      // console.log('EPISODES', data);
+      $scope.view.episodes = episodeService.episodes;
+    })
+    .catch(function(err){
+      $scope.view.episodes = [err];
+    });
+
   };
 
   $scope.unfollowPodcast = function (index) {
