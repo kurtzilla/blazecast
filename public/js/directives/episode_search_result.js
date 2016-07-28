@@ -7,7 +7,7 @@ app.directive('bcEpisodeSearchResult', ['mediaPlayerService', function(mediaPlay
       episode: '='
     },
     templateUrl: 'partials/episode_search_result.html',
-    controller: function($scope) {
+    controller: function($scope, $http, $stateParams, $rootScope) {
       $scope.view = {};
       $scope.view.rating = 0;
       $scope.view.ratings = [{
@@ -22,6 +22,23 @@ app.directive('bcEpisodeSearchResult', ['mediaPlayerService', function(mediaPlay
       $scope.addEpisodeToPlayer = function(episode){
         mediaPlayerService.addEpisodeToPlayer(episode);
       }
+
+      $scope.favoriteEpisode = function (episode) {
+        var user = $rootScope.currentUser;
+        var providerId = $stateParams.provider_id;
+        var itunesEpisodeId = episode.id;
+        $http.post('/api/users/' + user.id + '/favorite/' + providerId + '/' + itunesEpisodeId)
+          .then(function(){});
+      };
+
+      $scope.saveEpisode = function (episode) {
+        var user = $rootScope.currentUser;
+        var providerId = $stateParams.provider_id;
+        var itunesEpisodeId = episode.id;
+        $http.post('/api/users/' + user.id + '/save/' + providerId + '/' + itunesEpisodeId)
+          .then(function(){});
+      };
     }
+
   }
 }]);

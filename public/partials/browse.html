@@ -41,4 +41,34 @@
   <div class="grid">
     <img ng-repeat='podcast in view.podcasts | filter: filterByCategory' ng-click='showPage(podcast.collectionId)'class='grid-item'ng-src="{{podcast.artworkUrl600}}" alt="">
   </div>
+
+<label class='filterLabel' for="filter">Filter By:</label>
+<select name='filter' ng-model='view.filterBy'>
+    <option value="" disabled selected>Subject</option>
+    <option>Food</option>
+    <option>Literature</option>
+    <option>Design</option>
+    <option>Performing Arts</option>
+    <option>Visual Arts</option>
+    <option>Comedy</option>
+    <option>Education</option>
+    <option>Training</option>
+    <option>Music</option>
+    <option>Tech News</option>
+    <option>Outdoor</option>
+    <option>Training</option>
+    <option>Business</option>
+    <option>Shopping</option>
+    <option>Professional</option>
+    <option>Automotive</option>
+    <option>Regional</option>
+    <option>Local</option>
+    <option>Non-Profit</option>
+    <option>Medicine</option>
+</select>
+</div>
+
+<div class="grid">
+  <img ng-repeat='podcast in view.podcasts | filter: filterByCategory' ng-click='showPage(podcast.collectionId)'class='grid-item'ng-src="{{podcast.artworkUrl600}}" alt="">
+>>>>>>> 0eb68347512f3be9b9377a3619f0d61bad21e254
 </div>
