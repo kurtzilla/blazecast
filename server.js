@@ -118,12 +118,11 @@ app.get('/proxyresource/:resourceurl',
 // app.post('/api/users/:user_id/playlists/new',
 //   apiController.newPlaylist);
 
-// <<<<<<< HEAD
-// app.post('/api/users/:user_id/playlists',
-//   apiController.getPlaylists);
-//
+app.post('/api/users/:user_id/playlists',
+  apiController.getPlaylists);
+
 // app.get('/api/users/:user_id/save/:provider_id/:itunes_episode_id',
-// =======
+
 app.post('/api/users/:user_id/save/:provider_id/:itunes_episode_id',
   apiController.saveEpisode);
 

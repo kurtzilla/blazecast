@@ -34,7 +34,7 @@
 
   <div id="episodeView" >
 
-    <div class="" id="dashboardPlaylist"  >
+    <!-- <div class="" id="dashboardPlaylist"  >
 
       <div class="" id="playlistHeader">
         <input type="text" name="name" value="" ng-model="playlistName">
@@ -44,9 +44,9 @@
       <div class="" ng-repeat="">
 
       </div>
-    </div>
+    </div> -->
 
-    <div id="episodeDiv" ng-repeat="episode in view.episodes" style="display:none;">
+    <div id="episodeDiv" ng-repeat="episode in view.episodes">
       <button id='playButton' class="btn btn-success btn-sm btn-play" ng-click="addEpisodeToPlayer(episode)"><span class="glyphicon glyphicon-play"></span> Play</button>
       <button class='favoriteButton' class="btn btn-default btn-sm" ng-click="favoriteEpisode(view.following, episode)"><span class="glyphicon glyphicon-star"></span> Favorite</button>
       <!-- random comment so I can commit -->
