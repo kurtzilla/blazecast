@@ -14,7 +14,7 @@
       <!-- <strong>Watch Later</strong> -->
     </div>
 
-    <div id="podcastDiv" class="col-xs-8 podcast-title-col">
+    <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="openPlaylists()">
       <img src="http://simpleicon.com/wp-content/uploads/playlist.png"></img>
       <!-- <strong>Watch Later</strong> -->
     </div>
@@ -30,11 +30,23 @@
       <button id="unfollowBtn" ng-click="unfollowPodcast($index);" >X</button>
 
     </div>
-
   </div>
-  <div id="episodeView">
 
-    <div id="episodeDiv" ng-repeat="episode in view.episodes">
+  <div id="episodeView" >
+
+    <div class="" id="dashboardPlaylist"  >
+
+      <div class="" id="playlistHeader">
+        <input type="text" name="name" value="" ng-model="playlistName">
+        <button type="button" name="button" ng-click="newPlaylist(playlistName)">New Playlist</button>
+      </div>
+
+      <div class="" ng-repeat="">
+
+      </div>
+    </div>
+
+    <div id="episodeDiv" ng-repeat="episode in view.episodes" style="display:none;">
       <button id='playButton' class="btn btn-success btn-sm btn-play" ng-click="addEpisodeToPlayer(episode)"><span class="glyphicon glyphicon-play"></span> Play</button>
       <button class='favoriteButton' class="btn btn-default btn-sm" ng-click="favoriteEpisode(episode)"><span class="glyphicon glyphicon-star"></span> Favorite</button>
       <!-- random comment so I can commit -->
@@ -47,6 +59,7 @@
     </div>
 
   </div>
+
   <!-- <div class="row episode-row">
     <div class="col-xs-12">
       <div class="error-list" ng-show="view.episodes.length === 0">

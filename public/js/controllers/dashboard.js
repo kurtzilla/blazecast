@@ -37,11 +37,8 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http) {
         .then(function(){});
   };
 
-  $scope.getPlaylists = function() {
-    $http.get('/api/users/' + $rootScope.currentUser.id + '/playlists')
-    .then(function(data){
-
-    })
+  $scope.openPlaylists = function() {
+    
   }
 
 });

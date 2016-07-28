@@ -25,15 +25,6 @@ angular.module('MyApp')
     $location.path('/show/' + result.collectionId.toString());
   };
 
-  $scope.changeView(type) {
-    if (type === 'grid') {
-      $('.grid').css('flex-direction', 'row');
-      $scope.browseView = 'grid';
-    } else if (type === 'list') {
-      $('.grid').css('flex-direction', 'column');
-      $scope.browseView = 'list';
-    }
-  }
 
   $scope.$watchCollection('view.query', function() {
     $scope.view.filterBy = '';
