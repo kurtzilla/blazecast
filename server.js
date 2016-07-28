@@ -115,8 +115,8 @@ app.get('/proxyresource/:resourceurl',
   resourceController.proxyResource);
 
 
-app.post('/api/users/:user_id/playlists/new',
-  apiController.newPlaylist);
+// app.post('/api/users/:user_id/playlists/new',
+//   apiController.newPlaylist);
 
 app.post('/api/users/:user_id/playlists',
   apiController.getPlaylists);

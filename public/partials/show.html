@@ -16,7 +16,8 @@
     <div class="col-xs-3">
       <div class="img-wrapper">
         <img class='podcastCoverImg' ng-src="{{view.podcast.image_url}}" />
-        <button class='followButton' ng-click="followPodcast()">
+
+        <button class='followButton' ng-click="followPodcast()" ng-if="view.podcast">
           <span ng-if="!view.following">Follow</span>
           <span ng-if="view.following">Unfollow</span>
         </button>
