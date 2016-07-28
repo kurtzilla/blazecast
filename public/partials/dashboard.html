@@ -14,12 +14,6 @@
       <!-- <strong>Watch Later</strong> -->
     </div>
 
-    <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="openPlaylists()">
-      <img src="http://simpleicon.com/wp-content/uploads/playlist.png"></img>
-      <!-- <strong>Watch Later</strong> -->
-    </div>
-
-
     <div ng-repeat="podcast in view.following track by $index">
 
       <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="getEpisodes(podcast)">
@@ -33,18 +27,6 @@
   </div>
 
   <div id="episodeView" >
-
-    <!-- <div class="" id="dashboardPlaylist"  >
-
-      <div class="" id="playlistHeader">
-        <input type="text" name="name" value="" ng-model="playlistName">
-        <button type="button" name="button" ng-click="newPlaylist(playlistName)">New Playlist</button>
-      </div>
-
-      <div class="" ng-repeat="">
-
-      </div>
-    </div> -->
 
     <div id="episodeDiv" ng-repeat="episode in view.episodes">
       <button id='playButton' class="btn btn-success btn-sm btn-play" ng-click="addEpisodeToPlayer(episode)"><span class="glyphicon glyphicon-play"></span> Play</button>
@@ -60,19 +42,5 @@
     </div>
 
   </div>
-
-  <!-- <div class="row episode-row">
-    <div class="col-xs-12">
-      <div class="error-list" ng-show="view.episodes.length === 0">
-        Sorry, this podcast does not have playable episodes.
-      </div>
-      <ul class="list-unstyled" ng-show="view.episodes.length > 0">
-        <li ng-repeat="episode in view.episodes | orderBy: filterBy | filter:searchTitle" class="episode-item">
-          <bc-episode-search-result episode="episode">
-          </bc-episode-search-result>
-        </li>
-      </ul>
-    </div>
-  </div> -->
 
 </div>
