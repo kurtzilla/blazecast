@@ -21,10 +21,8 @@ footer {
 }
 
 .mediaplayer-title-layer {
-  /* border: solid red 1px; */
   color: #999;
   font-size: .6em;
-  /*this sizing splits multi-lines right around the scrub bar */
   top: -12px;
   height:26px;
   width: 100%;
@@ -149,9 +147,6 @@ bc-itunes-search {
   }
 }
 .podcast-title-row{
-  .col {
-    //border:solid green 1px;
-  }
   .img-wrapper {
     text-align:center;
   }
@@ -161,12 +156,10 @@ bc-itunes-search {
   white-space: nowrap;
 }
 .podcastCoverImg {
-  //height: 200px;
   width: 100%;
   max-width:200px;
   max-height:200px;
   margin-top: 10%;
-  //margin-left: 35%;
   border: 2px solid white;
 }
 .followButton{
