@@ -75,7 +75,8 @@ exports.followPodcast = function (req, res, next) {
       .insert({
         podcast_id: podcastId,
         name: episodes[i].title,
-        feedUrl: episodes[i].url
+        feedUrl: episodes[i].url,
+        itunes_episode_id: episodes[i].itunesEpisodeId
       })
       .catch(function(err) {
         console.log(err);

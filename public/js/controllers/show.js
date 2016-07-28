@@ -168,7 +168,7 @@ app.controller('ShowCtrl', function($rootScope, $scope, $stateParams, $http, rss
       var episode = {
         title: episodes[i].title,
         url: episodes[i].url,
-
+        itunesEpisodeId: episodes[i].id // using id returned from Audiosear.ch
       }
       postData.episodes.push(episode);
     }
