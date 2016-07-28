@@ -1,4 +1,4 @@
-var express = require('express');
+  var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var compression = require('compression');
@@ -114,20 +114,18 @@ app.get('/proxyresource/:resourceurl',
   resourceController.proxyResource);
 
 
+// app.post('/api/users/:user_id/playlists/new',
+//   apiController.newPlaylist);
+
+app.get('/api/users/:user_id/save/:provider_id/:itunes_episode_id',
+  apiController.saveEpisode);
+
+app.post('/api/users/:user_id/favorite/:provider_id/:itunes_episode_id',
+  apiController.favoriteEpisode);
 
 app.get('*', function(req, res) {
   res.redirect('/#' + req.originalUrl);
 });
-
-// app.post('/api/users/:user_id/playlists/new',
-//   apiController.newPlaylist);
-//
-// app.post('/api/users/:user_id/save/:episode_id',
-//   apiController.saveEpisode);
-//
-// app.post('/api/users/:user_id/favorite/:episode_id',
-//   apiController.favoriteEpisode);
-
 
 // Production error handler
 if (app.get('env') === 'production') {
