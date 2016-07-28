@@ -5912,6 +5912,7 @@ bc-itunes-search {
       color: white; }
 
 .container-fluid {
+  min-width: 600px;
   background-color: #ccc;
   color: #383539; }
 
