@@ -21,7 +21,7 @@ angular.module('MyApp')
   {
     name: 'Josh Newsom',
     imageUrl: 'https://avatars.slack-edge.com/2016-04-04/31926108596_bba024b117cf2dfaa77e_1024.jpg',
-    about: 'Lorem ipsum dolor sit amet, platea pellentesque, dolor maecenas eu tempor ullamcorper nulla, ipsum convallis libero est quis vel dictum, in sit non porttitor curabitur, sodales maecenas ut. Turpis in nunc. '
+    about: 'Josh was born and raised in Colorado.  He attended the University of Colorado at Boulder and also spent a year in Regensburg, Germany.  He loves to listen to and play music, and has played in several bands.  He is having a great time learning to code and work in a team at Galvanize!'
   },
   {
     name: 'Rob Kurtz',
