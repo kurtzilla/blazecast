@@ -32,7 +32,7 @@ exports.ensureAuthenticated = function(req, res, next) {
    * Sign in with email and password
    */
   exports.loginPost = function(req, res, next) {
-    console.log('debug login post');
+    // console.log('debug login post');
 
     req.assert('email', 'Email is not valid').isEmail();
     req.assert('email', 'Email cannot be blank').notEmpty();
@@ -48,7 +48,7 @@ exports.ensureAuthenticated = function(req, res, next) {
     new User({ email: req.body.email })
       .fetch()
       .then(function(user) {
-        console.log('USER',user);
+        // console.log('USER',user);
 
         if (!user) {
           return res.status(401).send({
@@ -71,7 +71,7 @@ exports.ensureAuthenticated = function(req, res, next) {
  * POST /signup
  */
 exports.signupPost = function(req, res, next) {
-  console.log('debug signup post');
+  // console.log('debug signup post');
 
   req.assert('name', 'Name cannot be blank').notEmpty();
   req.assert('email', 'Email is not valid').isEmail();
@@ -404,7 +404,7 @@ exports.authFacebookCallback = function(req, res) {
  * Sign in with Google
  */
 exports.authGoogle = function(req, res) {
-  console.log('debug Auth google');
+  // console.log('debug Auth google');
 
   var accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';
   var peopleApiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';
@@ -432,15 +432,15 @@ exports.authGoogle = function(req, res) {
         return res.status(500).send({ message: profile.error.message });
       }
 
-      console.log('pro sub', profile.sub);
-      console.log('isAuthd', req.isAuthenticated());
+      // console.log('pro sub', profile.sub);
+      // console.log('isAuthd', req.isAuthenticated());
 
       // Step 3a. Link accounts if user is authenticated.
       if (req.isAuthenticated()) {
         new User({ google: profile.sub })
           .fetch()
           .then(function(user) {
-            console.log('we go a user?', user);
+            // console.log('we go a user?', user);
             if (user) {
               return res.status(409).send({
                 msg: 'There is already an existing account linked with Google ' +
@@ -462,7 +462,7 @@ exports.authGoogle = function(req, res) {
         new User({ google: profile.sub })
           .fetch()
           .then(function(user) {
-            console.log('NOt authd', profile.sub, user);
+            // console.log('NOt authd', profile.sub, user);
             if (user) {
               return res.send({ token: generateToken(user), user: user });
             }
@@ -492,7 +492,7 @@ exports.authGoogle = function(req, res) {
 };
 
 exports.authGoogleCallback = function(req, res) {
-  console.log('debug callback google');
+  // console.log('debug callback google');
   res.send('Loading...');
 };
 /**
