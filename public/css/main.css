@@ -6163,6 +6163,11 @@ ul.rating {
     float: left;
     font-family: 'Play', sans-serif; }
 
+#searchBar {
+  margin-left: 50%;
+  margin-right: 50%;
+  text-align: center; }
+
 html {
   position: relative;
   min-height: 100%; }

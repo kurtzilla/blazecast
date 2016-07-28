@@ -4,16 +4,13 @@
 
 
 <div class="row">
-  <div class="col-xs-6 text-right">
-    <h4>Search iTunes</h4>
-  </div>
   <div class="col-xs-6">
     <input type="search"
             class="form-control"
             ng-model="view.query"
             ng-keyup="onKeyupSearch();"
             placeholder="Search for podcasts"
-            style="width: 100%;" />
+            id="searchBar" />
     <ul ng-show="displayResults" outside-click="closeMyPopup()">
       <li ng-click="registerSearchSelection(result)"
           ng-repeat="result in results"
