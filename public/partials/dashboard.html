@@ -6,12 +6,10 @@
 
     <div id="podcastDiv" class="col-xs-8 podcast-title-col">
       <img src="http://pngimg.com/upload/star_PNG1595.png"></img>
-      <!-- <strong>Favorites</strong> -->
     </div>
 
     <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="showSaved()">
       <img src="http://www.clockservices.net/img/0507/849.png?sitetimestamp=111111111328595274"></img>
-      <!-- <strong>Watch Later</strong> -->
     </div>
 
 
@@ -20,7 +18,6 @@
       <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="getEpisodes(podcast)">
 
         <img src="{{podcast.images}}" ng-click="searchTitle = podcast.name"></img>
-        <!-- <strong>{{podcast.name}}</strong> -->
       </div>
       <button id="unfollowBtn" ng-click="unfollowPodcast($index);" >X</button>
 
@@ -30,10 +27,9 @@
   <div id="episodeView">
 
     <div id="episodeDiv" ng-repeat="episode in view.episodes">
-      <button id='playButton' class="btn btn-success btn-sm btn-play" ng-click="addEpisodeToPlayer(episode)"><span class="glyphicon glyphicon-play"></span> Play</button>
+      <button id='playButton' class="btn btn-sm btn-play" ng-click="addEpisodeToPlayer(episode)"><span class="glyphicon glyphicon-play"></span> Play</button>
       <button class="btn btn-default btn-sm" ng-click="favoriteEpisode(view.following, episode)"><span class="glyphicon glyphicon-star"></span> Favorite</button>
       <button class="btn btn-default btn-sm" ng-click="saveEpisode(view.following, episode)"><span class="glyphicon glyphicon-star"></span> Save</button>
-      <!-- random comment so I can commit -->
 
       <div id="episodeInfo">
 
@@ -43,18 +39,4 @@
     </div>
 
   </div>
-  <!-- <div class="row episode-row">
-    <div class="col-xs-12">
-      <div class="error-list" ng-show="view.episodes.length === 0">
-        Sorry, this podcast does not have playable episodes.
-      </div>
-      <ul class="list-unstyled" ng-show="view.episodes.length > 0">
-        <li ng-repeat="episode in view.episodes | orderBy: filterBy | filter:searchTitle" class="episode-item">
-          <bc-episode-search-result episode="episode">
-          </bc-episode-search-result>
-        </li>
-      </ul>
-    </div>
-  </div> -->
-
 </div>

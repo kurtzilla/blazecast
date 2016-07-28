@@ -11,7 +11,7 @@ angular.module('MyApp')
   {
     name: 'Jory Garrido',
     imageUrl: 'https://avatars.slack-edge.com/2016-04-13/34405623040_3a4761302abfa28ef360_512.jpg',
-    about: 'Lorem ipsum dolor sit amet, platea pellentesque, dolor maecenas eu tempor ullamcorper nulla, ipsum convallis libero est quis vel dictum, in sit non porttitor curabitur, sodales maecenas ut. Turpis in nunc. '
+    about: 'If Blazecast is a planet and Sam is a planet, is the world a planet. No. Listen, if I am a planet and Blazecast is a planet, are my shoes a planet? Yes.'
   },
   {
     name: 'Ian Strouse',
