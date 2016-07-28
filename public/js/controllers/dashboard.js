@@ -11,7 +11,7 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParam
   });
 
   $scope.getEpisodes = function(podcast) {
-    console.log(podcast.id);
+
     $http.get('/api/podcasts/' + podcast.id + '/follow')
     .then(function(data){
       $scope.view.episodes = data.data;
