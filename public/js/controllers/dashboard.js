@@ -1,5 +1,5 @@
 
-app.controller('DashboardCtrl', function ($scope, $rootScope, $http) {
+app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParams) {
   var user = $rootScope.currentUser;
 
   $scope.view = {
@@ -11,7 +11,7 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http) {
   });
 
   $scope.getEpisodes = function(podcast) {
-
+    console.log(podcast.id);
     $http.get('/api/podcasts/' + podcast.id + '/follow')
     .then(function(data){
       $scope.view.episodes = data.data;
@@ -23,14 +23,16 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http) {
       .then(function(data) {})
   };
 
-  $scope.favoriteEpisode = function (episode) {
-    var podcastId = episode.podcast_id;
+  $scope.favoriteEpisode = function (following, episode) {
+    console.log('following:', following);
+    console.log('episode:', episode);
+    var providerId = following[0].provider_id;
     var itunesEpisodeId = episode.itunes_episode_id;
-    $http.get('/api/podcasts/' + podcastId + '/follow')
-        .then(function(data){
-          return $http.post('/api/users/' + user.id + '/favorite/' + podcastId + '/' + itunesEpisodeId);
-        })
-        .then(function(){});
+    console.log('providerId:', providerId);
+    console.log('itunesEpisodeId:', itunesEpisodeId);
+    console.log('/api/users/' + user.id + '/favorite/' + providerId + '/' + itunesEpisodeId);
+    $http.post('/api/users/' + user.id + '/favorite/' + providerId + '/' + itunesEpisodeId)
+      .then(function(){});
   };
 
 });

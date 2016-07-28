@@ -104,6 +104,8 @@ app.get('/api/users/:user_id/follow',
   apiController.getFollows);
 app.get('/api/podcasts/:podcast_id/follow',
   apiController.getEpisodes);
+app.post('/api/podcasts/:id/getDBID',
+  apiController.getEpisodeDatabaseID);
 app.get('/api/testApi',
   apiController.testApi);
 app.get('/api/podcasts/:itunes_podcast_id/episodes',
