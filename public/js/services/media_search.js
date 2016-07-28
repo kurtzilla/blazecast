@@ -9,7 +9,7 @@ app.factory('Media', function($resource) {
       search: {
         method: 'JSONP',
         params: {
-          limit: 20,
+          limit: 104,
           callback: 'JSON_CALLBACK'
         }
       }
