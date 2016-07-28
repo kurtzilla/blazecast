@@ -1,4 +1,3 @@
-
 <div class="row">
   <div class="col-xs-6" id="searchArea">
     <label class='filterLabel' for="filter">Filter By:</label>
@@ -43,8 +42,10 @@
     </ul>
   </div>
 </div>
-<div class="grid">
-  <img ng-repeat='podcast in view.podcasts | filter: filterByCategory' ng-click='showPage(podcast.collectionId)'class='grid-item'ng-src="{{podcast.artworkUrl600}}" alt="">
+<div class="stuff">
+  <div class="grid">
+    <img ng-repeat='podcast in view.podcasts | filter: filterByCategory' ng-click='showPage(podcast.collectionId)'class='grid-item'ng-src="{{podcast.artworkUrl600}}" alt="">
+  </div>
 </div>
 
 <!-- <div class="row" id="stuff">
