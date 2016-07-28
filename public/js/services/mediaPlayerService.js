@@ -2,6 +2,8 @@
 // STRETCH allow multiple sources in a queue
 app.service('mediaPlayerService', function($sce, $window){
   this.sourceQueue = [];
+  this.episodeTitle = '';
+  this.podcastTitle = '';
 
   // videogular only uses src and type attribs - normalize episode to source
   this.convertEpisodeToSource = function(episode){
@@ -14,5 +16,7 @@ app.service('mediaPlayerService', function($sce, $window){
   this.addEpisodeToPlayer = function(episode){
     console.log('THIS?', episode);
     this.sourceQueue = [this.convertEpisodeToSource(episode)];
+    this.episodeTitle = episode.title;
+    this.podcastTitle = episode.show_title;
   };
 });
