@@ -5998,12 +5998,31 @@ ul.rating {
 .episodeInfo {
   display: inline-block; }
 
+#searchBar {
+  text-align: center;
+  margin-left: 1%; }
+
+#searchArea {
+  margin-left: 25%;
+  margin-bottom: 1%;
+  color: #ccc;
+  display: flex;
+  flex-direction: row;
+  align-content: center; }
+
+.gridContainer {
+  width: 100%;
+  height: 100%; }
+
 .grid-item {
   float: left;
   width: 150px;
   height: 150px;
   margin: 15px;
   border: 2px solid rgba(0, 0, 0, 0.5); }
+
+#stuff {
+  background-color: #ccc; }
 
 .home {
   font-family: 'Play', sans-serif; }
@@ -6162,11 +6181,6 @@ ul.rating {
     display: inline-block;
     float: left;
     font-family: 'Play', sans-serif; }
-
-#searchBar {
-  margin-left: 50%;
-  margin-right: 50%;
-  text-align: center; }
 
 html {
   position: relative;
