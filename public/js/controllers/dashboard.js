@@ -30,4 +30,11 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParam
       .then(function(){});
   };
 
+  $scope.saveEpisode = function (following, episode) {
+    var providerId = following[0].provider_id;
+    var itunesEpisodeId = episode.itunes_episode_id;
+    $http.post('/api/users/' + user.id + '/save/' + providerId + '/' + itunesEpisodeId)
+      .then(function(){});
+  };
+
 });
