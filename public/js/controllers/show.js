@@ -32,7 +32,6 @@ app.controller('ShowCtrl',
     .catch(function(err){
       $scope.view.episodes = [err];
     });
-
     // End init podcast and episodes
 
 
