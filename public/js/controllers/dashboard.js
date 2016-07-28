@@ -28,7 +28,7 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http) {
     var itunesEpisodeId = episode.itunes_episode_id;
     $http.get('/api/podcasts/' + podcastId + '/follow')
         .then(function(data){
-          return $http.post('/api/users/' + user.id + '/favorite/' + podcastId + '/' + itunesEpisodeId); // STUCK: not getting provider_id or itunes_episode_id here - just null
+          return $http.post('/api/users/' + user.id + '/favorite/' + podcastId + '/' + itunesEpisodeId);
         })
         .then(function(){});
   };
