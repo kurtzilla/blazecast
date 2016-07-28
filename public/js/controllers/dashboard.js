@@ -41,8 +41,8 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParam
     console.log('showing saved podcasts');
     $http.get('/api/users/' + user.id + '/savedPodcasts')
       .then(function(data){
-        var favEps = data.data;
-        console.log(favEps);
+        var savedEps = data.data;
+        console.log(savedEps);
       });
   }
 
