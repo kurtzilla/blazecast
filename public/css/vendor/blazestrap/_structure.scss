@@ -6,7 +6,9 @@ body {
 }
 
 footer {
+  position: absolute;
   height: 1% !important;
+  width: 100%;
   background-color: #383539;
   span {
     font-size:9px;

@@ -5825,7 +5825,9 @@ body {
   background-color: #383539; }
 
 footer {
+  position: absolute;
   height: 1% !important;
+  width: 100%;
   background-color: #383539; }
   footer span {
     font-size: 9px;
@@ -6169,9 +6171,6 @@ body {
   margin-bottom: 44px; }
 
 footer {
-  width: 100%;
-  height: 44px;
-  padding: 10px 30px;
   bottom: 0;
   background-color: #383539;
   text-align: center; }
@@ -6182,7 +6181,10 @@ footer {
   cursor: pointer; }
 
 #iconContainer {
-  background-color: #383539; }
+  display: flex;
+  flex-direction: column;
+  background-color: #383539;
+  margin-bottom: 50px; }
 
 .login-container {
   max-width: 555px; }
