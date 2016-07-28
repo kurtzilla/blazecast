@@ -11,12 +11,12 @@ angular.module('MyApp')
   {
     name: 'Jory Garrido',
     imageUrl: 'https://avatars.slack-edge.com/2016-04-13/34405623040_3a4761302abfa28ef360_512.jpg',
-    about: 'Lorem ipsum dolor sit amet, platea pellentesque, dolor maecenas eu tempor ullamcorper nulla, ipsum convallis libero est quis vel dictum, in sit non porttitor curabitur, sodales maecenas ut. Turpis in nunc. '
+    about: 'If Blazecast is a planet and Sam is a planet, is the world a planet. No. Listen, if I am a planet and Blazecast is a planet, are my shoes a planet? Yes.'
   },
   {
     name: 'Ian Strouse',
     imageUrl: 'https://avatars3.githubusercontent.com/u/11822318?v=3&s=460',
-    about: 'Lorem ipsum dolor sit amet, platea pellentesque, dolor maecenas eu tempor ullamcorper nulla, ipsum convallis libero est quis vel dictum, in sit non porttitor curabitur, sodales maecenas ut. Turpis in nunc. '
+    about: 'Ian is an RPCV and aspiring futurist. He recently moved to Boulder from a rural town in the highlands of Madagascar to persue his dreams of saving the world thorugh code. He is currently parsing his way hrough the jungles of AngularJS.'
   },
   {
     name: 'Josh Newsom',
