@@ -144,4 +144,15 @@ exports.getFedPodcastEpisodes = function(req, res, next){
     console.log('ERROR AT API CATCH', err);
     res.send(err);
   });
+
+}
+exports.unfollowPodcast = function (req, res, next) {
+  var userId = req.params.user_id;
+  var podcastId = req.params.podcast_id;
+  knex('users_podcasts')
+    .update({
+      following: false
+    })
+    .where('podcast_id', podcastId)
+    .then(function(data) {})
 }
