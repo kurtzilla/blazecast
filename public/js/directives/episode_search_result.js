@@ -26,8 +26,16 @@ app.directive('bcEpisodeSearchResult', ['mediaPlayerService', function(mediaPlay
       $scope.favoriteEpisode = function (episode) {
         var user = $rootScope.currentUser;
         var providerId = $stateParams.provider_id;
-        var itunesEpisodeId = episode.itunes_episode_id;
+        var itunesEpisodeId = episode.id;
         $http.post('/api/users/' + user.id + '/favorite/' + providerId + '/' + itunesEpisodeId)
+          .then(function(){});
+      };
+
+      $scope.saveEpisode = function (episode) {
+        var user = $rootScope.currentUser;
+        var providerId = $stateParams.provider_id;
+        var itunesEpisodeId = episode.id;
+        $http.post('/api/users/' + user.id + '/save/' + providerId + '/' + itunesEpisodeId)
           .then(function(){});
       };
     }

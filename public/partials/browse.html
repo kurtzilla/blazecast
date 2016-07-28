@@ -1,15 +1,35 @@
-
 <div class="row">
-  <div class="col-xs-6 text-right">
-    <h4>Search iTunes</h4>
-  </div>
-  <div class="col-xs-6">
+  <div class="col-xs-6" id="searchArea">
+    <label class='filterLabel' for="filter">Filter By:</label>
+    <select name='filter' ng-model='view.filterBy'>
+        <option value="" disabled selected>Subject</option>
+        <option>Food</option>
+        <option>Literature</option>
+        <option>Design</option>
+        <option>Performing Arts</option>
+        <option>Visual Arts</option>
+        <option>Comedy</option>
+        <option>Education</option>
+        <option>Training</option>
+        <option>Music</option>
+        <option>Tech News</option>
+        <option>Outdoor</option>
+        <option>Training</option>
+        <option>Business</option>
+        <option>Shopping</option>
+        <option>Professional</option>
+        <option>Automotive</option>
+        <option>Regional</option>
+        <option>Local</option>
+        <option>Non-Profit</option>
+        <option>Medicine</option>
+    </select>
     <input type="search"
             class="form-control"
             ng-model="view.query"
             ng-keyup="onKeyupSearch();"
             placeholder="Search for podcasts"
-            style="width: 100%;" />
+            id="searchBar"/>
     <ul ng-show="displayResults" outside-click="closeMyPopup()">
       <li ng-click="registerSearchSelection(result)"
           ng-repeat="result in results"
@@ -22,6 +42,13 @@
     </ul>
   </div>
 </div>
+<div class="row" id="stuff">
+  <div class="grid">
+    <img ng-repeat='podcast in view.podcasts | filter: filterByCategory' ng-click='showPage(podcast.collectionId)'class='grid-item'ng-src="{{podcast.artworkUrl600}}" alt="">
+  </div>
+</div>
+
+<!-- <div class="row" id="stuff">
 
 <label class='filterLabel' for="filter">Filter By:</label>
 <select name='filter' ng-model='view.filterBy'>
@@ -47,11 +74,8 @@
     <option>Non-Profit</option>
     <option>Medicine</option>
 </select>
-<!-- <label class='filterLabel'for="search">Search By Title:</label> -->
-<!-- <input class='filterSearch' type="text" ng-model='searchGenre'> -->
-</div>
+</div> -->
 
-<div class="grid">
+<!-- <div class="grid">
   <img ng-repeat='podcast in view.podcasts | filter: filterByCategory' ng-click='showPage(podcast.collectionId)'class='grid-item'ng-src="{{podcast.artworkUrl600}}" alt="">
-  <div></div>
-</div>
+</div> -->

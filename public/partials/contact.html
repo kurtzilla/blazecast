@@ -5,7 +5,8 @@
     </div>
     <div class="panel-body">
       <div ng-if="messages.error" role="alert" class="alert alert-danger">
-        <div ng-repeat="error in messages.error">{{error.msg}}</div>
+        {{messages.error}}
+        <!--<div ng-repeat="error in messages.error">{{error.msg}}</div>-->
       </div>
       <div ng-if="messages.success" role="alert" class="alert alert-success">
         <div ng-repeat="success in messages.success">{{success.msg}}</div>

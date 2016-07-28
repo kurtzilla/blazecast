@@ -48,7 +48,8 @@
 
     <div id="episodeDiv" ng-repeat="episode in view.episodes">
       <button id='playButton' class="btn btn-success btn-sm btn-play" ng-click="addEpisodeToPlayer(episode)"><span class="glyphicon glyphicon-play"></span> Play</button>
-      <button class='favoriteButton' class="btn btn-default btn-sm" ng-click="favoriteEpisode(view.following, episode)"><span class="glyphicon glyphicon-star"></span> Favorite</button>
+      <button class="btn btn-default btn-sm" ng-click="favoriteEpisode(view.following, episode)"><span class="glyphicon glyphicon-star"></span> Favorite</button>
+      <button class="btn btn-default btn-sm" ng-click="saveEpisode(view.following, episode)"><span class="glyphicon glyphicon-star"></span> Save</button>
       <!-- random comment so I can commit -->
 
       <div id="episodeInfo">

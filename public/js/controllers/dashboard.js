@@ -15,7 +15,7 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParam
   }
 
   $scope.getEpisodes = function(podcast) {
-    console.log(podcast.id);
+
     $http.get('/api/podcasts/' + podcast.id + '/follow')
     .then(function(data){
       $scope.view.episodes = data.data;
@@ -34,8 +34,12 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParam
       .then(function(){});
   };
 
-  $scope.openPlaylists = function() {
-    
-  }
+
+  $scope.saveEpisode = function (following, episode) {
+    var providerId = following[0].provider_id;
+    var itunesEpisodeId = episode.itunes_episode_id;
+    $http.post('/api/users/' + user.id + '/save/' + providerId + '/' + itunesEpisodeId)
+      .then(function(){});
+  };
 
 });
