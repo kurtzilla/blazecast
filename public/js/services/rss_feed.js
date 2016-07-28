@@ -10,7 +10,6 @@ app.service('rssFeed', function($http, $q){
     this.$http.jsonp('https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=1000&q=' +
       url + '&callback=JSON_CALLBACK')
     .then(function(response){
-
       // console.log('Res DATA', response.data.responseData);
       if(response && response.data && response.data.responseData && response.data.responseData.feed){
         deferral.resolve(response.data.responseData.feed);
