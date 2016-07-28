@@ -18,6 +18,24 @@ app.directive('bcMediaPlayer', ['mediaPlayerService',
         return $scope.config.mediaPlayerService.sourceQueue;
       };
 
+      // keep as a tool to fix player pause issue
+      // $scope.$watchCollection('config.sources', function(newM, oldM){
+      //   console.log('changed');
+      //   if($scope.player.controller.API){
+      //
+      //     console.log('changed', $scope.player.controller.API);
+      //     console.log('skipped', $scope.player.controller.API.onPause());
+      //
+      //     // $scope.player.controller.API.pause()
+      //     // .then(function(data){
+      //     //   console.log('paused - now play');
+      //     // });
+      //   }
+      // });
+
+      // $scope
+      // $scope.config.mediaPlayerService
+
 
       //  ng-show="config.mediaPlayerService.podcastTitle.trim().length > 0 ||
       // config.mediaPlayerService.episodeTitle.trim().length > 0"
@@ -32,11 +50,13 @@ app.directive('bcMediaPlayer', ['mediaPlayerService',
       //
       // $scope.player.controller.API = null;
       //
-      // $scope.player.controller.onPlayerReady = function(API) {
-      //   // TODO syncplay and pause on newly added podcasts
-      //   console.log('API?', API);
-				// $scope.player.controller.API = API;
-      // };
+      $scope.player.controller.onPlayerReady = function(API) {
+        // TODO syncplay and pause on newly added podcasts
+        // console.log('API?', API);
+        // $scope.player.controller.API = API;
+
+
+      };
     }
   }
 }]);
