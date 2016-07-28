@@ -262,10 +262,13 @@ ul.rating {
   width: 150px;
   height: 150px;
   margin: 15px;
-  border: 2px solid hsla(0, 0%, 0%, 0.5);
+  border: 5px solid white;
 }
 #stuff{
   background-color: #ccc;
+}
+.squares {
+  border: solid white 1px;
 }
 
 //HOME

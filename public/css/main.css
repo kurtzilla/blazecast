@@ -6037,10 +6037,13 @@ ul.rating {
   width: 150px;
   height: 150px;
   margin: 15px;
-  border: 2px solid rgba(0, 0, 0, 0.5); }
+  border: 5px solid white; }
 
 #stuff {
   background-color: #ccc; }
+
+.squares {
+  border: solid white 1px; }
 
 .home {
   font-family: 'Play', sans-serif; }
