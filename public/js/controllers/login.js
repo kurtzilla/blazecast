@@ -6,7 +6,7 @@ angular.module('MyApp')
         .then(function(response) {
           $rootScope.currentUser = response.data.user;
           $window.localStorage.user = JSON.stringify(response.data.user);
-          $location.path('/account');
+          $location.path('/dashboard');
         })
         .catch(function(response) {
           $scope.messages = {

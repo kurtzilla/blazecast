@@ -36,8 +36,6 @@ app.controller('ShowCtrl',
     // End init podcast and episodes
 
 
-
-
     $http.get('/api/users/' + $rootScope.currentUser.id + '/follow')
       .then(function(data) {
         var followedPodcasts = data.data;
@@ -81,10 +79,12 @@ app.controller('ShowCtrl',
         var episode = {
           title: episodes[i].title,
           url: episodes[i].url,
-
+          itunesEpisodeId: episodes[i].id // using id returned from Audiosear.ch
         }
+
         postData.episodes.push(episode);
       }
+
 
       $http.post(requestUrl, postData)
       .then(function(data){
