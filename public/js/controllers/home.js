@@ -16,7 +16,7 @@ angular.module('MyApp')
   {
     name: 'Ian Strouse',
     imageUrl: 'https://avatars3.githubusercontent.com/u/11822318?v=3&s=460',
-    about: 'Lorem ipsum dolor sit amet, platea pellentesque, dolor maecenas eu tempor ullamcorper nulla, ipsum convallis libero est quis vel dictum, in sit non porttitor curabitur, sodales maecenas ut. Turpis in nunc. '
+    about: 'Ian is an RPCV and aspiring futurist. He recently moved to Boulder from a rural town in the highlands of Madagascar to persue his dreams of saving the world thorugh code. He is currently parsing his way hrough the jungles of AngularJS.'
   },
   {
     name: 'Josh Newsom',
