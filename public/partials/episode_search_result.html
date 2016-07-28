@@ -3,6 +3,13 @@
         ng-click="addEpisodeToPlayer(episode);">
   <span class="glyphicon glyphicon-play"></span> Play
 </button>
+<button class="btn btn-default btn-sm" ng-click="favoriteEpisode(episode)">
+  <span class="glyphicon glyphicon-star"></span> Favorite
+</button>
+<button class="btn btn-default btn-sm" ng-click="saveEpisode(episode)">
+  <span class="glyphicon glyphicon-floppy-disk"></span> Save
+</button>
+
 
 
   <strong class='episodeTitle'>{{episode.title}}</strong>
