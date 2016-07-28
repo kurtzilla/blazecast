@@ -24,13 +24,8 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParam
   };
 
   $scope.favoriteEpisode = function (following, episode) {
-    console.log('following:', following);
-    console.log('episode:', episode);
     var providerId = following[0].provider_id;
     var itunesEpisodeId = episode.itunes_episode_id;
-    console.log('providerId:', providerId);
-    console.log('itunesEpisodeId:', itunesEpisodeId);
-    console.log('/api/users/' + user.id + '/favorite/' + providerId + '/' + itunesEpisodeId);
     $http.post('/api/users/' + user.id + '/favorite/' + providerId + '/' + itunesEpisodeId)
       .then(function(){});
   };

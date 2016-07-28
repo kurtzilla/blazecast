@@ -7,7 +7,7 @@ app.directive('bcEpisodeSearchResult', ['mediaPlayerService', function(mediaPlay
       episode: '='
     },
     templateUrl: 'partials/episode_search_result.html',
-    controller: function($scope, $http) {
+    controller: function($scope, $http, $stateParams, $rootScope) {
       $scope.view = {};
       $scope.view.rating = 0;
       $scope.view.ratings = [{
@@ -22,22 +22,13 @@ app.directive('bcEpisodeSearchResult', ['mediaPlayerService', function(mediaPlay
       $scope.addEpisodeToPlayer = function(episode){
         mediaPlayerService.addEpisodeToPlayer(episode);
       }
-      $scope.favoriteEpisode = function (episode) {
-        console.log('episode:', episode);
-        $http.post('/api/podcasts/' + episode.id + '/getDBID', episode)
-            .then(function(data){
-              console.log("LALALA:", data);
-            })
-        var podcastId = episode.podcast_id;
-        var itunesEpisodeId = episode.itunes_episode_id;
-        console.log('podcastId:', podcastId);
-        console.log('itunesEpisodeId:', itunesEpisodeId);
 
-        $http.get('/api/podcasts/' + podcastId + '/follow')
-            .then(function(data){
-              return $http.post('/api/users/' + user.id + '/favorite/' + podcastId + '/' + itunesEpisodeId);
-            })
-            .then(function(){});
+      $scope.favoriteEpisode = function (episode) {
+        var user = $rootScope.currentUser;
+        var providerId = $stateParams.provider_id;
+        var itunesEpisodeId = episode.itunes_episode_id;
+        $http.post('/api/users/' + user.id + '/favorite/' + providerId + '/' + itunesEpisodeId)
+          .then(function(){});
       };
     }
 

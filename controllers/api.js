@@ -303,29 +303,3 @@ exports.unfollowPodcast = function (req, res, next) {
     .where('podcast_id', podcastId)
     .then(function(data) {})
 }
-
-exports.getEpisodeDatabaseID = function (req, res, next) {
-  console.log(req.body);
-  var episode = req.body;
-  knex('episodes')
-    .select('id')
-    .where('itunes_episode_id', req.params.id)
-    .then(function(data) {
-      if (!data.length) {
-        return knex('episodes')
-          .insert({
-            name: episode.title,
-            itunes_episode_id: episode.id
-          })
-          .returning('id')
-      } else {
-        console.log(data);
-        res.json(data)
-      }
-    })
-    .then(function(data) {
-      console.log(data);
-      res.json(data)
-    })
-    ;
-}
