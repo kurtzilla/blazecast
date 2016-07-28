@@ -1,12 +1,19 @@
 <div id="blazecast">
-  <div><img src="http://www.clker.com/cliparts/q/9/x/q/Y/T/flame-torch.svg" alt="" height='175px'></div>
+    <img src="http://www.clker.com/cliparts/q/9/x/q/Y/T/flame-torch.svg" id="logoImg" height='175px'>
+    <h1>Blazecast</h1>
+    <i class="fa fa-angle-down fa-5x floating" id="arrow" aria-hidden="true"></i>
 </div>
-<hr>
 <div id="abstract">
-  <h1 class='home'>About Blazecast</h1>
-  <p class='abstract'>Find yourself wishing you had a better way to store and manage your podcasts? Look no further. Blazecast saves your favorite podcasts to your very own Dashboard. Browse, listen, and add podcasts to your collection easily. Sign up today to get started!  </p>
+    <video loop muted autoplay id="bgvid">
+        <source src="../images/typing1.mp4" type="video/mp4">
+    </video>
+    <div class="overlay">
+      <h1 class='home'>About</h1>
+      <p class='abstract'>
+        Find yourself wishing you had a better way to store and manage your podcasts? Look no further. Blazecast saves your favorite podcasts to your very own Dashboard. Browse, listen, and add podcasts to your collection easily. Sign up today to get started!
+      </p>
+    </div>
 </div>
-<hr>
 <div id="meetTheTeam">
   <h1 class='home'>Meet the Team</h1>
   <div ng-repeat='teamMember in view.teamMembers'
