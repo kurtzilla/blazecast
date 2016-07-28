@@ -1,27 +1,18 @@
 
-// TODO allow multiple sources in a queue
+// STRETCH allow multiple sources in a queue
 app.service('mediaPlayerService', function($sce, $window){
   this.sourceQueue = [];
 
-  // videogular only uses src and type attribs
+  // videogular only uses src and type attribs - normalize episode to source
   this.convertEpisodeToSource = function(episode){
-
-    console.log('hit 2')
-
     var source = {};
     source.src = $sce.trustAsResourceUrl(episode.audio_url);
-    // source.src = episode.url;
     source.type = episode.type;
-    // console.log('SOURCE',source);
     return source;
   };
 
   this.addEpisodeToPlayer = function(episode){
-
-    console.log('hit 1')
-    // console.log('THIS?', episode);
-    // TODO set attribute on player for title?
+    console.log('THIS?', episode);
     this.sourceQueue = [this.convertEpisodeToSource(episode)];
-    // console.log(this.sourceQueue);
   };
 });
