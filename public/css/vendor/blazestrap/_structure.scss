@@ -15,10 +15,12 @@ footer {
 }
 
 bc-media-player {
-  background-color: #ccc;
+  position: fixed;
+  overflow: hidden;
   display:block;
-  bottom:5px;  /* avoid a parent padding/margin issue */
+  bottom:0px;  /* avoid a parent padding/margin issue */
   width:100%;
+  z-index: 2000;
 
   .videogular-container {
   	width: 100%;
@@ -394,3 +396,5 @@ ul.rating {
     font-family: 'Play', sans-serif;
   }
 }
+
+// BROWSE
