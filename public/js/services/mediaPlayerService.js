@@ -5,10 +5,10 @@ app.service('mediaPlayerService', function($sce){
   this.episodeTitle = '';
   this.podcastTitle = '';
 
-  this.currentPlayState = true;
-  this.haltPlayer = function(){
-    return this.currentPlayState;
-  };
+  // this.currentPlayState = true;
+  // this.haltPlayer = function(){
+  //   return this.currentPlayState;
+  // };
 
   // videogular only uses src and type attribs - normalize episode to source
   this.convertEpisodeToSource = function(episode){
@@ -20,11 +20,11 @@ app.service('mediaPlayerService', function($sce){
 
   this.addEpisodeToPlayer = function(episode){
     // console.log('THIS?', episode);
-    this.currentPlayState = false;
+    // this.currentPlayState = false;
 
     this.sourceQueue = [this.convertEpisodeToSource(episode)];
     this.episodeTitle = episode.title;
     this.podcastTitle = episode.show_title;
-    this.currentPlayState = true;
+    // this.currentPlayState = true;
   };
 });
