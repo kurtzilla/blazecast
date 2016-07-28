@@ -38,11 +38,10 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParam
   };
 
   $scope.showSaved = function () {
-    console.log('showing saved podcasts');
     $http.get('/api/users/' + user.id + '/savedPodcasts')
       .then(function(data){
         var savedEps = data.data;
-        console.log(savedEps);
+        $scope.view.episodes = savedEps;
       });
   }
 
