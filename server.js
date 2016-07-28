@@ -120,7 +120,7 @@ app.get('/proxyresource/:resourceurl',
 app.get('/api/users/:user_id/save/:provider_id/:itunes_episode_id',
   apiController.saveEpisode);
 
-app.get('/api/users/:user_id/favorite/:provider_id/:itunes_episode_id',
+app.post('/api/users/:user_id/favorite/:provider_id/:itunes_episode_id',
   apiController.favoriteEpisode);
 
 app.get('*', function(req, res) {
