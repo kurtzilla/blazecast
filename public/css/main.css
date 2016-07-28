@@ -5824,7 +5824,7 @@ button.close {
 body {
   background-color: #383539; }
   body .main-view-content {
-    padding-top: 70px; }
+    padding-top: 56px; }
 
 footer {
   position: absolute;
@@ -5921,6 +5921,12 @@ bc-itunes-search {
   background-color: #ccc;
   color: #383539; }
 
+.searchAreaShow {
+  margin-top: 1%;
+  text-align: center;
+  margin-right: 20%;
+  color: #ccc; }
+
 .show-podcast .podcast-title-col {
   font-size: 1.4em; }
 
@@ -5935,7 +5941,7 @@ bc-itunes-search {
   width: 100px;
   margin-top: 5px;
   margin-left: 50%;
-  background-color: black;
+  background-color: #383539;
   color: white; }
 
 .podcastTitle {
@@ -6050,8 +6056,8 @@ ul.rating {
   margin-left: 1%; }
 
 #searchArea {
+  margin-right: 25%;
   margin-left: 25%;
-  margin-bottom: 1%;
   color: #ccc;
   display: flex;
   flex-direction: row;
@@ -6232,15 +6238,29 @@ ul.rating {
     float: left;
     font-family: 'Play', sans-serif; }
 
+#dashboard {
+  background-color: #ccc; }
+
 #dashboard h1 {
   margin: 0;
   background-color: #ccc;
   color: #383539;
-  padding: 20px; }
+  padding-top: 5%;
+  padding-left: 10%;
+  padding-right: 10%; }
 
 #episodeView {
   background-color: #ccc;
-  width: 100%; }
+  width: 100vw; }
+  #episodeView #episodeDiv {
+    width: 100%; }
+
+#episodeDiv {
+  color: #ccc;
+  background-color: #f23434; }
+
+#podcastList {
+  z-index: 2; }
 
 html {
   position: relative;
