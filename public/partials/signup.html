@@ -2,7 +2,7 @@
   <div class="panel">
     <div class="panel-body">
       <div ng-if="messages.error" role="alert" class="alert alert-danger">
-        <div ng-repeat="error in messages.error">{{error.msg}}</div>
+        <div ng-repeat="error in messages.error">{{(error.msg) ? error.msg : error}}</div>
       </div>
       <form ng-submit="signup()">
         <legend>Create an account</legend>
