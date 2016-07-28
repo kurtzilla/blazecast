@@ -3,6 +3,10 @@
 }
 body {
   background-color: #383539;
+
+  .main-view-content {
+    padding-top:70px;
+  }
 }
 
 footer {
@@ -10,6 +14,26 @@ footer {
   background-color: #383539;
   span {
     font-size:9px;
+    color:#ccc;
+  }
+}
+
+.mediaplayer-title-layer {
+  /* border: solid red 1px; */
+  color: #999;
+  font-size: .6em;
+  /*this sizing splits multi-lines right around the scrub bar */
+  top: -12px;
+  height:26px;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  text-align:center;
+
+  div {
+    display:inline;
+  }
+  .mediaplayer-podcast-title {
     color:#ccc;
   }
 }

@@ -1,18 +1,28 @@
-<videogular
-            vg-auto-play="config.autoPlay"
-            class="videogular-container">
-  <vg-media vg-src="config.sources()" vg-type="audio"></vg-media>
+<videogular vg-auto-play="config.autoPlay"
+            class="videogular-container"
+            >
+  <vg-media
+          vg-src="config.sources()"
+          vg-type="audio"></vg-media>
   <vg-controls>
-		<vg-play-pause-button></vg-play-pause-button>
+    <vg-play-pause-button></vg-play-pause-button>
     <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
-		<vg-scrub-bar>
-			<vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-		</vg-scrub-bar>
+	<vg-scrub-bar>
+
+       <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+        <div class="mediaplayer-title-layer"
+             ng-show="  config.mediaPlayerService.podcastTitle.trim().length > 0 ||
+                    config.mediaPlayerService.episodeTitle.trim().length > 0">
+            <div class="mediaplayer-podcast-title">{{config.mediaPlayerService.podcastTitle}}</div>
+            <div class="mediaplayer-episode-title">{{config.mediaPlayerService.episodeTitle}}</div>
+        </div>
+    </vg-scrub-bar>
     <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
 		<vg-volume>
 			<vg-mute-button></vg-mute-button>
 			<vg-volume-bar></vg-volume-bar>
 		</vg-volume>
-		<vg-fullscreen-button></vg-fullscreen-button>
+      <vg-fullscreen-button></vg-fullscreen-button>
 	</vg-controls>
+
 </videogular>
