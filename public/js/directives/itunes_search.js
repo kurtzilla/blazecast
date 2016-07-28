@@ -23,7 +23,7 @@ app.directive('bcItunesSearch', function($rootScope, $location){
 
       $scope.registerSearchSelection = function(result){
         // TODO save selected result to localstorage?
-        $rootScope.selectedPodcast = result;
+        // $rootScope.selectedPodcast = result;
         $scope.closeMyPopup();
         $location.path('/show/' + result.collectionId.toString());
       };
