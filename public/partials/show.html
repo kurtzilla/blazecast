@@ -23,6 +23,7 @@
       </div>
     </div>
     <div class="col-xs-6 podcast-title-col">
+      <hr class='showLine'>
        <h2 class='podcastTitle'>{{view.podcast.collectionName}}</h2>
        <div ng-repeat='rating in view.ratings'>
        <!-- <p>{{rating.current}}</p> -->
@@ -30,15 +31,15 @@
        <div class='stars' star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
      </div>
     </div>
-    <div class="col-xs-8 podcast-title-col">
+    <div class="col-xs-6 podcast-title-col">
        <h5 class='podcastInfo'>
          <strong>Genre: </strong> {{view.podcast.primaryGenreName}}
        </h5>
     </div>
-    <div class="col-xs-8 podcast-title-col">
+    <div class="col-xs-6 podcast-title-col">
        <h5 class='podcastInfo'><strong>Release date: </strong> {{view.podcast.releaseDate | date:'medium'}}</h5>
     </div>
-    <div class="col-xs-8 podcast-title-col">
+    <div class="col-xs-6 podcast-title-col">
        <h5 class='podcastDescription'>
          <strong>Description: </strong>
          {{view.podcast.description}}
