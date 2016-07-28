@@ -26,7 +26,7 @@ angular.module('MyApp')
   {
     name: 'Rob Kurtz',
     imageUrl:'https://secure.gravatar.com/avatar/3c51996ec357eddddb4aa70ff4be2822.jpg?s=512&d=https%3A%2F%2Fa.slack-edge.com%2F7fa9%2Fimg%2Favatars%2Fava_0011-512.png',
-    about: 'Lorem ipsum dolor sit amet, platea pellentesque, dolor maecenas eu tempor ullamcorper nulla, ipsum convallis libero est quis vel dictum, in sit non porttitor curabitur, sodales maecenas ut. Turpis in nunc. '
+    about: 'Rob is a lover of all things Willy Wonka and was actually a Golden Ticket runner up in the "Mad Choco Choco" bar rush of 1997. He makes weekly treks to the top of the Hogback in N. Boulder and can regurlarly be seen traversing the sidewalks of Pearl St, usually on his way to or from the bus.'
   },
   {
     name: 'Sam Cate',
