@@ -1,4 +1,3 @@
-require('dotenv').config();
 var request = require('request');
 var atob = require('atob');
 
