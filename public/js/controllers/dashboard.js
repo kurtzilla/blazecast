@@ -11,7 +11,7 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParam
   });
 
   $scope.getEpisodes = function(podcast) {
-    console.log(podcast.id);
+
     $http.get('/api/podcasts/' + podcast.id + '/follow')
     .then(function(data){
       $scope.view.episodes = data.data;
@@ -36,5 +36,13 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParam
     $http.post('/api/users/' + user.id + '/save/' + providerId + '/' + itunesEpisodeId)
       .then(function(){});
   };
+
+  $scope.showSaved = function () {
+    $http.get('/api/users/' + user.id + '/savedPodcasts')
+      .then(function(data){
+        var savedEps = data.data;
+        $scope.view.episodes = savedEps;
+      });
+  }
 
 });

@@ -5827,7 +5827,9 @@ body {
     padding-top: 70px; }
 
 footer {
+  position: absolute;
   height: 1% !important;
+  width: 100%;
   background-color: #383539; }
   footer span {
     font-size: 9px;
@@ -5850,11 +5852,13 @@ footer {
     color: #ccc; }
 
 bc-media-player {
-  background-color: #ccc;
+  position: fixed;
+  overflow: hidden;
   display: block;
-  bottom: 5px;
+  bottom: 0px;
   /* avoid a parent padding/margin issue */
-  width: 100%; }
+  width: 100%;
+  z-index: 2000; }
   bc-media-player .videogular-container {
     width: 100%;
     height: 50px;
@@ -5904,12 +5908,18 @@ bc-itunes-search {
       bc-itunes-search ul li span {
         width: 80%; }
       bc-itunes-search ul li .img-wrapper, bc-itunes-search ul li span {
-        float: left; }
+        float: left;
+        margin-left: 20%; }
     bc-itunes-search ul li:nth-child(odd) {
       background-color: #eee; }
     bc-itunes-search ul li:hover {
       background-color: #444;
       color: white; }
+
+.container-fluid {
+  min-width: 600px;
+  background-color: #ccc;
+  color: #383539; }
 
 .show-podcast .podcast-title-col {
   font-size: 1.4em; }
@@ -5917,17 +5927,22 @@ bc-itunes-search {
 .podcastCoverImg {
   height: 200px;
   width: 200px;
-  border: 2px solid black; }
+  margin-top: 10%;
+  margin-left: 35%;
+  border: 2px solid white; }
 
 .followButton {
   width: 100px;
   margin-top: 5px;
-  margin-left: 50px;
+  margin-left: 50%;
   background-color: black;
   color: white; }
 
 .podcastTitle {
   margin-top: -5px; }
+
+.showLine {
+  width: 622.5; }
 
 .podcastInfo {
   margin-top: 5px; }
@@ -5946,8 +5961,10 @@ bc-itunes-search {
   overflow: scroll; }
 
 .episode-item {
-  border: solid #999 1px;
+  border: solid white 1px;
   padding: 5px;
+  color: #ccc;
+  background-color: #383539;
   margin-bottom: 5px; }
   .episode-item .episode-snippet {
     font-size: 10px;
@@ -5969,8 +5986,22 @@ bc-itunes-search {
   margin-right: 20px;
   color: lightblue; }
 
+#faveButton {
+  margin-right: 3px;
+  background-color: lightpink;
+  color: #383539; }
+  #faveButton .glyphicon-heart {
+    color: red; }
+
 #playButton {
-  margin-right: 10px; }
+  margin-right: 3px;
+  background-color: lightblue;
+  color: #383539; }
+
+#saveButton {
+  margin-right: 3px;
+  background-color: lightblue;
+  color: #383539; }
 
 .addEpisode {
   float: right;
@@ -5985,7 +6016,7 @@ bc-itunes-search {
   width: 150px; }
 
 .rating {
-  color: #a9a9a9;
+  color: white;
   margin: 0;
   padding: 0; }
 
@@ -6001,7 +6032,9 @@ ul.rating {
   cursor: pointer; }
 
 .rating .filled {
-  color: black; }
+  background: -webkit-linear-gradient(#910000, #fcba00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; }
 
 .ratingTitle {
   display: inline-block; }
@@ -6012,12 +6045,34 @@ ul.rating {
 .episodeInfo {
   display: inline-block; }
 
+#searchBar {
+  text-align: center;
+  margin-left: 1%; }
+
+#searchArea {
+  margin-left: 25%;
+  margin-bottom: 1%;
+  color: #ccc;
+  display: flex;
+  flex-direction: row;
+  align-content: center; }
+
+.gridContainer {
+  width: 100%;
+  height: 100%; }
+
 .grid-item {
   float: left;
   width: 150px;
   height: 150px;
   margin: 15px;
-  border: 2px solid rgba(0, 0, 0, 0.5); }
+  border: 5px solid white; }
+
+#stuff {
+  background-color: #ccc; }
+
+.squares {
+  border: solid white 1px; }
 
 .home {
   font-family: 'Play', sans-serif; }
@@ -6185,9 +6240,6 @@ body {
   margin-bottom: 44px; }
 
 footer {
-  width: 100%;
-  height: 44px;
-  padding: 10px 30px;
   bottom: 0;
   background-color: #383539;
   text-align: center; }
@@ -6198,7 +6250,10 @@ footer {
   cursor: pointer; }
 
 #iconContainer {
-  background-color: #383539; }
+  display: flex;
+  flex-direction: column;
+  background-color: #383539;
+  margin-bottom: 50px; }
 
 .login-container {
   max-width: 555px; }

@@ -10,7 +10,9 @@ body {
 }
 
 footer {
+  position: absolute;
   height: 1% !important;
+  width: 100%;
   background-color: #383539;
   span {
     font-size:9px;
@@ -39,10 +41,12 @@ footer {
 }
 
 bc-media-player {
-  background-color: #ccc;
+  position: fixed;
+  overflow: hidden;
   display:block;
-  bottom:5px;  /* avoid a parent padding/margin issue */
+  bottom:0px;  /* avoid a parent padding/margin issue */
   width:100%;
+  z-index: 2000;
 
   .videogular-container {
   	width: 100%;
@@ -114,6 +118,7 @@ bc-itunes-search {
       }
       .img-wrapper, span {
         float:left;
+        margin-left: 20%;
       }
     }
     li:nth-child(odd) {
@@ -127,6 +132,11 @@ bc-itunes-search {
 }
 
 // SHOW PAGE
+.container-fluid {
+  min-width: 600px;
+  background-color: #ccc;
+  color: #383539;
+}
 .show-podcast {
   .podcast-title-col {
     font-size:1.4em;
@@ -136,17 +146,22 @@ bc-itunes-search {
 .podcastCoverImg {
   height: 200px;
   width: 200px;
-  border: 2px solid black;
+  margin-top: 10%;
+  margin-left: 35%;
+  border: 2px solid white;
 }
 .followButton{
   width: 100px;
   margin-top: 5px;
-  margin-left: 50px;
+  margin-left: 50%;
   background-color: black;
   color: white;
 }
 .podcastTitle {
   margin-top: -5px;
+}
+.showLine {
+  width: 622.5;
 }
 .podcastInfo {
   margin-top: 5px;
@@ -165,8 +180,10 @@ bc-itunes-search {
   overflow: scroll;
 }
 .episode-item {
-  border:solid #999 1px;
+  border:solid white 1px;
   padding:5px;
+  color: #ccc;
+  background-color: #383539 ;
   margin-bottom:5px;
   .episode-snippet {
     font-size:10px;
@@ -189,8 +206,23 @@ bc-itunes-search {
   margin-right: 20px;
   color: lightblue;
 }
+#faveButton {
+  margin-right: 3px;
+  background-color: lightpink;
+  color: #383539;
+  .glyphicon-heart {
+    color: red;
+  }
+}
 #playButton {
-  margin-right: 10px;
+  margin-right: 3px;
+  background-color: lightblue;
+  color: #383539;
+}
+#saveButton {
+  margin-right: 3px;
+  background-color: lightblue;
+  color: #383539;
 }
 .addEpisode {
   float: right;
@@ -206,7 +238,7 @@ bc-itunes-search {
 }
 //show rating
 .rating {
-    color: #a9a9a9;
+    color: white;
     margin: 0;
     padding: 0;
 }
@@ -222,7 +254,9 @@ ul.rating {
     cursor: pointer;
 }
 .rating .filled {
-    color: black;
+    background: -webkit-linear-gradient(#910000, #fcba00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;;
 }
 .ratingTitle {
   display: inline-block;
@@ -237,12 +271,34 @@ ul.rating {
 
 //BROWSE
 
+#searchBar {
+  text-align: center;
+  margin-left: 1%;
+}
+#searchArea {
+  margin-left: 25%;
+  margin-bottom: 1%;
+  color: #ccc;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+.gridContainer {
+  width: 100%;
+  height: 100%;
+}
 .grid-item {
   float: left;
   width: 150px;
   height: 150px;
   margin: 15px;
-  border: 2px solid hsla(0, 0%, 0%, 0.5);
+  border: 5px solid white;
+}
+#stuff{
+  background-color: #ccc;
+}
+.squares {
+  border: solid white 1px;
 }
 
 //HOME
