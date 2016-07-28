@@ -142,18 +142,31 @@ bc-itunes-search {
     font-size:1.4em;
   }
 }
+.podcast-title-row{
+  .col {
+    //border:solid green 1px;
+  }
+  .img-wrapper {
+    text-align:center;
+  }
+}
 
+.filter-row{
+  white-space: nowrap;
+}
 .podcastCoverImg {
-  height: 200px;
-  width: 200px;
+  //height: 200px;
+  width: 100%;
+  max-width:200px;
+  max-height:200px;
   margin-top: 10%;
-  margin-left: 35%;
+  //margin-left: 35%;
   border: 2px solid white;
 }
 .followButton{
   width: 100px;
   margin-top: 5px;
-  margin-left: 50%;
+  //margin-left: 50%;
   background-color: black;
   color: white;
 }
