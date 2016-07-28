@@ -12,7 +12,6 @@ exports.serveiTunesDummy = function(req, res, next) {
 
 exports.followPodcast = function (req, res, next) {
 
-
   var userId = req.params.user_id;
   var providerId = req.params.podcast_id;
   var podcastName = req.body.podcastName;
@@ -54,6 +53,7 @@ exports.followPodcast = function (req, res, next) {
   .then(function(data) {
     var following = data[0] ? data[0].following : true;
     if (!data.length) {
+      console.log("INSERTING PODCAST INTO DB");
       return knex('users_podcasts')
       .insert({
         user_id: userId,
