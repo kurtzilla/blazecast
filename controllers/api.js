@@ -276,6 +276,8 @@ exports.getFedPodcastEpisodes = function(req, res, next){
   var podcast = {};
   var pId = req.params.itunes_podcast_id;
 
+  // eCollection is the returned collection of episode objects
+
   return audiosearch.get('/shows', {'itunes_id':pId})
   .then(function(data){
     podcast = data;
