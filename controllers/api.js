@@ -283,7 +283,6 @@ exports.getFedPodcastEpisodes = function(req, res, next){
 
 }
 
-
 exports.unfollowPodcast = function (req, res, next) {
   var userId = req.params.user_id;
   var podcastId = req.params.podcast_id;
@@ -313,8 +312,10 @@ exports.getEpisodeById = function(req, res, next){
 
 }
 
+
 exports.getSavedEpisodes = function (req, res, next) {
   var userId = req.params.user_id;
+  // console.log('SAVED USERID',userId, req.params.user_id)
   knex('users_episodes')
     .where('user_id', userId)
     .andWhere('save_for_later', true)
@@ -324,13 +325,14 @@ exports.getSavedEpisodes = function (req, res, next) {
     })
 }
 
-
 exports.getFavoriteEpisodes = function (req, res, next) {
   var userId = req.params.user_id;
+  // console.log('FAVED USERID',userId, req.params.user_id)
   knex('users_episodes')
     .where('user_id', userId)
     .andWhere('favorite', true)
     .innerJoin('episodes', 'users_episodes.itunes_episode_id', 'episodes.itunes_episode_id')
+  //users_episodes.itunes_episode_id does not exist
     .then(function(data) {
       res.json(data);
     })

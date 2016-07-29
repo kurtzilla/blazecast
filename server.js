@@ -1,4 +1,5 @@
-  var express = require('express');
+var sslRedirect = require('heroku-ssl-redirect');
+var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var compression = require('compression');
@@ -26,6 +27,10 @@ var resourceController = require('./controllers/resource');
 
 var app = express();
 
+// enable ssl redirect
+app.use(sslRedirect());
+
+
 app.set('port', process.env.PORT || 3000);
 app.use(favicon(path.join(__dirname, './public/images', 'favicon.ico')));
 app.use(compression());
@@ -36,6 +41,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use(function(req, res, next) {
   req.isAuthenticated = function() {
@@ -97,8 +103,6 @@ app.get('/itunesdummydata',
 // post to this route to follow this podcast for a user
 app.post('/api/users/:user_id/follow/:podcast_id',
   apiController.followPodcast);
-
-
 app.post('/api/users/:user_id/unfollow/:podcast_id',
   apiController.unfollowPodcast);
 app.get('/api/users/:user_id/follow',
@@ -110,12 +114,12 @@ app.get('/api/testApi',
   apiController.testApi);
 app.get('/api/podcasts/:itunes_podcast_id/episodes',
   apiController.getFedPodcastEpisodes);
+
 app.get('/api/episodes/:itunes_episode_id/',
   apiController.getEpisodeById);
 
 app.get('/proxyresource/:resourceurl',
   resourceController.proxyResource);
-
 
 app.post('/api/users/:user_id/save/:provider_id/:itunes_episode_id',
   apiController.saveEpisode);

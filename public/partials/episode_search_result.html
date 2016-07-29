@@ -11,13 +11,16 @@
 </button>
 
 
-
-  <strong class='episodeTitle'>{{episode.title}}</strong>
+  <strong class='episodeTitle'>{{episode.title | substringLongTitle}}</strong>
   <div class='episodeInfo'>
     <div ng-repeat='rating in view.ratings'>
     <!-- <p>{{rating.current}}</p> -->
       <h5 class='ratingTitle'>Rating: </h5>
-        <div class='stars' star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)">
+        <div class='stars'
+             star-rating
+             rating-value="rating.current"
+             max="rating.max"
+             on-rating-selected="getSelectedRating(rating)">
         </div>
       </div>
   </div>
