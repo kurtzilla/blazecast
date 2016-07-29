@@ -28,7 +28,7 @@ var resourceController = require('./controllers/resource');
 var app = express();
 
 // enable ssl redirect
-app.use(sslRedirect());
+// app.use(sslRedirect());
 
 
 app.set('port', process.env.PORT || 3000);
