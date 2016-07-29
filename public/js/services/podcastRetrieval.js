@@ -91,4 +91,14 @@ app.service('episodeService', ['$q', '$http', function($q, $http) {
 
     return deferral.promise;
   };
+
+  this.populateEpisodesByEpisodeId = function (faveEps) {
+    var promises = [];
+    for (var i = 0; i < faveEps.length; i++) {
+      var epId = faveEps[i].itunes_episode_id
+      var promise = $http.get('/api/episodes/' + epId);
+      promises.push(promise);
+    }
+    return promises;
+  }
 }]);

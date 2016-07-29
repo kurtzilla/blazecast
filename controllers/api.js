@@ -17,12 +17,8 @@ exports.followPodcast = function (req, res, next) {
   var podcastName = req.body.podcastName;
   var feedUrl = req.body.feedUrl;
   var images = req.body.images;
-  var episodes = req.body.episodes;
   var podcastId;
 
-
-
-  // var episodes =
 
   // first, check to see if podcast is already in database
   knex('podcasts')
@@ -67,23 +63,7 @@ exports.followPodcast = function (req, res, next) {
       .where('podcast_id', podcastId);
     }
   })
-  .then(function() {
-    for (var i = 0; i < episodes.length; i++) {
-
-      knex('episodes')
-      .insert({
-        podcast_id: podcastId,
-        name: episodes[i].title,
-        feedUrl: episodes[i].url,
-        itunes_episode_id: episodes[i].itunesEpisodeId
-      })
-      .catch(function(err) {
-        console.log(err);
-      })
-      res.end()
-
-    }
-  });
+  .then(function() {x});
 }
 
 exports.getFollows = function(req, res, next) {
@@ -294,16 +274,38 @@ exports.getFedPodcastEpisodes = function(req, res, next){
 
 }
 
+exports.getEpisodeById = function(req, res, next){
+  var podcast = {};
+  var eId = req.params.itunes_episode_id;
+
+  // eCollection is the returned collection of episode objects
+
+  return audiosearch.get('/episodes/' + eId)
+  .then(function(data){
+    console.log('data from audiosearch:', data.audio_files);
+    res.send(data);
+  })
+  .catch(function(err){
+    console.log('ERROR AT API CATCH', err);
+    res.send(err);
+  });
+
+}
+
 
 exports.unfollowPodcast = function (req, res, next) {
   var userId = req.params.user_id;
   var podcastId = req.params.podcast_id;
+  console.log(userId, podcastId);
   knex('users_podcasts')
     .update({
       following: false
     })
     .where('podcast_id', podcastId)
-    .then(function(data) {})
+    .then(function(data) {
+      console.log('this is the thing');
+      console.log(data);
+    })
 }
 
 
