@@ -10,7 +10,22 @@ app.filter('removeProtocol', function() {
 
 app.filter('proxyResource', function(){
   return function(input){
-    var encoded = btoa(input);
-    return '/proxyresource/' + encoded;
+    if(input) {
+      var encoded = btoa(input);
+      return '/proxyresource/' + encoded;
+    }
+  }
+});
+
+app.filter('substringLongTitle', function(){
+  return function(input) {
+    if (input) {
+      var len = 50;// this is 0 based!!!
+      var inp = input.trim();
+      if (inp.length > len) {
+        inp = inp.substr(0, len) + '...';
+      }
+      return inp;
+    }
   }
 });

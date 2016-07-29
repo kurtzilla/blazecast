@@ -15,7 +15,7 @@
   <div class="row podcast-title-row">
     <div class="col col-xs-4">
       <div class="img-wrapper">
-        <img class='podcastCoverImg' ng-src="{{view.podcast.image_url}}" />
+        <img class='podcastCoverImg' ng-src="{{view.podcast.image_url | proxyResource}}" />
         <div>
           <!--<button class='followButton' ng-disabled="view.episodes.length === 0" ng-click="followPodcast()">-->
               <button class='followButton' ng-click="followPodcast()">
