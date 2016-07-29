@@ -67,9 +67,10 @@ app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams
           .then(function (data) {
             $scope.view.episodes = [];
             for (var i = 0; i < data.length; i++) {
+              data[i].data.audio_url = data[i].data.audio_files[0].url[0];
+              data[i].data.type = 'audio/mpeg';
               $scope.view.episodes.push(data[i].data)
             }
-            console.log($scope.view.episodes);
             $scope.$digest();
           })
 

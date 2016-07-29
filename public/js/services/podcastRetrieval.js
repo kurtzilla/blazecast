@@ -96,7 +96,6 @@ app.service('episodeService', ['$q', '$http', function($q, $http) {
     var promises = [];
     for (var i = 0; i < faveEps.length; i++) {
       var epId = faveEps[i].itunes_episode_id
-      console.log('epId:', epId);
       var promise = $http.get('/api/episodes/' + epId);
       promises.push(promise);
     }
