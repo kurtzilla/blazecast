@@ -41,17 +41,26 @@ app.use(express.static(path.join(__dirname, 'public')));
   console.log('PROCESS', process.env.NODE_ENV);
 
   // http://jaketrent.com/post/https-redirect-node-heroku/ - ruby version
-  if (process.env.NODE_ENV === 'production') {
-    app.use('*', function(err, req, res, next) {
-      if(req.header['x-forwarded-proto'] !== 'https'){
-        // res.redirect "https://#{req.header 'host'}#{req.url}";
-        // see comments for js version
-        return res.redirect(['https://', req.get('Host'), req.url].join(''));
-      } else {
-        next();
-      }
+  // if (process.env.NODE_ENV === 'production') {
+
+    /* Redirect http to https */
+    app.get('*', function(req,res,next) {
+      if(req.headers['x-forwarded-proto'] != 'https' && process.env.NODE_ENV === 'production')
+        res.redirect('https://'+req.hostname+req.url)
+      else
+        next() /* Continue to other routes if we're not redirecting */
     });
-  }
+
+    // app.use('*', function(err, req, res, next) {
+    //   if(req.header['x-forwarded-proto'] !== 'https'){
+    //     // res.redirect "https://#{req.header 'host'}#{req.url}";
+    //     // see comments for js version
+    //     return res.redirect(['https://', req.get('Host'), req.url].join(''));
+    //   } else {
+    //     next();
+    //   }
+    // });
+//  }
 
 app.use(function(req, res, next) {
   req.isAuthenticated = function() {
