@@ -25,6 +25,7 @@ angular.module('MyApp')
     $location.path('/show/' + result.collectionId.toString());
   };
 
+
   $scope.$watchCollection('view.query', function() {
     $scope.view.filterBy = '';
     // console.log($scope.view.query);
