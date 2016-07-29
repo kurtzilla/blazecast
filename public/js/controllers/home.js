@@ -6,7 +6,7 @@ angular.module('MyApp')
   $scope.view.teamMembers = [{
     name: 'Kirsten Wedde',
     imageUrl: 'https://avatars3.githubusercontent.com/u/11020841?v=3&s=460',
-    about: 'Kirsten loves road trips, her sweet pups, miniture goats, and gardening. She hopes to have a small homestead within the next few years.'
+    about: 'Kirsten loves road trips, her sweet pups, miniature goats, and gardening. She hopes to have a small homestead within the next few years.'
   },
   {
     name: 'Jory Garrido',
@@ -16,7 +16,7 @@ angular.module('MyApp')
   {
     name: 'Ian Strouse',
     imageUrl: 'https://avatars3.githubusercontent.com/u/11822318?v=3&s=460',
-    about: 'Ian is an RPCV and aspiring futurist. He recently moved to Boulder from a rural town in the highlands of Madagascar to persue his dreams of saving the world thorugh code. He is currently parsing his way hrough the jungles of AngularJS.'
+    about: 'Ian is an RPCV and aspiring futurist. He recently moved to Boulder from a rural town in the highlands of Madagascar to pursue his dreams of saving the world through code. He is currently parsing his way through the jungles of AngularJS.'
   },
   {
     name: 'Josh Newsom',
