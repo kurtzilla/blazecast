@@ -280,7 +280,7 @@ textarea {
   height: 200px;
   padding-top: 25px;
   padding-right: 25px;
-  background-color: #9E9E9E;
+  background-color: #ccc;
   box-shadow: 0px 1px 3px 1px;
 }
 
@@ -317,14 +317,12 @@ textarea {
   width: 100vh;
   overflow-y: scroll;
 }
-
 #episodeDiv {
   height: 50px;
   margin: 8px;
-  // border: 1px solid black;
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
   padding: 5px;
-  background-color: white;
+  background-color: #383539;
   display: flex;
   align-items: center;
   strong {
@@ -335,7 +333,6 @@ textarea {
     background-color: blue;
     color: white;
     border: none;
-    // margin-top: -8px;
     height: 30px;
   }
 }
