@@ -143,7 +143,6 @@ exports.favoriteEpisode = function(req, res, next) {
       .where('user_id', userId)
       .andWhere('itunes_episode_id', itunesEpisodeId)
       .then(function(data) {
-        console.log(data);
         if (!data.length) {
           return knex('users_episodes')
           .insert({
@@ -167,7 +166,6 @@ exports.favoriteEpisode = function(req, res, next) {
 }
 
 exports.saveEpisode = function(req, res, next) {
-  console.log('req.body:', req.body);
   // TEST ME: localhost:3000/api/users/5/favorite/179950332/96517
   var userId = req.params.user_id;
   var providerId = req.params.provider_id;
@@ -214,7 +212,6 @@ exports.saveEpisode = function(req, res, next) {
       .where('user_id', userId)
       .andWhere('itunes_episode_id', itunesEpisodeId)
       .then(function(data) {
-        console.log(data);
         if (!data.length) {
           return knex('users_episodes')
           .insert({
@@ -329,7 +326,6 @@ exports.getFavoriteEpisodes = function (req, res, next) {
     .andWhere('favorite', true)
     .innerJoin('episodes', 'users_episodes.itunes_episode_id', 'episodes.itunes_episode_id')
     .then(function(data) {
-      console.log('data from api.js:', data);
       res.json(data);
     })
 }
