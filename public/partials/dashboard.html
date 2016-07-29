@@ -5,11 +5,11 @@
   <div id="podcastList">
 
     <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="showFavorites()"> <!--use this!-->
-      <img ng-src="http://pngimg.com/upload/star_PNG1595.png?kj=09 | proxyResource"></img>
+      <img ng-src="{{'http://pngimg.com/upload/star_PNG1595.png?' + Date().getTime() | proxyResource}}"></img>
     </div>
 
     <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="showSaved()">
-      <img ng-src="http://www.clockservices.net/img/0507/849.png?sitetimestamp=111111111328595274 | proxyResource"></img>
+      <img ng-src="{{'http://www.clockservices.net/img/0507/849.png?' + Date().getTime() | proxyResource}}"></img>
     </div>
 
 
