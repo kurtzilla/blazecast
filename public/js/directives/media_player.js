@@ -50,13 +50,13 @@ app.directive('bcMediaPlayer', ['mediaPlayerService',
       //
       // $scope.player.controller.API = null;
       //
-      $scope.player.controller.onPlayerReady = function(API) {
-        // TODO syncplay and pause on newly added podcasts
-        // console.log('API?', API);
-        // $scope.player.controller.API = API;
-
-
-      };
+      // $scope.player.controller.onPlayerReady = function(API) {
+      //   // TODO syncplay and pause on newly added podcasts
+      //   // console.log('API?', API);
+      //   // $scope.player.controller.API = API;
+      //
+      //
+      // };
     }
   }
 }]);
