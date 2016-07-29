@@ -234,6 +234,10 @@ exports.saveEpisode = function(req, res, next) {
   })
 }
 
+exports.getPlaylists = function(req, res, next) {
+  return 'Hello'
+}
+
 // exports.saveEpisode = function(req, res, next) {
 //
 // }

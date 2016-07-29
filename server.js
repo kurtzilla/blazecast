@@ -104,6 +104,7 @@ app.get('/api/users/:user_id/follow',
   apiController.getFollows);
 app.get('/api/podcasts/:podcast_id/follow',
   apiController.getEpisodes);
+
 app.get('/api/testApi',
   apiController.testApi);
 app.get('/api/podcasts/:itunes_podcast_id/episodes',
@@ -114,8 +115,7 @@ app.get('/proxyresource/:resourceurl',
   resourceController.proxyResource);
 
 
-// app.post('/api/users/:user_id/playlists/new',
-//   apiController.newPlaylist);
+// app.get('/api/users/:user_id/save/:provider_id/:itunes_episode_id',
 
 app.post('/api/users/:user_id/save/:provider_id/:itunes_episode_id',
   apiController.saveEpisode);
