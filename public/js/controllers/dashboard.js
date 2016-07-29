@@ -1,5 +1,5 @@
 
-app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParams) {
+app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams, episodeService) {
   var user = $rootScope.currentUser;
   $scope.view = {};
   $scope.view.name = {
@@ -24,10 +24,18 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParam
     .then(function(data){
       $scope.view.episodes = data.data;
     });
+
+    episodeService.populateEpisodesByItunesPodcastId(podcast.provider_id)
+    .then(function(data){
+      $scope.view.episodes = episodeService.episodes;
+    })
+    .catch(function(err){
+      $scope.view.episodes = [err];
+    });
   };
 
-  $scope.unfollowPodcast = function (index) {
-    $http.post('/api/users/' + $rootScope.currentUser.id + '/unfollow/' + $scope.view.following[index].id)
+  $scope.unfollowPodcast = function (podcast) {
+    $http.post('/api/users/' + $rootScope.currentUser.id + '/unfollow/' + podcast.id)
       .then(function(data) {})
   };
 
@@ -51,6 +59,14 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParam
         var savedEps = data.data;
         $scope.view.episodes = savedEps;
       });
+  };
+
+  $scope.showFavorites = function () {
+    $http.get('/api/users/' + user.id + '/favoriteEpisodes')
+      .then(function(data) {
+        var faveEps = data.data;
+        $scope.view.episodes = faveEps;
+      })
   }
 
 });

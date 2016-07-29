@@ -4,9 +4,9 @@
 
   <div id="podcastList">
 
-    <div id="podcastDiv" class="col-xs-8 podcast-title-col">
+    <div id="podcastDiv" class="col-xs-8 podcast-title-col"
+     ng-click="showFavorites()">
       <!-- <h3 class='addToFave'>Favorites</h3> -->
-    <!-- <span class='glyphicon glyphicon-heart favorite'></span> -->
     <img ng-src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSstfPq6YFFzSmDbniFZjq-ILqMkgbegkBbMRzGG5_O8z2_fFuklw" alt="">
     </div>
 
@@ -20,40 +20,17 @@
 
         <img src="{{podcast.images}}" ng-click="searchTitle = podcast.name" class='grid-item'></img>
       </div>
-      <button id="unfollowBtn" ng-click="unfollowPodcast($index);" >X</button>
+      <button id="unfollowBtn" ng-click="unfollowPodcast(podcast);" >X</button>
 
     </div>
 
   </div>
-  <div>
 
-    <div id="episodeDiv" ng-repeat="episode in view.episodes">
-      <button id='playButton'
-              class="btn btn-primary btn-sm btn-play"
-              ng-click="addEpisodeToPlayer(episode);">
-        <span class="glyphicon glyphicon-play"></span> Play
-      </button>
-      <button id='faveButton' class="btn btn-default btn-sm" ng-click="favoriteEpisode(episode)">
-        <span class="glyphicon glyphicon-heart"></span> Favorite
-      </button>
-      <button id='saveButton' class="btn btn-default btn-sm" ng-click="saveEpisode(episode)">
-        <span class="glyphicon glyphicon-floppy-disk"></span> Save
-      </button>
+<ul class="list-unstyled" ng-show="view.episodes.length > 0">
+  <li ng-repeat="episode in view.episodes | orderBy: filterBy | filter:searchTitle" class="episode-item">
+    <bc-episode-search-result episode="episode">
+    </bc-episode-search-result>
+  </li>
+</ul>
 
-      <strong class='episodeTitle'>{{episode.name}}</strong>
-      <div class='episodeInfo'>
-        <div ng-repeat='rating in view.ratings'>
-        <!-- <p>{{rating.current}}</p> -->
-          <h5 class='ratingTitle'>Rating: </h5>
-            <div class='stars' star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)">
-            </div>
-        </div>
-      </div>
-        <h5 class='moreDetails'>More
-          <i ng-click='showDetails =! showDetails' class="fa fa-chevron-down" aria-hidden="true">
-          </i>
-        </h5>
-    </div>
-
-  </div>
 </div>

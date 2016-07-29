@@ -21,9 +21,6 @@ exports.followPodcast = function (req, res, next) {
   var podcastId;
 
 
-
-  // var episodes =
-
   // first, check to see if podcast is already in database
   knex('podcasts')
   .where('provider_id', providerId)
@@ -53,7 +50,6 @@ exports.followPodcast = function (req, res, next) {
   .then(function(data) {
     var following = data[0] ? data[0].following : true;
     if (!data.length) {
-      console.log("INSERTING PODCAST INTO DB");
       return knex('users_podcasts')
       .insert({
         user_id: userId,
@@ -103,8 +99,8 @@ exports.favoriteEpisode = function(req, res, next) {
   var userId = req.params.user_id;
   var providerId = req.params.provider_id;
   var itunesEpisodeId = req.params.itunes_episode_id;
-  // var podcastName = req.body.podcastName;
-  // var episodeName = req.body.episodeName;
+  var podcastName = req.body.podcastName;
+  var episodeName = req.body.episodeName;
   // var feedUrl = req.body.feedUrl;
   // var images = req.body.images;
   var podcastId;
@@ -116,8 +112,8 @@ exports.favoriteEpisode = function(req, res, next) {
       if (!data.length) {
         return knex('podcasts')
         .insert({
-          provider_id: providerId
-          // name: podcastName,
+          provider_id: providerId,
+          name: podcastName
           // feedUrl: feedUrl,
           // images: images
         }).returning('id');
@@ -134,8 +130,8 @@ exports.favoriteEpisode = function(req, res, next) {
             return knex('episodes')
             .insert({
               itunes_episode_id: itunesEpisodeId,
-              podcast_id: podcastId
-              // name: episodeName
+              podcast_id: podcastId,
+              name: episodeName
             })
           }
         })
@@ -144,7 +140,6 @@ exports.favoriteEpisode = function(req, res, next) {
       .where('user_id', userId)
       .andWhere('itunes_episode_id', itunesEpisodeId)
       .then(function(data) {
-        console.log(data);
         if (!data.length) {
           return knex('users_episodes')
           .insert({
@@ -214,7 +209,6 @@ exports.saveEpisode = function(req, res, next) {
       .where('user_id', userId)
       .andWhere('itunes_episode_id', itunesEpisodeId)
       .then(function(data) {
-        console.log(data);
         if (!data.length) {
           return knex('users_episodes')
           .insert({
@@ -321,6 +315,17 @@ exports.getSavedEpisodes = function (req, res, next) {
     })
 }
 
+
+exports.getFavoriteEpisodes = function (req, res, next) {
+  var userId = req.params.user_id;
+  knex('users_episodes')
+    .where('user_id', userId)
+    .andWhere('favorite', true)
+    .innerJoin('episodes', 'users_episodes.itunes_episode_id', 'episodes.itunes_episode_id')
+    .then(function(data) {
+      res.json(data);
+    })
+}
 
 // exports.getEpisodes = function(req, res, next) {
 //   knex('episodes')
