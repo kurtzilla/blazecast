@@ -5967,12 +5967,18 @@ bc-itunes-search {
   max-height: 400px;
   overflow: scroll; }
 
+.episode-table {
+  border-top: none !important; }
+  .episode-table td {
+    display: table-cell;
+    vertical-align: top; }
+
 .episode-item {
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
-  padding: 5px;
+  padding: 5px 5px 0 5px;
   color: #ccc;
   background-color: #383539;
-  height: 50px;
+  min-height: 30px;
   margin-bottom: 5px; }
   .episode-item .episode-snippet {
     font-size: 12px;
@@ -5983,17 +5989,14 @@ bc-itunes-search {
 .episodeTitle {
   margin-right: 10px; }
 
-.episodePublishDate {
-  float: right;
-  margin-right: 10px;
-  font-size: 10px; }
-
 .moreDetails {
   display: inline-block;
   float: right;
   text-align: center;
   margin-right: 20px;
-  color: lightblue; }
+  color: lightblue;
+  line-height: 1em;
+  margin-top: 5px; }
 
 #faveButton {
   margin-right: 3px;
@@ -6048,7 +6051,15 @@ ul.rating {
   -webkit-text-fill-color: transparent; }
 
 .ratingTitle {
-  display: inline-block; }
+  display: inline-block;
+  line-height: 1em;
+  margin-top: -5px; }
+
+.episodePublishDate {
+  float: right;
+  margin-right: 10px;
+  margin-top: 5px;
+  font-size: 10px; }
 
 .stars {
   display: inline-block; }
