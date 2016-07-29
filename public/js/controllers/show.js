@@ -51,9 +51,7 @@ app.controller('ShowCtrl',
         }
     });
 
-    $scope.getSelectedRating = function (rating) {
-      console.log(rating);
-    }
+
 
     $scope.followPodcast = function () {
       $scope.view.following = !$scope.view.following;

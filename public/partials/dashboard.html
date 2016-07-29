@@ -1,44 +1,35 @@
 <div id="dashboard">
 
-  <h1>{{ view.userName }}'s Dashboard</h1>
+  <h1 id='dashTitle'>{{ view.name.userName }}'s Dashboard</h1>
 
   <div id="podcastList">
 
-    <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="showFavorites()"> <!--use this!-->
-      <img src="http://pngimg.com/upload/star_PNG1595.png"></img>
+    <div id="podcastDiv" class="col-xs-8 podcast-title-col"
+     ng-click="showFavorites()">
+    <img ng-src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSstfPq6YFFzSmDbniFZjq-ILqMkgbegkBbMRzGG5_O8z2_fFuklw" alt="">
     </div>
 
     <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="showSaved()">
-      <img src="http://www.clockservices.net/img/0507/849.png?sitetimestamp=111111111328595274"></img>
+     <span class='glyphicon glyphicon-time saveLater'></span>
     </div>
-
 
     <div ng-repeat="podcast in view.following track by $index">
 
       <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="getEpisodes(podcast)">
 
-        <img src="{{podcast.images}}" ng-click="searchTitle = podcast.name"></img>
+        <img src="{{podcast.images}}" ng-click="searchTitle = podcast.name" class='grid-item'></img>
       </div>
       <button id="unfollowBtn" ng-click="unfollowPodcast(podcast);" >X</button>
 
     </div>
 
   </div>
-  <div id="episodeView">
 
-    <div id="episodeDiv" ng-repeat="episode in view.episodes">
-      <bc-episode-search-result episode="episode">
-      </bc-episode-search-result>
-      <!-- <button id='playButton' class="btn btn-success btn-sm btn-play" ng-click="addEpisodeToPlayer(episode)"><span class="glyphicon glyphicon-play"></span> Play</button>
-      <button id='faveButton'class="btn btn-default btn-sm" ng-click="favoriteEpisode(view.following, episode)"><span class="glyphicon glyphicon-heart"></span> Favorite</button>
-      <button id='saveButton' class="btn btn-default btn-sm" ng-click="saveEpisode(view.following, episode)"><span class="glyphicon glyphicon-star"></span> Save</button> -->
+<ul class="list-unstyled" ng-show="view.episodes.length > 0">
+  <li ng-repeat="episode in view.episodes | orderBy: filterBy | filter:searchTitle" class="episode-item">
+    <bc-episode-search-result episode="episode">
+    </bc-episode-search-result>
+  </li>
+</ul>
 
-      <div id="episodeInfo">
-
-        <strong>{{episode.name}}</strong>
-
-      </div>
-    </div>
-
-  </div>
 </div>

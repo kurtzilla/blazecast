@@ -1,5 +1,8 @@
 @charset "UTF-8";
 @import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CRaleway:100,300,600,700,800");
+* {
+  font-family: 'Play', sans-serif; }
+
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -5944,23 +5947,12 @@ bc-itunes-search {
 .followButton {
   width: 100px;
   margin-top: 5px;
-  margin-left: 50%;
+  align-content: center;
   background-color: #383539;
   color: white; }
 
-.podcastTitle {
-  margin-top: -5px; }
-
-.showLine {
-  width: 622.5; }
-
 .podcastInfo {
   margin-top: 5px; }
-
-.podcastRating {
-  margin-bottom: 15px;
-  margin-right: 10px;
-  display: inline-block; }
 
 .podcastDescription {
   margin-top: 5px;
@@ -5971,23 +5963,25 @@ bc-itunes-search {
   overflow: scroll; }
 
 .episode-item {
-  border: solid white 1px;
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
   padding: 5px;
   color: #ccc;
   background-color: #383539;
+  height: 50px;
   margin-bottom: 5px; }
   .episode-item .episode-snippet {
-    font-size: 10px;
-    background-color: #eee;
+    font-size: 12px;
+    background-color: #383539;
     margin-bottom: 5px;
     color: #999; }
 
-.episodePublishDate {
-  float: right;
-  margin-right: 10px; }
-
 .episodeTitle {
   margin-right: 10px; }
+
+.episodePublishDate {
+  float: right;
+  margin-right: 10px;
+  font-size: 10px; }
 
 .moreDetails {
   display: inline-block;
@@ -5998,7 +5992,6 @@ bc-itunes-search {
 
 #faveButton {
   margin-right: 3px;
-  background-color: lightpink;
   color: #383539; }
   #faveButton .glyphicon-heart {
     color: red; }
@@ -6019,11 +6012,14 @@ bc-itunes-search {
   width: 15px; }
 
 .filterLabel {
-  font-size: 14px; }
+  font-size: 16px;
+  margin-bottom: 5px; }
 
 .filterSearch {
   height: 24px;
-  width: 150px; }
+  width: 150px;
+  margin-bottom: 5px;
+  border: 1px solid #383539; }
 
 .rating {
   color: white;
@@ -6089,6 +6085,94 @@ ul.rating {
 
 .squares {
   border: solid white 1px; }
+
+#episodeDiv {
+  height: 50px;
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
+  background-color: #383539;
+  padding: 5px;
+  margin-bottom: 5px;
+  color: #CCC; }
+
+#unfollowBtn {
+  position: relative;
+  height: 25px;
+  width: 25px;
+  background-color: black;
+  color: white;
+  border: none;
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  margin-left: -34px;
+  margin-top: -10px; }
+
+#dashboard {
+  background-color: white; }
+
+#dashTitle {
+  padding-top: 5%;
+  padding-bottom: 4%;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-top: -10px;
+  margin-bottom: 0px;
+  display: flex;
+  color: white;
+  background-color: #383539;
+  flex-direction: column;
+  align-items: center; }
+
+#episodeView {
+  background-color: #ccc;
+  width: 100vw; }
+  #episodeView #episodeDiv {
+    width: 100%; }
+
+#podcastList {
+  display: flex;
+  overflow-x: scroll;
+  width: 100%;
+  height: 200px;
+  padding-top: 25px;
+  box-shadow: 0px 1px 3px 1px; }
+
+#podcastDiv {
+  display: flex;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0px;
+  background-color: white;
+  height: 150px;
+  width: 150px;
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.2))); }
+  #podcastDiv img {
+    width: 150px;
+    height: 150px;
+    margin: 0px;
+    position: relative;
+    bottom: 0;
+    transition: all .25s; }
+  #podcastDiv:hover {
+    border: 1px solid black;
+    bottom: 5px !important; }
+  #podcastDiv strong {
+    width: 150px;
+    margin-left: 5px; }
+
+.favorite {
+  font-size: 150px;
+  color: red; }
+
+.addToFave {
+  font-size: 18px;
+  color: black;
+  z-index: 2; }
+
+.saveLater {
+  font-size: 150px;
+  color: black; }
 
 .home {
   font-family: 'Play', sans-serif; }
@@ -6253,8 +6337,8 @@ ul.rating {
 
 #dashboard h1 {
   margin: 0;
-  background-color: #ccc;
-  color: #383539;
+  background-color: #383539;
+  color: white;
   padding-top: 5%;
   padding-left: 10%;
   padding-right: 10%; }
@@ -6264,10 +6348,6 @@ ul.rating {
   width: 100vw; }
   #episodeView #episodeDiv {
     width: 100%; }
-
-#episodeDiv {
-  color: #ccc;
-  background-color: #f23434; }
 
 #podcastList {
   z-index: 2; }
@@ -6409,7 +6489,7 @@ textarea {
 .form-control {
   height: auto;
   padding: 8px 12px;
-  border: 2px solid #ebebeb;
+  border: 2px solid #383539;
   border-radius: 0;
   box-shadow: inset 0 1px 2px rgba(150, 160, 175, 0.1), inset 0 1px 15px rgba(150, 160, 175, 0.05); }
 
@@ -6434,80 +6514,3 @@ textarea {
   border-radius: 2px;
   letter-spacing: 0.2em;
   text-transform: uppercase; }
-
-#dashboard {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
-  #dashboard h1 {
-    margin-top: -10px;
-    margin-bottom: 20px; }
-
-#podcastList {
-  display: flex;
-  overflow-x: scroll;
-  width: 100%;
-  height: 200px;
-  padding-top: 25px;
-  padding-right: 25px;
-  background-color: #ccc;
-  box-shadow: 0px 1px 3px 1px; }
-
-#podcastDiv {
-  display: flex;
-  margin-bottom: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
-  padding: 0px;
-  background-color: white;
-  height: 150px;
-  width: 150px;
-  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
-  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.2)));
-  position: relative;
-  bottom: 0;
-  transition: all .25s; }
-  #podcastDiv img {
-    width: 150px;
-    height: 150px;
-    margin-left: 0px; }
-  #podcastDiv strong {
-    width: 150px;
-    margin-left: 5px; }
-  #podcastDiv:hover {
-    bottom: 5px; }
-
-#episodeView {
-  height: 53vh;
-  width: 100vh;
-  overflow-y: scroll; }
-
-#episodeDiv {
-  height: 50px;
-  margin: 8px;
-  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
-  padding: 5px;
-  background-color: #383539;
-  display: flex;
-  align-items: center; }
-  #episodeDiv strong {
-    font-family: sans-serif;
-    font-size: 15px; }
-  #episodeDiv button {
-    background-color: blue;
-    color: white;
-    border: none;
-    height: 30px; }
-
-#unfollowBtn {
-  position: relative;
-  height: 25px;
-  width: 25px;
-  background-color: black;
-  color: white;
-  border: none;
-  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
-  margin-left: -34px;
-  margin-top: -10px; }
