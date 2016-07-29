@@ -5979,7 +5979,7 @@ bc-itunes-search {
   color: #ccc;
   background-color: #383539;
   min-height: 30px;
-  margin-bottom: 5px; }
+  margin-bottom: 0; }
   .episode-item .episode-snippet {
     font-size: 12px;
     background-color: #383539;
@@ -6368,6 +6368,18 @@ ul.rating {
 #podcastList {
   z-index: 2; }
 
+.socialIcons {
+  height: 40px;
+  background-color: #383539;
+  cursor: pointer; }
+
+#iconContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #383539;
+  margin-bottom: 50px;
+  padding-bottom: 5%; }
+
 html {
   position: relative;
   min-height: 100%; }
@@ -6379,17 +6391,6 @@ footer {
   bottom: 0;
   background-color: #383539;
   text-align: center; }
-
-.socialIcons {
-  height: 40px;
-  background-color: #383539;
-  cursor: pointer; }
-
-#iconContainer {
-  display: flex;
-  flex-direction: column;
-  background-color: #383539;
-  margin-bottom: 50px; }
 
 .login-container {
   max-width: 555px; }

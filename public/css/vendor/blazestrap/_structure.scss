@@ -214,7 +214,7 @@ bc-itunes-search {
   color: #ccc;
   background-color: #383539 ;
   min-height: 30px;
-  margin-bottom:5px;
+  margin-bottom:0;
   .episode-snippet {
     font-size:12px;
     background-color: #383539;
@@ -657,4 +657,17 @@ ul.rating {
 }
 #podcastList {
   z-index: 2;
+}
+
+.socialIcons{
+  height: 40px;
+  background-color: #383539;
+  cursor: pointer;
+}
+#iconContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #383539;
+  margin-bottom: 50px;
+  padding-bottom: 5%;
 }
