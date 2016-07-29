@@ -4,7 +4,7 @@
 
   <div id="podcastList">
 
-    <div id="podcastDiv" class="col-xs-8 podcast-title-col">
+    <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="showFavorites()"> <!--use this!-->
       <img src="http://pngimg.com/upload/star_PNG1595.png"></img>
     </div>
 
@@ -27,13 +27,15 @@
   <div id="episodeView">
 
     <div id="episodeDiv" ng-repeat="episode in view.episodes">
-      <button id='playButton' class="btn btn-success btn-sm btn-play" ng-click="addEpisodeToPlayer(episode)"><span class="glyphicon glyphicon-play"></span> Play</button>
+      <bc-episode-search-result episode="episode">
+      </bc-episode-search-result>
+      <!-- <button id='playButton' class="btn btn-success btn-sm btn-play" ng-click="addEpisodeToPlayer(episode)"><span class="glyphicon glyphicon-play"></span> Play</button>
       <button id='faveButton'class="btn btn-default btn-sm" ng-click="favoriteEpisode(view.following, episode)"><span class="glyphicon glyphicon-heart"></span> Favorite</button>
-      <button id='saveButton' class="btn btn-default btn-sm" ng-click="saveEpisode(view.following, episode)"><span class="glyphicon glyphicon-star"></span> Save</button>
+      <button id='saveButton' class="btn btn-default btn-sm" ng-click="saveEpisode(view.following, episode)"><span class="glyphicon glyphicon-star"></span> Save</button> -->
 
       <div id="episodeInfo">
 
-        <strong>{{episode.title}}</strong>
+        <strong>{{episode.name}}</strong>
 
       </div>
     </div>
