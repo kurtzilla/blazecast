@@ -55,10 +55,25 @@ app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams
 
   $scope.showSaved = function () {
     $http.get('/api/users/' + user.id + '/savedPodcasts')
-      .then(function(data){
+      .then(function(data) {
         var savedEps = data.data;
-        $scope.view.episodes = savedEps;
-      });
+
+        return episodeService.populateEpisodesByEpisodeId(savedEps)
+      })
+      .then(function (promises) {
+        Promise.all(promises)
+          .then(function (data) {
+            $scope.view.episodes = [];
+            for (var i = 0; i < data.length; i++) {
+              data[i].data.audio_url = data[i].data.audio_files[0].url[0];
+              data[i].data.type = 'audio/mpeg';
+              $scope.view.episodes.push(data[i].data)
+            }
+            $scope.$digest();
+          })
+
+        // console.log(data);
+      })
   };
 
   $scope.showFavorites = function () {
