@@ -10,6 +10,8 @@ app.filter('removeProtocol', function() {
 
 app.filter('proxyResource', function(){
   return function(input){
+    return input;
+    
     if(input) {
       var encoded = btoa(input);
       return '/proxyresource/' + encoded;
