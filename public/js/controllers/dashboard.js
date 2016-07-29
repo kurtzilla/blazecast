@@ -22,8 +22,9 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParam
     });
   };
 
-  $scope.unfollowPodcast = function (index) {
-    $http.post('/api/users/' + $rootScope.currentUser.id + '/unfollow/' + $scope.view.following[index].id)
+  $scope.unfollowPodcast = function (podcast) {
+    console.log(podcast.id);
+    $http.post('/api/users/' + $rootScope.currentUser.id + '/unfollow/' + podcast.id)
       .then(function(data) {})
   };
 
