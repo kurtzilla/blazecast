@@ -6055,6 +6055,9 @@ ul.rating {
 .episodeInfo {
   display: inline-block; }
 
+#stuff {
+  background-color: #ccc; }
+
 #searchBar {
   text-align: center;
   margin-left: 1%; }

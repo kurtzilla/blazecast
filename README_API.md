@@ -1,3 +1,0 @@
-
-### Blazecast API Documentation
----
