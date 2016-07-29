@@ -62,15 +62,4 @@ app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams
       })
   }
 
-  // init episodes with route param var - fyi this query takes longer to return
-  episodeService.populateEpisodesByItunesPodcastId($stateParams.provider_id)
-  .then(function(data){
-    $scope.view.episodes = episodeService.episodes;
-  })
-  .catch(function(err){
-    $scope.view.episodes = [err];
-  });
-  // End init podcast and episodes
-
-
 });
