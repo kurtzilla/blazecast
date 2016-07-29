@@ -2,6 +2,12 @@
 
 ### Blazecast
 
+---
+
+#API Documentation
+
+Blazecast documentation found [here](README_API_DOCS.md)
+
 Mega Boilerplate GitHub - DOCS -
 
 https://github.com/sahat/megaboilerplate#express
