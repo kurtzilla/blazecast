@@ -17,12 +17,8 @@ exports.followPodcast = function (req, res, next) {
   var podcastName = req.body.podcastName;
   var feedUrl = req.body.feedUrl;
   var images = req.body.images;
-  var episodes = req.body.episodes;
   var podcastId;
 
-
-
-  // var episodes =
 
   // first, check to see if podcast is already in database
   knex('podcasts')
@@ -67,23 +63,7 @@ exports.followPodcast = function (req, res, next) {
       .where('podcast_id', podcastId);
     }
   })
-  .then(function() { // no longer necessary to add each episode to database on podcast follow
-  //   for (var i = 0; i < episodes.length; i++) {
-  //
-  //     knex('episodes')
-  //     .insert({
-  //       podcast_id: podcastId,
-  //       name: episodes[i].title,
-  //       feedUrl: episodes[i].url,
-  //       itunes_episode_id: episodes[i].itunesEpisodeId
-  //     })
-  //     .catch(function(err) {
-  //       console.log(err);
-  //     })
-  //     res.end()
-  //
-  //   }
-  });
+  .then(function() {x});
 }
 
 exports.getFollows = function(req, res, next) {
