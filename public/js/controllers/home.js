@@ -6,7 +6,7 @@ angular.module('MyApp')
   $scope.view.teamMembers = [{
     name: 'Kirsten Wedde',
     imageUrl: 'https://avatars3.githubusercontent.com/u/11020841?v=3&s=460',
-    about: 'Lorem ipsum dolor sit amet, platea pellentesque, dolor maecenas eu tempor ullamcorper nulla, ipsum convallis libero est quis vel dictum, in sit non porttitor curabitur, sodales maecenas ut. Turpis in nunc. '
+    about: 'Kirsten loves road trips, her sweet pups, miniture goats, and gardening. She hopes to have a small homestead within the next few years.'
   },
   {
     name: 'Jory Garrido',
