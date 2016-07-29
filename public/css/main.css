@@ -6078,6 +6078,9 @@ ul.rating {
   margin: 15px;
   border: 5px solid white; }
 
+.grid-item.browse-item {
+  cursor: pointer; }
+
 #stuff {
   background-color: #ccc; }
 
