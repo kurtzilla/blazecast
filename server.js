@@ -108,8 +108,6 @@ app.get('/api/testApi',
   apiController.testApi);
 app.get('/api/podcasts/:itunes_podcast_id/episodes',
   apiController.getFedPodcastEpisodes);
-app.get('/api/episodes/:itunes_episode_id/',
-  apiController.getEpisodeById);
 
 
 app.get('/proxyresource/:resourceurl',
