@@ -16,3 +16,16 @@ app.filter('proxyResource', function(){
     }
   }
 });
+
+app.filter('substringLongTitle', function(){
+  return function(input) {
+    if (input) {
+      var len = 50;// this is 0 based!!!
+      var inp = input.trim();
+      if (inp.length > len) {
+        inp = inp.substr(0, len) + '...';
+      }
+      return inp;
+    }
+  }
+});
