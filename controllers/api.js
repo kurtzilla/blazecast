@@ -234,14 +234,6 @@ exports.saveEpisode = function(req, res, next) {
   })
 }
 
-// exports.saveEpisode = function(req, res, next) {
-//
-// }
-
-// exports.newPlaylist = function(req, res, next) {
-//
-// }
-
 exports.getEpisodes = function(req, res, next) {
   knex('episodes')
   .select('*')
