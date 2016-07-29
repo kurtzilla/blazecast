@@ -294,6 +294,25 @@ exports.unfollowPodcast = function (req, res, next) {
     .then(function(data) {})
 }
 
+exports.getEpisodeById = function(req, res, next){
+  var podcast = {};
+  var eId = req.params.itunes_episode_id;
+
+  // eCollection is the returned collection of episode objects
+
+  return audiosearch.get('/episodes/' + eId)
+  .then(function(data){
+    console.log('data from audiosearch:', data.audio_files);
+    res.send(data);
+  })
+  .catch(function(err){
+    console.log('ERROR AT API CATCH', err);
+    res.send(err);
+  });
+
+}
+
+
 exports.getSavedEpisodes = function (req, res, next) {
   var userId = req.params.user_id;
   // console.log('SAVED USERID',userId, req.params.user_id)

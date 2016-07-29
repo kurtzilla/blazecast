@@ -43,33 +43,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
-
-
-  // console.log('PROCESS', process.env.NODE_ENV);
-  //
-  // // http://jaketrent.com/post/https-redirect-node-heroku/ - ruby version
-  // // if (process.env.NODE_ENV === 'production') {
-  //
-  //   /* Redirect http to https */
-  //   app.get('*', function(req,res,next) {
-  //     if(req.headers['x-forwarded-proto'] != 'https' && process.env.NODE_ENV === 'production')
-  //       res.redirect('https://'+req.hostname+req.url)
-  //     else
-  //       next() /* Continue to other routes if we're not redirecting */
-  //   });
-
-    // app.use('*', function(err, req, res, next) {
-    //   if(req.header['x-forwarded-proto'] !== 'https'){
-    //     // res.redirect "https://#{req.header 'host'}#{req.url}";
-    //     // see comments for js version
-    //     return res.redirect(['https://', req.get('Host'), req.url].join(''));
-    //   } else {
-    //     next();
-    //   }
-    // });
-//  }
-
 app.use(function(req, res, next) {
   req.isAuthenticated = function() {
     var token = (req.headers.authorization && req.headers.authorization.split(' ')[1]) || req.cookies.token;
@@ -141,6 +114,9 @@ app.get('/api/testApi',
   apiController.testApi);
 app.get('/api/podcasts/:itunes_podcast_id/episodes',
   apiController.getFedPodcastEpisodes);
+
+app.get('/api/episodes/:itunes_episode_id/',
+  apiController.getEpisodeById);
 
 app.get('/proxyresource/:resourceurl',
   resourceController.proxyResource);
