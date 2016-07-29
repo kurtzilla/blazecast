@@ -97,11 +97,13 @@ app.get('/itunesdummydata',
 // post to this route to follow this podcast for a user
 app.post('/api/users/:user_id/follow/:podcast_id',
   apiController.followPodcast);
+
+
 app.post('/api/users/:user_id/unfollow/:podcast_id',
   apiController.unfollowPodcast);
-
 app.get('/api/users/:user_id/follow',
   apiController.getFollows);
+
 app.get('/api/podcasts/:podcast_id/follow',
   apiController.getEpisodes);
 app.get('/api/testApi',

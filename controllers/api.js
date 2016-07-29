@@ -21,9 +21,6 @@ exports.followPodcast = function (req, res, next) {
   var podcastId;
 
 
-
-  // var episodes =
-
   // first, check to see if podcast is already in database
   knex('podcasts')
   .where('provider_id', providerId)

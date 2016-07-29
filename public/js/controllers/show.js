@@ -3,9 +3,11 @@ app.controller('ShowCtrl',
   ['$rootScope', '$scope', '$stateParams', '$http', 'podcastService', 'episodeService',
   function($rootScope, $scope, $stateParams, $http, podcastService, episodeService) {
 
+
     var _useItunes = false;
     $scope.view = {};
     $scope.view.rating = 0;
+    $scope.view.episodes = [];
     $scope.view.ratings = [{
       current: 3,
       max: 5
@@ -59,9 +61,9 @@ app.controller('ShowCtrl',
       var podcastId = $scope.view.podcast.collectionId;
       var podcastName = $scope.view.podcast.collectionName;
       var feedUrl = $scope.view.podcast.feedUrl;
-
       var images =  $scope.view.podcast.image_url;
       var episodes = $scope.view.episodes;
+
 
       var requestUrl = '/api/users/' + userId + '/follow/' + podcastId;
 

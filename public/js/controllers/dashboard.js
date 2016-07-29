@@ -24,7 +24,6 @@ app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams
     .catch(function(err){
       $scope.view.episodes = [err];
     });
-
   };
 
   $scope.unfollowPodcast = function (podcast) {
