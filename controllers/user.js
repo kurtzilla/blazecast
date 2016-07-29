@@ -432,15 +432,11 @@ exports.authGoogle = function(req, res) {
         return res.status(500).send({ message: profile.error.message });
       }
 
-      // console.log('pro sub', profile.sub);
-      // console.log('isAuthd', req.isAuthenticated());
-
       // Step 3a. Link accounts if user is authenticated.
       if (req.isAuthenticated()) {
         new User({ google: profile.sub })
           .fetch()
           .then(function(user) {
-            // console.log('we go a user?', user);
             if (user) {
               return res.status(409).send({
                 msg: 'There is already an existing account linked with Google ' +
