@@ -5,11 +5,11 @@
   <div id="podcastList">
 
     <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="showFavorites()"> <!--use this!-->
-      <img src="http://pngimg.com/upload/star_PNG1595.png"></img>
+      <img ng-src="http://pngimg.com/upload/star_PNG1595.png?kj=09 | proxyResource"></img>
     </div>
 
     <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="showSaved()">
-      <img src="http://www.clockservices.net/img/0507/849.png?sitetimestamp=111111111328595274"></img>
+      <img ng-src="http://www.clockservices.net/img/0507/849.png?sitetimestamp=111111111328595274 | proxyResource"></img>
     </div>
 
 
@@ -17,7 +17,7 @@
 
       <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="getEpisodes(podcast)">
 
-        <img src="{{podcast.images}}" ng-click="searchTitle = podcast.name"></img>
+        <img ng-src="{{podcast.images | proxyResource}}" ng-click="searchTitle = podcast.name"></img>
       </div>
       <button id="unfollowBtn" ng-click="unfollowPodcast(podcast);" >X</button>
 

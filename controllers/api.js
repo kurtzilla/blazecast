@@ -296,7 +296,7 @@ exports.unfollowPodcast = function (req, res, next) {
 
 exports.getSavedEpisodes = function (req, res, next) {
   var userId = req.params.user_id;
-  console.log('SAVED USERID',userId, req.params.user_id)
+  // console.log('SAVED USERID',userId, req.params.user_id)
   knex('users_episodes')
     .where('user_id', userId)
     .andWhere('save_for_later', true)
@@ -308,7 +308,7 @@ exports.getSavedEpisodes = function (req, res, next) {
 
 exports.getFavoriteEpisodes = function (req, res, next) {
   var userId = req.params.user_id;
-  console.log('FAVED USERID',userId, req.params.user_id)
+  // console.log('FAVED USERID',userId, req.params.user_id)
   knex('users_episodes')
     .where('user_id', userId)
     .andWhere('favorite', true)
