@@ -53,7 +53,6 @@ exports.followPodcast = function (req, res, next) {
   .then(function(data) {
     var following = data[0] ? data[0].following : true;
     if (!data.length) {
-      console.log("INSERTING PODCAST INTO DB");
       return knex('users_podcasts')
       .insert({
         user_id: userId,
@@ -100,7 +99,6 @@ exports.getFollows = function(req, res, next) {
 
 exports.favoriteEpisode = function(req, res, next) {
   // TEST ME: localhost:3000/api/users/5/favorite/179950332/96517
-  console.log('req.body:', req.body);
   var userId = req.params.user_id;
   var providerId = req.params.provider_id;
   var itunesEpisodeId = req.params.itunes_episode_id;

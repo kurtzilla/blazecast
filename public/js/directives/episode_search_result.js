@@ -54,6 +54,5 @@ app.directive('bcEpisodeSearchResult', ['mediaPlayerService', function(mediaPlay
           .then(function(){});
       };
     }
-
   }
 }]);
