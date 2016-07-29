@@ -1,4 +1,5 @@
-  var express = require('express');
+var sslRedirect = require('heroku-ssl-redirect');
+var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var compression = require('compression');
@@ -38,18 +39,22 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-  console.log('PROCESS', process.env.NODE_ENV);
 
-  // http://jaketrent.com/post/https-redirect-node-heroku/ - ruby version
-  // if (process.env.NODE_ENV === 'production') {
+// enable ssl redirect
+app.use(sslRedirect());
 
-    /* Redirect http to https */
-    app.get('*', function(req,res,next) {
-      if(req.headers['x-forwarded-proto'] != 'https' && process.env.NODE_ENV === 'production')
-        res.redirect('https://'+req.hostname+req.url)
-      else
-        next() /* Continue to other routes if we're not redirecting */
-    });
+  // console.log('PROCESS', process.env.NODE_ENV);
+  //
+  // // http://jaketrent.com/post/https-redirect-node-heroku/ - ruby version
+  // // if (process.env.NODE_ENV === 'production') {
+  //
+  //   /* Redirect http to https */
+  //   app.get('*', function(req,res,next) {
+  //     if(req.headers['x-forwarded-proto'] != 'https' && process.env.NODE_ENV === 'production')
+  //       res.redirect('https://'+req.hostname+req.url)
+  //     else
+  //       next() /* Continue to other routes if we're not redirecting */
+  //   });
 
     // app.use('*', function(err, req, res, next) {
     //   if(req.header['x-forwarded-proto'] !== 'https'){
