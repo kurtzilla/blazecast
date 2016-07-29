@@ -55,6 +55,15 @@ app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams
         var savedEps = data.data;
         $scope.view.episodes = savedEps;
       });
+  };
+
+  $scope.showFavorites = function () {
+    $http.get('/api/users/' + user.id + '/favoriteEpisodes')
+      .then(function(data) {
+        console.log(data);
+        var faveEps = data.data;
+        $scope.view.episodes = faveEps;
+      })
   }
 
 });

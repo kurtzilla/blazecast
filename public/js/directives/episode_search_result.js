@@ -27,7 +27,14 @@ app.directive('bcEpisodeSearchResult', ['mediaPlayerService', function(mediaPlay
         var user = $rootScope.currentUser;
         var providerId = $stateParams.provider_id;
         var itunesEpisodeId = episode.id;
-        $http.post('/api/users/' + user.id + '/favorite/' + providerId + '/' + itunesEpisodeId)
+        var podcastName = episode.show_title;
+        var episodeName = episode.title;
+
+        var postData = {
+          podcastName: podcastName,
+          episodeName: episodeName
+        }
+        $http.post('/api/users/' + user.id + '/favorite/' + providerId + '/' + itunesEpisodeId, postData)
           .then(function(){});
       };
 
