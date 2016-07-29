@@ -27,7 +27,6 @@ angular.module('MyApp')
 
   $scope.$watchCollection('view.query', function() {
     $scope.view.filterBy = '';
-    // console.log($scope.view.query);
     if ($scope.view.query.length > 0) {
       Media.search({ query: $scope.view.query}, function(data) {
         $scope.displayResults = true;

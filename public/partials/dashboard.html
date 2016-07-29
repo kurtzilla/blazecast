@@ -4,8 +4,13 @@
 
   <div id="podcastList">
 
+<<<<<<< HEAD
     <div id="podcastDiv" class="col-xs-8 podcast-title-col glyphicon glyphicon-heart">
       <!-- <img src="http://pngimg.com/upload/star_PNG1595.png"></img> -->
+=======
+    <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="showFavorites()"> <!--use this!-->
+      <img src="http://pngimg.com/upload/star_PNG1595.png"></img>
+>>>>>>> 961fec4d9c37807cc2f4927856493a2d7b02b4ac
     </div>
 
     <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="showSaved()">
@@ -18,7 +23,7 @@
 
         <img src="{{podcast.images}}" ng-click="searchTitle = podcast.name" class='grid-item'></img>
       </div>
-      <button id="unfollowBtn" ng-click="unfollowPodcast($index);" >X</button>
+      <button id="unfollowBtn" ng-click="unfollowPodcast(podcast);" >X</button>
 
     </div>
 
@@ -26,6 +31,7 @@
   <div>
 
     <div id="episodeDiv" ng-repeat="episode in view.episodes">
+<<<<<<< HEAD
       <button id='playButton'
               class="btn btn-primary btn-sm btn-play"
               ng-click="addEpisodeToPlayer(episode);">
@@ -46,6 +52,18 @@
             <div class='stars' star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)">
             </div>
         </div>
+=======
+      <bc-episode-search-result episode="episode">
+      </bc-episode-search-result>
+      <!-- <button id='playButton' class="btn btn-success btn-sm btn-play" ng-click="addEpisodeToPlayer(episode)"><span class="glyphicon glyphicon-play"></span> Play</button>
+      <button id='faveButton'class="btn btn-default btn-sm" ng-click="favoriteEpisode(view.following, episode)"><span class="glyphicon glyphicon-heart"></span> Favorite</button>
+      <button id='saveButton' class="btn btn-default btn-sm" ng-click="saveEpisode(view.following, episode)"><span class="glyphicon glyphicon-star"></span> Save</button> -->
+
+      <div id="episodeInfo">
+
+        <strong>{{episode.name}}</strong>
+
+>>>>>>> 961fec4d9c37807cc2f4927856493a2d7b02b4ac
       </div>
         <h5 class='moreDetails'>More
           <i ng-click='showDetails =! showDetails' class="fa fa-chevron-down" aria-hidden="true">

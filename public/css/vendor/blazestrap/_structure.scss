@@ -21,10 +21,8 @@ footer {
 }
 
 .mediaplayer-title-layer {
-  /* border: solid red 1px; */
   color: #999;
   font-size: .6em;
-  /*this sizing splits multi-lines right around the scrub bar */
   top: -12px;
   height:26px;
   width: 100%;
@@ -149,9 +147,6 @@ bc-itunes-search {
   }
 }
 .podcast-title-row{
-  .col {
-    //border:solid green 1px;
-  }
   .img-wrapper {
     text-align:center;
   }
@@ -539,4 +534,32 @@ ul.rating {
     float: left;
     font-family: 'Play', sans-serif;
   }
+}
+
+// Dashboard
+#dashboard {
+  background-color: #ccc;
+}
+
+#dashboard h1 {
+  margin: 0;
+  background-color: #ccc;
+  color: #383539;
+  padding-top: 5%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+#episodeView {
+  background-color: #ccc;
+  width: 100vw;
+  #episodeDiv {
+    width: 100%;
+  }
+}
+#episodeDiv {
+  color: #ccc;
+  background-color: #f23434;
+}
+#podcastList {
+  z-index: 2;
 }
