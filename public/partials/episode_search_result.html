@@ -11,7 +11,8 @@
 </button>
 
 
-  <strong class='episodeTitle'>{{episode.title | substringLongTitle}}</strong>
+
+  <strong class='episodeTitle' maxlength='250'>{{episode.title}}</strong>
   <div class='episodeInfo'>
     <div ng-repeat='rating in view.ratings'>
     <!-- <p>{{rating.current}}</p> -->
