@@ -27,6 +27,10 @@ var resourceController = require('./controllers/resource');
 
 var app = express();
 
+// enable ssl redirect
+app.use(sslRedirect());
+
+
 app.set('port', process.env.PORT || 3000);
 app.use(favicon(path.join(__dirname, './public/images', 'favicon.ico')));
 app.use(compression());
@@ -40,8 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-// enable ssl redirect
-app.use(sslRedirect());
+
 
   // console.log('PROCESS', process.env.NODE_ENV);
   //
