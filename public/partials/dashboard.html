@@ -1,41 +1,56 @@
 <div id="dashboard">
 
-  <h1>{{ view.userName }}'s Dashboard</h1>
+  <h1 id='dashTitle'>{{ view.name.userName }}'s Dashboard</h1>
 
   <div id="podcastList">
 
-    <div id="podcastDiv" class="col-xs-8 podcast-title-col">
-      <img src="http://pngimg.com/upload/star_PNG1595.png"></img>
+    <div id="podcastDiv" class="col-xs-8 podcast-title-col glyphicon glyphicon-heart">
+      <!-- <img src="http://pngimg.com/upload/star_PNG1595.png"></img> -->
     </div>
 
     <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="showSaved()">
-      <img src="http://www.clockservices.net/img/0507/849.png?sitetimestamp=111111111328595274"></img>
+      <!-- <img src="http://www.clockservices.net/img/0507/849.png?sitetimestamp=111111111328595274"></img> -->
     </div>
-
 
     <div ng-repeat="podcast in view.following track by $index">
 
       <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="getEpisodes(podcast)">
 
-        <img src="{{podcast.images}}" ng-click="searchTitle = podcast.name"></img>
+        <img src="{{podcast.images}}" ng-click="searchTitle = podcast.name" class='grid-item'></img>
       </div>
       <button id="unfollowBtn" ng-click="unfollowPodcast($index);" >X</button>
 
     </div>
 
   </div>
-  <div id="episodeView">
+  <div>
 
     <div id="episodeDiv" ng-repeat="episode in view.episodes">
-      <button id='playButton' class="btn btn-success btn-sm btn-play" ng-click="addEpisodeToPlayer(episode)"><span class="glyphicon glyphicon-play"></span> Play</button>
-      <button id='faveButton'class="btn btn-default btn-sm" ng-click="favoriteEpisode(view.following, episode)"><span class="glyphicon glyphicon-heart"></span> Favorite</button>
-      <button id='saveButton' class="btn btn-default btn-sm" ng-click="saveEpisode(view.following, episode)"><span class="glyphicon glyphicon-star"></span> Save</button>
+      <button id='playButton'
+              class="btn btn-primary btn-sm btn-play"
+              ng-click="addEpisodeToPlayer(episode);">
+        <span class="glyphicon glyphicon-play"></span> Play
+      </button>
+      <button id='faveButton' class="btn btn-default btn-sm" ng-click="favoriteEpisode(episode)">
+        <span class="glyphicon glyphicon-heart"></span> Favorite
+      </button>
+      <button id='saveButton' class="btn btn-default btn-sm" ng-click="saveEpisode(episode)">
+        <span class="glyphicon glyphicon-floppy-disk"></span> Save
+      </button>
 
-      <div id="episodeInfo">
-
-        <strong>{{episode.name}}</strong>
-
+      <strong class='episodeTitle'>{{episode.name}}</strong>
+      <div class='episodeInfo'>
+        <div ng-repeat='rating in view.ratings'>
+        <!-- <p>{{rating.current}}</p> -->
+          <h5 class='ratingTitle'>Rating: </h5>
+            <div class='stars' star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)">
+            </div>
+        </div>
       </div>
+        <h5 class='moreDetails'>More
+          <i ng-click='showDetails =! showDetails' class="fa fa-chevron-down" aria-hidden="true">
+          </i>
+        </h5>
     </div>
 
   </div>

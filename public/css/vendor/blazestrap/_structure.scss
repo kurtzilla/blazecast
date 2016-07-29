@@ -161,35 +161,28 @@ bc-itunes-search {
   white-space: nowrap;
 }
 .podcastCoverImg {
-  //height: 200px;
   width: 100%;
   max-width:200px;
   max-height:200px;
   margin-top: 10%;
-  //margin-left: 35%;
   border: 2px solid white;
 }
+
 .followButton{
   width: 100px;
   margin-top: 5px;
-  margin-left: 50%;
+  align-content: center;
   background-color: #383539;
   color: white;
 }
 .podcastTitle {
   margin-top: -5px;
 }
-.showLine {
-  width: 622.5;
-}
+
 .podcastInfo {
   margin-top: 5px;
 }
-.podcastRating {
-  margin-bottom: 15px;
-  margin-right: 10px;
-  display: inline-block;
-}
+
 .podcastDescription {
   margin-top: 5px;
   line-height: 20px;
@@ -199,24 +192,26 @@ bc-itunes-search {
   overflow: scroll;
 }
 .episode-item {
-  border:solid white 1px;
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
   padding:5px;
   color: #ccc;
   background-color: #383539 ;
+  height: 50px;
   margin-bottom:5px;
   .episode-snippet {
-    font-size:10px;
-    background-color: #eee;
+    font-size:12px;
+    background-color: #383539;
     margin-bottom:5px;
     color:#999;
   }
 }
+.episodeTitle {
+  margin-right: 10px;
+}
 .episodePublishDate {
   float: right;
   margin-right: 10px;
-}
-.episodeTitle {
-  margin-right: 10px;
+  font-size: 10px;
 }
 .moreDetails {
   display: inline-block;
@@ -227,7 +222,6 @@ bc-itunes-search {
 }
 #faveButton {
   margin-right: 3px;
-  background-color: lightpink;
   color: #383539;
   .glyphicon-heart {
     color: red;
@@ -249,12 +243,16 @@ bc-itunes-search {
   width: 15px;
 }
 .filterLabel{
-  font-size: 14px;
+  font-size: 16px;
+  margin-bottom: 5px;
 }
 .filterSearch {
   height: 24px;
   width: 150px;
+  margin-bottom: 5px;
+  border: 1px solid #383539;
 }
+
 //show rating
 .rating {
     color: white;
@@ -298,7 +296,6 @@ ul.rating {
   margin-right: 25%;
   margin-left: 25%;
   color: #ccc;
-
   display: flex;
   flex-direction: row;
   align-content: center;
@@ -320,8 +317,57 @@ ul.rating {
 .squares {
   border: solid white 1px;
 }
+//DASHBOARD
 
-//HOME
+#episodeDiv {
+  height: 50px;
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
+  background-color: #383539;
+  padding:5px;
+  margin-bottom:5px;
+  color: #CCC;
+}
+#unfollowBtn {
+    position: relative;
+    height: 25px;
+    width: 25px;
+    background-color: black;
+    color: white;
+    border: none;
+    box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    margin-left: -34px;
+    margin-top: -10px;
+}
+
+#dashboard {
+  background-color: #ccc;
+}
+
+#dashTitle {
+  padding-top: 5%;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#episodeView {
+  background-color: #ccc;
+  width: 100vw;
+  #episodeDiv {
+    width: 100%;
+  }
+}
+#podcastList {
+  z-index: 2;
+}
+
+//HOME ------------------------------------------------------
+
 .home {
   font-family: 'Play', sans-serif;
 }
@@ -493,32 +539,4 @@ ul.rating {
     float: left;
     font-family: 'Play', sans-serif;
   }
-}
-
-// Dashboard
-#dashboard {
-  background-color: #ccc;
-}
-
-#dashboard h1{
-  margin: 0;
-  background-color: #ccc;
-  color: #383539;
-  padding-top: 5%;
-  padding-left: 10%;
-  padding-right: 10%;
-}
-#episodeView {
-  background-color: #ccc;
-  width: 100vw;
-  #episodeDiv {
-    width: 100%;
-  }
-}
-#episodeDiv {
-  color: #ccc;
-  background-color: #f23434;
-}
-#podcastList {
-  z-index: 2;
 }

@@ -1,10 +1,18 @@
 
 app.controller('DashboardCtrl', function ($scope, $rootScope, $http, $stateParams) {
   var user = $rootScope.currentUser;
-
-  $scope.view = {
+  $scope.view = {};
+  $scope.view.name = {
     userName: user.name
   };
+  $scope.view.rating = 0;
+  $scope.view.ratings = [{
+    current: 3,
+    max: 5
+  }];
+  $scope.getSelectedRating = function (rating) {
+    console.log(rating);
+  }
 
   $http.get('/api/users/' + $rootScope.currentUser.id + '/follow').then(function(data) {
     $scope.view.following = data.data;
