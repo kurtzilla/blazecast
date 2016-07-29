@@ -1,37 +1,46 @@
-<button id='playButton'
-        class="btn btn-primary btn-sm btn-play"
-        ng-click="addEpisodeToPlayer(episode);">
-  <span class="glyphicon glyphicon-play"></span> Play
-</button>
-<button id='faveButton' class="btn btn-default btn-sm" ng-click="favoriteEpisode(episode)">
-  <span class="glyphicon glyphicon-heart"></span> Favorite
-</button>
-<button id='saveButton' class="btn btn-default btn-sm" ng-click="saveEpisode(episode)">
-  <span class="glyphicon glyphicon-floppy-disk"></span> Save
-</button>
 
-
-
-  <strong class='episodeTitle' maxlength='250'>{{episode.title}}</strong>
-  <div class='episodeInfo'>
-    <div ng-repeat='rating in view.ratings'>
-    <!-- <p>{{rating.current}}</p> -->
-      <h5 class='ratingTitle'>Rating: </h5>
-        <div class='stars'
-             star-rating
-             rating-value="rating.current"
-             max="rating.max"
-             on-rating-selected="getSelectedRating(rating)">
+  <table class="episode-table table" style="border:none !important;">
+    <tr>
+      <td style="white-space: nowrap;">
+        <button id='playButton'
+                class="btn btn-primary btn-sm btn-play"
+                ng-click="addEpisodeToPlayer(episode);">
+          <span class="glyphicon glyphicon-play"></span> Play
+        </button>
+        <button id='faveButton' class="btn btn-default btn-sm" ng-click="favoriteEpisode(episode)">
+          <span class="glyphicon glyphicon-heart"></span> Favorite
+        </button>
+        <button id='saveButton' class="btn btn-default btn-sm" ng-click="saveEpisode(episode)">
+          <span class="glyphicon glyphicon-floppy-disk"></span> Save
+        </button>
+      </td>
+      <td style="width:55%;">
+        <strong class='episodeTitle'>{{episode.title}}</strong>
+        <div  ng-show='showDetails' class="episode-snippet">
+          {{episode.contentSnippet}}
         </div>
-      </div>
-  </div>
-    <span class='episodePublishDate'>{{episode.publishedDate | date:'medium'}}
-    </span>
-    <h5 class='moreDetails'>More
-      <i ng-click='showDetails =! showDetails' class="fa fa-chevron-down" aria-hidden="true">
-      </i>
-    </h5>
-      <!-- <span>{{episode.filesize}}</span> -->
-      <div ng-show='showDetails' class="episode-snippet">
-      {{episode.contentSnippet}}
-      </div>
+      </td>
+      <td style="white-space:nowrap;">
+        <h5 class='moreDetails'>More
+          <i ng-click='showDetails =! showDetails' class="fa fa-chevron-down" aria-hidden="true">
+          </i>
+        </h5>
+      </td>
+      <td style="white-space:nowrap;">
+        <div class='episodeInfo'>
+          <div ng-repeat='rating in view.ratings'>
+            <!-- <p>{{rating.current}}</p> -->
+            <h5 class='ratingTitle'>Rating: </h5>
+            <div class='stars' star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)">
+            </div>
+          </div>
+        </div>
+      </td>
+      <td style="white-space:nowrap;">
+        <span class='episodePublishDate'>{{episode.publishedDate | date:'medium'}}</span>
+      </td>
+    </tr>
+  </table>
+
+
+

@@ -188,17 +188,33 @@ bc-itunes-search {
   margin-top: 5px;
   line-height: 20px;
 }
+
+
+
+
+
+
 .episode-row {
   max-height:400px;
   overflow: scroll;
 }
+
+
+.episode-table{
+  border-top:none !important;
+  td {
+    display: table-cell;
+    vertical-align: top;
+  }
+}
+
 .episode-item {
   box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
-  padding:5px;
+  padding:5px 5px 0 5px ;
   color: #ccc;
   background-color: #383539 ;
-  height: 50px;
-  margin-bottom:5px;
+  min-height: 30px;
+  margin-bottom:0;
   .episode-snippet {
     font-size:12px;
     background-color: #383539;
@@ -208,25 +224,21 @@ bc-itunes-search {
 }
 .episodeTitle {
   margin-right: 10px;
-  // overflow: hidden;
-  // max-width: 500px;
-  // display: inline-block;
 }
-// .titleFont {
-//   font-size: 12px;
-// }
-.episodePublishDate {
-  float: right;
-  margin-right: 10px;
-  font-size: 10px;
-}
+
 .moreDetails {
   display: inline-block;
   float: right;
   text-align: center;
   margin-right: 20px;
   color: lightblue;
+  line-height:1em;
+  margin-top:5px;
 }
+
+
+
+
 #faveButton {
   margin-right: 3px;
   color: #383539;
@@ -284,12 +296,21 @@ ul.rating {
 }
 .ratingTitle {
   display: inline-block;
+  line-height:1em;
+  margin-top:-5px;
+}
+.episodePublishDate {
+  float: right;
+  margin-right: 10px;
+  margin-top:5px;
+  font-size: 10px;
 }
 .stars {
   display: inline-block;
 }
 .episodeInfo {
   display: inline-block;
+
 }
 
 
