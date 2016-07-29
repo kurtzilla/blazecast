@@ -31,7 +31,7 @@ angular.module('MyApp')
   {
     name: 'Sam Cate',
     imageUrl: 'https://avatars.slack-edge.com/2016-04-04/31940177953_70c2abd4e7b5af0ec45d_512.png',
-    about: 'Lorem ipsum dolor sit amet, platea pellentesque, dolor maecenas eu tempor ullamcorper nulla, ipsum convallis libero est quis vel dictum, in sit non porttitor curabitur, sodales maecenas ut. Turpis in nunc.  '
+    about: 'Listen, apparently I\'m a planet... and now I\'m not.'
   }];
 
 

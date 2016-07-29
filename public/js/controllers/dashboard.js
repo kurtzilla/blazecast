@@ -32,7 +32,6 @@ app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams
     .catch(function(err){
       $scope.view.episodes = [err];
     });
-
   };
 
   $scope.unfollowPodcast = function (podcast) {
@@ -69,16 +68,5 @@ app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams
         $scope.view.episodes = faveEps;
       })
   }
-
-  // init episodes with route param var - fyi this query takes longer to return
-  episodeService.populateEpisodesByItunesPodcastId($stateParams.provider_id)
-  .then(function(data){
-    $scope.view.episodes = episodeService.episodes;
-  })
-  .catch(function(err){
-    $scope.view.episodes = [err];
-  });
-  // End init podcast and episodes
-
 
 });

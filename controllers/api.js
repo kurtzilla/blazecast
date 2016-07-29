@@ -21,9 +21,6 @@ exports.followPodcast = function (req, res, next) {
   var podcastId;
 
 
-
-  // var episodes =
-
   // first, check to see if podcast is already in database
   knex('podcasts')
   .where('provider_id', providerId)
@@ -233,14 +230,6 @@ exports.saveEpisode = function(req, res, next) {
     res.end();
   })
 }
-
-// exports.saveEpisode = function(req, res, next) {
-//
-// }
-
-// exports.newPlaylist = function(req, res, next) {
-//
-// }
 
 exports.getEpisodes = function(req, res, next) {
   knex('episodes')
