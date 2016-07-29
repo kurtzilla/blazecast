@@ -19,7 +19,6 @@ app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams
 
     episodeService.populateEpisodesByItunesPodcastId(podcast.provider_id)
     .then(function(data){
-      console.log(data);
       // console.log('EPISODES', data);
       $scope.view.episodes = episodeService.episodes;
     })
@@ -30,7 +29,6 @@ app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams
   };
 
   $scope.unfollowPodcast = function (podcast) {
-    console.log(podcast.id);
     $http.post('/api/users/' + $rootScope.currentUser.id + '/unfollow/' + podcast.id)
       .then(function(data) {})
   };
@@ -60,10 +58,21 @@ app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams
   $scope.showFavorites = function () {
     $http.get('/api/users/' + user.id + '/favoriteEpisodes')
       .then(function(data) {
-        console.log(data);
         var faveEps = data.data;
         $scope.view.episodes = faveEps;
       })
   }
+
+  // init episodes with route param var - fyi this query takes longer to return
+  episodeService.populateEpisodesByItunesPodcastId($stateParams.provider_id)
+  .then(function(data){
+    // console.log('EPISODES', data);
+    $scope.view.episodes = episodeService.episodes;
+  })
+  .catch(function(err){
+    $scope.view.episodes = [err];
+  });
+  // End init podcast and episodes
+
 
 });
