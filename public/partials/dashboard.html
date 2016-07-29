@@ -4,7 +4,7 @@
 
   <div id="podcastList">
 
-    <div id="podcastDiv" class="col-xs-8 podcast-title-col">
+    <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="showFavorites()"> <!--use this!-->
       <img src="http://pngimg.com/upload/star_PNG1595.png"></img>
     </div>
 
@@ -33,7 +33,7 @@
 
       <div id="episodeInfo">
 
-        <strong>{{episode.title}}</strong>
+        <strong>{{episode.name}}</strong>
 
       </div>
     </div>

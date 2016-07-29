@@ -126,6 +126,9 @@ app.post('/api/users/:user_id/favorite/:provider_id/:itunes_episode_id',
 app.get('/api/users/:user_id/savedPodcasts',
   apiController.getSavedEpisodes);
 
+app.get('/api/users/:user_id/favoriteEpisodes',
+  apiController.getFavoriteEpisodes);
+
 app.get('*', function(req, res) {
   res.redirect('/#' + req.originalUrl);
 });
