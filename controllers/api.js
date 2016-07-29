@@ -67,22 +67,22 @@ exports.followPodcast = function (req, res, next) {
       .where('podcast_id', podcastId);
     }
   })
-  .then(function() {
-    for (var i = 0; i < episodes.length; i++) {
-
-      knex('episodes')
-      .insert({
-        podcast_id: podcastId,
-        name: episodes[i].title,
-        feedUrl: episodes[i].url,
-        itunes_episode_id: episodes[i].itunesEpisodeId
-      })
-      .catch(function(err) {
-        console.log(err);
-      })
-      res.end()
-
-    }
+  .then(function() { // no longer necessary to add each episode to database on podcast follow
+  //   for (var i = 0; i < episodes.length; i++) {
+  //
+  //     knex('episodes')
+  //     .insert({
+  //       podcast_id: podcastId,
+  //       name: episodes[i].title,
+  //       feedUrl: episodes[i].url,
+  //       itunes_episode_id: episodes[i].itunesEpisodeId
+  //     })
+  //     .catch(function(err) {
+  //       console.log(err);
+  //     })
+  //     res.end()
+  //
+  //   }
   });
 }
 
@@ -298,12 +298,16 @@ exports.getFedPodcastEpisodes = function(req, res, next){
 exports.unfollowPodcast = function (req, res, next) {
   var userId = req.params.user_id;
   var podcastId = req.params.podcast_id;
+  console.log(userId, podcastId);
   knex('users_podcasts')
     .update({
       following: false
     })
     .where('podcast_id', podcastId)
-    .then(function(data) {})
+    .then(function(data) {
+      console.log('this is the thing');
+      console.log(data);
+    })
 }
 
 
