@@ -28,7 +28,7 @@ var resourceController = require('./controllers/resource');
 var app = express();
 
 // enable ssl redirect
-// app.use(sslRedirect());
+// app.use(sslRedirect()); // crashes app
 
 
 app.set('port', process.env.PORT || 3000);
@@ -40,6 +40,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
+
+
+
+app.use(sslRedirect());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 
