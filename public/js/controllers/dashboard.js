@@ -14,7 +14,8 @@ app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams
 
 
   $scope.populateFollowing = function(){
-    $http.get('/api/users/' + $rootScope.currentUser.id + '/follow').then(function(data) {
+    $http.get('/api/users/' + $rootScope.currentUser.id + '/follow?' + Date.now())
+    .then(function(data) {
       $scope.view.following = data.data;
     });
   };
