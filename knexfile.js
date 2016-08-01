@@ -1,6 +1,7 @@
-var dotenv = require('dotenv');
+// var dotenv =
+require('dotenv');
 
-dotenv.load();
+// dotenv.load();
 
 module.exports = {
   development: {

@@ -2,6 +2,7 @@
 app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams, episodeService) {
   var user = $rootScope.currentUser;
   $scope.view = {};
+  $scope.view.errors = [];
   $scope.view.name = {
     userName: user.name
   };
@@ -10,13 +11,22 @@ app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams
     current: 3,
     max: 5
   }];
+
+
+  $scope.populateFollowing = function(){
+    $http.get('/api/users/' + $rootScope.currentUser.id + '/follow?' + Date.now())
+    .then(function(data) {
+      $scope.view.following = data.data;
+    });
+  };
+  // run on init
+  $scope.populateFollowing();
+
+
+
   $scope.getSelectedRating = function (rating) {
     console.log(rating);
-  }
-
-  $http.get('/api/users/' + $rootScope.currentUser.id + '/follow').then(function(data) {
-    $scope.view.following = data.data;
-  });
+  };
 
   $scope.getEpisodes = function(podcast) {
 
@@ -35,8 +45,17 @@ app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams
   };
 
   $scope.unfollowPodcast = function (podcast) {
+    // console.log('UNFOLLOW ctrlr',$rootScope.currentUser.id,podcast);
     $http.post('/api/users/' + $rootScope.currentUser.id + '/unfollow/' + podcast.id)
-      .then(function(data) {})
+      .then(function(data) {
+        // console.log('UNFOLLOW DATA',data);
+        // podcast.following = false;
+        $scope.populateFollowing();
+      })
+    .catch(function(err){
+      $scope.view.errors = [err];
+    });
+
   };
 
   $scope.favoriteEpisode = function (following, episode) {
