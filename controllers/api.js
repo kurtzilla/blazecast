@@ -293,7 +293,7 @@ exports.unfollowPodcast = function (req, res, next) {
     })
     .where('podcast_id', podcastId)
     .then(function(data) {
-      res.status(200).send(data);
+      res.status(200).send('ok');
     })
   .catch(function(err){
       res.status(200).send(err);

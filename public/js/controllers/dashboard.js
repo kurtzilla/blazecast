@@ -2,6 +2,7 @@
 app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams, episodeService) {
   var user = $rootScope.currentUser;
   $scope.view = {};
+  $scope.view.errors = [];
   $scope.view.name = {
     userName: user.name
   };
@@ -51,7 +52,7 @@ app.controller('DashboardCtrl', function($scope, $rootScope, $http, $stateParams
         $scope.populateFollowing();
       })
     .catch(function(err){
-      $scope.errors = [err];
+      $scope.view.errors = [err];
     });
 
   };
