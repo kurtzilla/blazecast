@@ -2,11 +2,17 @@
 
   <h1 id='dashTitle'>{{ view.name.userName }}'s Dashboard</h1>
 
+  <div ng-show="view.errors && view.errors.length > 0">
+    <ul class=""error-list">
+      <li ng-repeat="error in view.errors">error</li>
+    </ul>
+  </div>
+
   <div id="podcastList">
 
     <div id="podcastDiv" class="col-xs-8 podcast-title-col"
-     ng-click="showFavorites()">
-    <img ng-src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSstfPq6YFFzSmDbniFZjq-ILqMkgbegkBbMRzGG5_O8z2_fFuklw" alt="">
+          ng-click="showFavorites()">
+      <img ng-src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSstfPq6YFFzSmDbniFZjq-ILqMkgbegkBbMRzGG5_O8z2_fFuklw" alt="">
     </div>
 
     <div id="podcastDiv" class="col-xs-8 podcast-title-col" ng-click="showSaved()">
